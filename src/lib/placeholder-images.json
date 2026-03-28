@@ -1,3 +1,16 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-abstract",
+      "description": "Abstract technical lines and dots representing system architecture",
+      "imageUrl": "https://picsum.photos/seed/sentinel1/1200/600",
+      "imageHint": "technical architecture"
+    },
+    {
+      "id": "server-meticulous",
+      "description": "High detail server components represent zero-failure focus",
+      "imageUrl": "https://picsum.photos/seed/sentinel2/600/400",
+      "imageHint": "server components"
+    }
+  ]
 }
