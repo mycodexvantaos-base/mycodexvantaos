@@ -1,5 +1,5 @@
 import { SidebarProvider, SidebarInset, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarFooter } from "@/components/ui/sidebar";
-import { Shield, LayoutDashboard, Database, Repeat, ClipboardCheck, History, Settings, FileCode, SearchCheck } from "lucide-react";
+import { Shield, LayoutDashboard, Database, Repeat, ClipboardCheck, History, Settings, FileCode, SearchCheck, ScrollText } from "lucide-react";
 import Link from "next/link";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -10,6 +10,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { icon: SearchCheck, label: "Risk Analysis", href: "/dashboard/analysis" },
     { icon: Repeat, label: "Refinement", href: "/dashboard/refinement" },
     { icon: ClipboardCheck, label: "Checklists", href: "/dashboard/checklists" },
+    { icon: ScrollText, label: "Verification Reports", href: "/dashboard/reports" },
     { icon: History, label: "Audit Trail", href: "/dashboard/history" },
   ];
 
