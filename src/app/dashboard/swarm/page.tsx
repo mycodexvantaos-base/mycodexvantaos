@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -13,13 +12,24 @@ import { useToast } from "@/hooks/use-toast";
 export default function SwarmPage() {
   const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
-  
-  const nodes = [
+  const [nodes, setNodes] = useState([
     { id: "node_alpha_01", name: "AlphaFold_Reasoning", type: "Scientific", rating: 4.8, latency: "4ms", load: 42, status: "SYNCED" },
     { id: "node_gamma_04", name: "Zero_Shot_Code_Forge", type: "DevOps", rating: 4.9, latency: "12ms", load: 88, status: "FORGING" },
     { id: "node_delta_09", name: "Pulse_Sensor_Matrix", type: "Perception", rating: 4.7, latency: "2ms", load: 15, status: "STREAMING" },
     { id: "node_omega_12", name: "Consensus_Validator", type: "Governance", rating: 5.0, latency: "24ms", load: 64, status: "VALIDATING" },
-  ];
+  ]);
+
+  // Simulate real-time node activity
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNodes(prev => prev.map(node => ({
+        ...node,
+        load: Math.min(100, Math.max(0, node.load + Math.floor(Math.random() * 6) - 3)),
+        latency: `${Math.max(1, parseInt(node.latency) + Math.floor(Math.random() * 4) - 2)}ms`
+      })));
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleRegister = () => {
     toast({
@@ -68,7 +78,7 @@ export default function SwarmPage() {
             </CardHeader>
             <CardContent className="p-0">
               <div className="divide-y divide-border/20">
-                {nodes.map((node) => (
+                {nodes.filter(n => n.name.toLowerCase().includes(searchQuery.toLowerCase())).map((node) => (
                   <div key={node.id} className="flex items-center justify-between p-6 hover:bg-white/5 transition-colors group">
                     <div className="flex items-center gap-5">
                       <div className="h-12 w-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
@@ -81,7 +91,7 @@ export default function SwarmPage() {
                         </div>
                         <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                           <span>{node.type} Module</span>
-                          <span className="flex items-center gap-1 text-accent"><Database className="h-3 w-3" /> Rating: {node.rating}</span>
+                          <span className="flex items-center gap-1 text-accent"><Database className="h-3 w-3" /> <span>Rating: {node.rating}</span></span>
                         </div>
                       </div>
                     </div>
@@ -117,9 +127,9 @@ export default function SwarmPage() {
                   <span>EVENT_LOG</span>
                 </div>
                 {[
-                  { time: "14:23:01", protocol: "CDP_REQ_001", log: "Matching capability 'molecular_prediction' -> Found 2 candidates" },
-                  { time: "14:24:12", protocol: "CDP_SYNC", log: "Node 'node_gamma_04' heartbeat verified via SHA-512" },
-                  { time: "14:25:09", protocol: "CDP_REG", log: "New human expert node 'human_node_99' registered" },
+                  { time: new Date().toLocaleTimeString(), protocol: "CDP_REQ_001", log: "Matching capability 'molecular_prediction' -> Found 2 candidates" },
+                  { time: new Date().toLocaleTimeString(), protocol: "CDP_SYNC", log: "Node 'node_gamma_04' heartbeat verified via SHA-512" },
+                  { time: new Date().toLocaleTimeString(), protocol: "CDP_REG", log: "New human expert node 'human_node_99' registered" },
                 ].map((l, i) => (
                   <div key={i} className="flex gap-4 py-1 hover:bg-white/5 transition-colors">
                     <span className="w-20 text-muted-foreground">{l.time}</span>

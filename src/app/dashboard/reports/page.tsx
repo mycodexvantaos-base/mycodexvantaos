@@ -1,23 +1,44 @@
 "use client";
 
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ScrollText, CheckCircle2, AlertCircle, ShieldCheck, Zap, Info, ArrowUpRight, FileText, Download, Share2, ClipboardList, Network } from "lucide-react";
+import { ScrollText, CheckCircle2, AlertCircle, ShieldCheck, Zap, Info, ArrowUpRight, FileText, Download, Share2, ClipboardList, Network, Loader2, RotateCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function ReportsPage() {
-  const summaryTable = [
+  const [isAuditing, setIsAuditing] = useState(false);
+  const [lastAuditTs, setLastAuditTs] = useState("2024-05-20 14:30:00 (UTC+8)");
+  const [score, setScore] = useState(95);
+
+  const [summaryTable, setSummaryTable] = useState([
     { aspect: "評分計算 (Score Calculation)", status: "基本上合理", recommendation: "REQ: 公開指標分數、權重、統計檢定 (t 檢定)" },
     { aspect: "核心改進 (Core Refinements)", status: "具備可操作性", recommendation: "REQ: 強化 SOP、責任分工 (RACI 矩陣)、驗證指標" },
     { aspect: "YAML / 架構驗證", status: "基本符合標準", recommendation: "REQ: 採用國際標準 (ISO)、持續自動驗證 (CI)" },
     { aspect: "多協定 / 自動驗證 (協定)", status: "架構完整", recommendation: "REQ: 加強資料轉換、資料標準化、監控 (軟體中介軟體)" },
-    { aspect: "工具與文件 (文件)", status: "工具鏈完整", recommendation: "REQ: 精煉文件、建立知識庫與訓練系統 (超級使用者超級使用者)" },
+    { aspect: "工具與文件 (文件)", status: "工具鏈完整", recommendation: "REQ: 精煉文件、建立知識庫與訓練系統 (超級使用者)" },
     { aspect: "風險 / 錯誤 (風險評估)", status: "無重大失誤", recommendation: "REQ: 明確區分「總體」與「成果」、暴露限制與潛在風險" },
-  ];
+  ]);
+
+  const runNewAudit = async () => {
+    setIsAuditing(true);
+    // Simulate complex audit process
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    
+    setScore(Math.floor(Math.random() * 5) + 95);
+    setLastAuditTs(new Date().toLocaleString());
+    setIsAuditing(false);
+    
+    // Simulate slight status shifts
+    setSummaryTable(prev => prev.map(row => ({
+      ...row,
+      status: Math.random() > 0.8 ? "驗證中 (Validating)" : row.status
+    })));
+  };
 
   return (
     <div className="p-8 space-y-10 max-w-[1400px] mx-auto pb-24 scanline">
@@ -41,11 +62,16 @@ export default function ReportsPage() {
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          <Button className="bg-primary text-primary-foreground font-bold uppercase text-[10px] tracking-widest px-8">
-            <Download className="mr-2 h-4 w-4" /> <span>Export PDF</span>
+          <Button 
+            className="bg-primary text-primary-foreground font-bold uppercase text-[10px] tracking-widest px-8 h-12"
+            onClick={runNewAudit}
+            disabled={isAuditing}
+          >
+            {isAuditing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <RotateCw className="mr-2 h-4 w-4" />}
+            <span>{isAuditing ? "Auditing Network..." : "Run New Audit"}</span>
           </Button>
           <Button variant="outline" className="border-border font-bold uppercase text-[10px] tracking-widest px-8">
-            <Share2 className="mr-2 h-4 w-4" /> <span>Distribute</span>
+            <Download className="mr-2 h-4 w-4" /> <span>Export PDF</span>
           </Button>
         </div>
       </div>
@@ -53,7 +79,7 @@ export default function ReportsPage() {
       {/* KPI Overview */}
       <div className="grid gap-6 md:grid-cols-4">
         {[
-          { label: "Final Validation Score", value: "95", suffix: "/ 100", trend: "大幅提升 (Pre: 35)", icon: Zap },
+          { label: "Final Validation Score", value: score, suffix: "/ 100", trend: "大幅提升 (Pre: 35)", icon: Zap },
           { label: "Cronbach’s α (信度)", value: "0.92", suffix: "", trend: "信度極高 (Reliable)", icon: ShieldCheck },
           { label: "Protocols Covered", value: "5+", suffix: "Types", trend: "HTTP, MQTT, OPC UA...", icon: Network },
           { label: "Audit Standard", value: "SLSA", suffix: "L3", trend: "NIST IR 8536 實踐", icon: ClipboardList },
@@ -71,7 +97,7 @@ export default function ReportsPage() {
                 <span className="text-sm font-medium text-muted-foreground">{kpi.suffix}</span>
               </div>
               <p className="text-[10px] font-bold text-accent mt-2 uppercase tracking-tighter flex items-center gap-1">
-                <ArrowUpRight className="h-3 w-3" /> {kpi.trend}
+                <ArrowUpRight className="h-3 w-3" /> <span>{kpi.trend}</span>
               </p>
             </CardContent>
           </Card>
@@ -101,7 +127,7 @@ export default function ReportsPage() {
                     <AccordionContent className="text-xs text-muted-foreground leading-relaxed space-y-4 pb-6">
                       <div className="p-4 border-l-2 border-primary bg-primary/5 rounded-r">
                         <p className="font-bold text-foreground mb-2">統計檢驗與實證說明</p>
-                        依據教育評量理論，分數從 35 提升至 95 需經由 t 檢定驗證顯著性。本方案之 Cronbach’s α 值達 0.92，顯示評分項目間具備高度一致性。
+                        依據教育評量理論，分數從 35 提升至 {score} 需經由 t 檢定驗證顯著性。本方案之 Cronbach’s α 值達 0.92，顯示評分項目間具備高度一致性。
                       </div>
                       <p>核心需求：應公開各指標權重分配細節，並定期進行信度與效度分析 (Validity Analysis)，確保數據非單一指標拉抬。</p>
                     </AccordionContent>
@@ -198,34 +224,6 @@ export default function ReportsPage() {
             </CardContent>
           </Card>
 
-          {/* Governance Best Practices */}
-          <Card className="border-border/40 bg-card/40">
-            <CardHeader>
-              <CardTitle className="text-sm font-bold uppercase tracking-widest">治理與採用策略</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {[
-                { title: "RACI 矩陣導入", desc: "明確定義負責、擔責、諮詢與知情角色。" },
-                { title: "超級使用者制度", desc: "培養內部種子講師，提升 30% 以上的採用率。" },
-                { title: "持續監控機制", desc: "四大黃金信號：延遲、流量、錯誤、飽和度。" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                  <div className="space-y-1">
-                    <span className="text-[11px] font-bold text-foreground">{item.title}</span>
-                    <p className="text-[10px] text-muted-foreground leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-            <CardFooter className="pt-0">
-              <div className="w-full p-4 rounded bg-background/50 border border-border/40 flex items-center justify-between">
-                <span className="text-[9px] font-mono text-muted-foreground uppercase">ISO/NIST Compliance</span>
-                <Badge className="bg-primary text-primary-foreground text-[8px]">CERTIFIED</Badge>
-              </div>
-            </CardFooter>
-          </Card>
-
           <div className="p-6 rounded-xl border border-border/40 bg-background/40 space-y-4">
              <div className="flex items-center gap-2">
                 <Info className="h-4 w-4 text-muted-foreground" />
@@ -233,7 +231,7 @@ export default function ReportsPage() {
              </div>
              <div className="font-mono text-[9px] text-muted-foreground space-y-1">
                 <p>REPORT_HASH: 0x8f2c1d9c...e3b4a2</p>
-                <p>AUDIT_TS: 2024-05-20 14:30:00 (UTC+8)</p>
+                <p>AUDIT_TS: {lastAuditTs}</p>
                 <p>SLSA_VERIFIER: v1.4.2-PROD</p>
              </div>
           </div>
