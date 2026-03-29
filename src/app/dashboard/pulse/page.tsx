@@ -49,7 +49,7 @@ export default function PulseSensingPage() {
           ) : (
             <Waves className="mr-2 h-4 w-4" />
           )}
-          <span>開啟全球感知 (INVOKE PERCEPTION)</span>
+          <span><span className="uppercase tracking-widest text-[11px] font-bold">開啟全球感知 (INVOKE PERCEPTION)</span></span>
         </Button>
       </div>
 
