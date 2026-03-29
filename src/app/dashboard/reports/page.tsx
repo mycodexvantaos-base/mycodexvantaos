@@ -12,11 +12,11 @@ import { Button } from "@/components/ui/button";
 export default function ReportsPage() {
   const summaryTable = [
     { aspect: "評分計算 (Score Calculation)", status: "基本上合理", recommendation: "REQ: 公開指標分數、權重、統計檢定 (t 檢定)" },
-    { aspect: "核心改進 (Core Refinements)", status: "具備可操作性", recommendation: "REQ: 強化 SOP、責任分工 (RACI Matrix)、驗證指標" },
+    { aspect: "核心改進 (Core Refinements)", status: "具備可操作性", recommendation: "REQ: 強化 SOP、責任分工 (RACI 矩陣)、驗證指標" },
     { aspect: "YAML / 架構驗證", status: "基本符合標準", recommendation: "REQ: 採用國際標準 (ISO)、持續自動驗證 (CI)" },
-    { aspect: "多協定 / 自動驗證 (Protocols)", status: "架構完整", recommendation: "REQ: 加強協定轉換、資料標準化、監控 (中介軟體 Middleware)" },
-    { aspect: "工具與文件 (Documentation)", status: "工具鏈完整", recommendation: "REQ: 精煉文件、建立知識庫與訓練系統 (超級使用者 Super User)" },
-    { aspect: "風險 / 錯誤 (Risk Assessment)", status: "無重大失誤", recommendation: "REQ: 明確區分「總量」與「成果」、揭露限制與潛在風險" },
+    { aspect: "多協定 / 自動驗證 (協定)", status: "架構完整", recommendation: "REQ: 加強資料轉換、資料標準化、監控 (軟體中介軟體)" },
+    { aspect: "工具與文件 (文件)", status: "工具鏈完整", recommendation: "REQ: 精煉文件、建立知識庫與訓練系統 (超級使用者超級使用者)" },
+    { aspect: "風險 / 錯誤 (風險評估)", status: "無重大失誤", recommendation: "REQ: 明確區分「總體」與「成果」、暴露限制與潛在風險" },
   ];
 
   return (
@@ -179,20 +179,20 @@ export default function ReportsPage() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Badge className="bg-accent text-accent-foreground text-[9px]">HIGH</Badge>
-                  <span className="text-[11px] font-bold">成效與服務混淆</span>
+                  <span className="text-[11px] font-bold">成果與服務一致性</span>
                 </div>
                 <p className="text-[10px] text-muted-foreground leading-relaxed">
-                  避免將活動產出（如舉辦場次、文件產出）誤當成最終成效。需明確定義指標，區分「總量」與「成果」。
+                  避免將活動總量（如舉辦場次、文件總量）誤當最終達成成果。需要明確定義指標，區分「總量」與「成果」。
                 </p>
               </div>
               <Separator className="bg-accent/20" />
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Badge className="bg-accent text-accent-foreground text-[9px]">MED</Badge>
-                  <span className="text-[11px] font-bold">架構限制透明度</span>
+                  <span className="text-[11px] font-bold">架構限制</span>
                 </div>
                 <p className="text-[10px] text-muted-foreground leading-relaxed">
-                  應明確揭露方案適用範圍與已知限制，避免對自動化成效過度包裝。
+                  應明確揭露方案適用範圍與已知限制，避免自動化成果過度包裝。
                 </p>
               </div>
             </CardContent>
@@ -206,7 +206,7 @@ export default function ReportsPage() {
             <CardContent className="space-y-6">
               {[
                 { title: "RACI 矩陣導入", desc: "明確定義負責、擔責、諮詢與知情角色。" },
-                { title: "超級用戶制度", desc: "培養內部種子講師，提升 30% 以上的採用率。" },
+                { title: "超級使用者制度", desc: "培養內部種子講師，提升 30% 以上的採用率。" },
                 { title: "持續監控機制", desc: "四大黃金信號：延遲、流量、錯誤、飽和度。" },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
