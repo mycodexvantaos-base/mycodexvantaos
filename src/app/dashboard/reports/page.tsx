@@ -11,16 +11,16 @@ import { Button } from "@/components/ui/button";
 
 export default function ReportsPage() {
   const summaryTable = [
-    { aspect: "評分計算 (Score Calculation)", status: "基本上合理", recommendation: "公開指標分數、權重、統計檢定 (t 檢定)" },
-    { aspect: "核心改進 (Core Refinements)", status: "具備可操作性", recommendation: "強化 SOP、責任分工 (RACI Matrix)、驗證指標" },
-    { aspect: "YAML / 架構驗證", status: "基本符合標準", recommendation: "採用國際標準 (ISO)、持續自動驗證 (CI)" },
-    { aspect: "多協定 / 自動驗證 (Protocols)", status: "架構完整", recommendation: "加強協定轉換、資料標準化、監控 (中介軟體 Middleware)" },
-    { aspect: "工具與文件 (Documentation)", status: "工具鏈完整", recommendation: "精煉文件、建立知識庫與訓練系統 (超級使用者 Super User)" },
-    { aspect: "風險 / 錯誤 (Risk Assessment)", status: "無重大失誤", recommendation: "明確區分「總量」與「成果」、揭露限制與潛在風險" },
+    { aspect: "評分計算 (Score Calculation)", status: "基本上合理", recommendation: "REQ: 公開指標分數、權重、統計檢定 (t 檢定)" },
+    { aspect: "核心改進 (Core Refinements)", status: "具備可操作性", recommendation: "REQ: 強化 SOP、責任分工 (RACI Matrix)、驗證指標" },
+    { aspect: "YAML / 架構驗證", status: "基本符合標準", recommendation: "REQ: 採用國際標準 (ISO)、持續自動驗證 (CI)" },
+    { aspect: "多協定 / 自動驗證 (Protocols)", status: "架構完整", recommendation: "REQ: 加強協定轉換、資料標準化、監控 (中介軟體 Middleware)" },
+    { aspect: "工具與文件 (Documentation)", status: "工具鏈完整", recommendation: "REQ: 精煉文件、建立知識庫與訓練系統 (超級使用者 Super User)" },
+    { aspect: "風險 / 錯誤 (Risk Assessment)", status: "無重大失誤", recommendation: "REQ: 明確區分「總量」與「成果」、揭露限制與潛在風險" },
   ];
 
   return (
-    <div className="p-8 space-y-10 max-w-[1400px] mx-auto pb-24">
+    <div className="p-8 space-y-10 max-w-[1400px] mx-auto pb-24 scanline">
       {/* Report Header */}
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 border-b border-border/40 pb-10">
         <div className="space-y-4">
@@ -128,21 +128,6 @@ export default function ReportsPage() {
                       </div>
                     </AccordionContent>
                   </AccordionItem>
-
-                  <AccordionItem value="sec-4" className="border-border/40 px-4 bg-background/30 rounded-lg">
-                    <AccordionTrigger className="text-sm font-bold py-4 hover:no-underline">
-                      <span className="flex items-center gap-3">
-                        <span className="text-primary font-mono text-xs">03</span>
-                        YAML Schema 與自動驗證實踐
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-xs text-muted-foreground leading-relaxed space-y-4 pb-6">
-                      <p>採用 Schema 驅動設計 (JSON Schema/OpenAPI) 可降低配置錯誤率達 30%。本方案應強制於 CI 流程執行 Lint 與 Validation。</p>
-                      <p className="italic text-accent/80 font-mono text-[10px]">
-                        {"// 最佳實踐：於 CI/CD Pipeline 中執行靜態分析、依賴掃描與合規檢查。"}
-                      </p>
-                    </AccordionContent>
-                  </AccordionItem>
                 </Accordion>
               </ScrollArea>
             </CardContent>
@@ -150,7 +135,7 @@ export default function ReportsPage() {
 
           {/* Table Section */}
           <Card className="border-border/40 bg-card/20 overflow-hidden">
-            <CardHeader className="bg-primary/5">
+            <CardHeader className="bg-primary/5 border-b border-border/40">
               <CardTitle className="text-lg font-headline">構造最佳化建議摘要表 (RACI 矩陣和結果)</CardTitle>
               <CardDescription>各評估面向之風險缺口與具體落地建議。</CardDescription>
             </CardHeader>
@@ -171,7 +156,7 @@ export default function ReportsPage() {
                         <Badge variant="outline" className="text-[9px] border-primary/20 text-primary uppercase whitespace-nowrap">{row.status}</Badge>
                       </TableCell>
                       <TableCell className="text-[10px] text-muted-foreground leading-relaxed">
-                        <span className="text-accent font-bold">REQ: </span>{row.recommendation}
+                        <span className="text-accent font-bold">REQ: </span>{row.recommendation.replace('REQ: ', '')}
                       </TableCell>
                     </TableRow>
                   ))}
