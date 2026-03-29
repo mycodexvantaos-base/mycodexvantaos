@@ -1,8 +1,9 @@
+
 "use client";
 
 import { SidebarProvider, SidebarInset, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarFooter } from "@/components/ui/sidebar";
 import { Badge } from "@/components/ui/badge";
-import { Globe, LayoutDashboard, History, ScrollText, Cpu, Activity, Zap, Users, ShieldAlert, Network, Settings, ClipboardCheck, FileCode, Search, Target } from "lucide-react";
+import { Globe, LayoutDashboard, History, ScrollText, Cpu, Activity, Zap, Users, ShieldAlert, Network, Settings, ClipboardCheck, FileCode, Search, Target, BookOpen } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -30,6 +31,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     {
       label: "治理稽核 (Governance)",
       items: [
+        { icon: BookOpen, label: "Protocol Whitepaper", href: "/dashboard/protocol" },
         { icon: Search, label: "Risk & Compliance", href: "/dashboard/analysis" },
         { icon: ClipboardCheck, label: "Zero-Failure Policy", href: "/dashboard/checklists" },
         { icon: ScrollText, label: "Verification Reports", href: "/dashboard/reports" },
@@ -69,7 +71,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                       >
                         <Link href={item.href} className="flex items-center gap-4 w-full">
                           <item.icon className={`h-4 w-4 ${pathname === item.href ? 'text-primary' : 'text-muted-foreground group-hover:text-primary'}`} />
-                          <span className="text-[10px] font-bold uppercase tracking-widest">{item.label}</span>
+                          <span className="text-[10px] font-bold uppercase tracking-widest">
+                            <span>{item.label}</span>
+                          </span>
                         </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
