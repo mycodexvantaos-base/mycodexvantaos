@@ -15,7 +15,7 @@ import {z} from 'genkit';
 const SuggestArchitectureRefinementsInputSchema = z.object({
   currentArchitectureDescription: z.string().describe('A detailed description of the current system architecture, including components, their interactions, data flows, and deployment environment.'),
   gitlabCiCdConfiguration: z.string().optional().describe('The current GitLab CI/CD pipeline configuration in YAML format, if available, for context on deployment strategies and automation. This helps tailor suggestions to existing CI/CD practices.'),
-  architecturalGoals: z.string().describe('A clear statement of desired architectural goals and non-functional requirements, such as high availability, scalability, security, performance, cost efficiency, and "zero-failure" operational targets.'),
+  architecturalGoals: z.string().describe("A clear statement of desired architectural goals and non-functional requirements, such as high availability, scalability, security, performance, cost efficiency, and 'zero-failure' operational targets."),
   pastIncidentsSummary: z.string().optional().describe('A summary of past incidents, outages, or recurring issues that the architecture has experienced. This information is crucial for identifying areas needing improvement and suggesting targeted resilience patterns.'),
 });
 export type SuggestArchitectureRefinementsInput = z.infer<typeof SuggestArchitectureRefinementsInputSchema>;
