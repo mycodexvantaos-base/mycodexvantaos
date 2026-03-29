@@ -1,20 +1,24 @@
+
 'use server';
 /**
- * @fileOverview AI flow for dynamically creating a tool (code/script) based on a novel environment description.
+ * @fileOverview AI flow for Month 2: Zero-Shot Tool Forge with Self-Correction.
+ * Generates executable code based on novel environments and performs self-audit.
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const ToolForgeInputSchema = z.object({
-  environmentDescription: z.string().describe('Detailed description of the target system, API docs, or novel software environment.'),
-  taskGoal: z.string().describe('The specific action the system needs to perform within this environment.'),
+  environmentDescription: z.string().describe('API docs, UI structure, or novel environment parameters.'),
+  taskGoal: z.string().describe('The specific action to perform.'),
+  previousErrors: z.string().optional().describe('Error logs from previous execution for self-correction.'),
 });
 
 const ToolForgeOutputSchema = z.object({
-  generatedCode: z.string().describe('The Python or JS code generated to interact with the novel system.'),
-  reverseEngineeringReport: z.string().describe('Analysis of how the AI understood the target system.'),
-  safetyAudit: z.string().describe('Verification of the generated code against safety protocols.'),
+  generatedCode: z.string().describe('The Python/JS code generated for the task.'),
+  reverseEngineeringReport: z.string().describe('How the AI interpreted the target system.'),
+  selfCorrectionLog: z.string().describe('Steps taken to ensure code validity or fix previous errors.'),
+  safetyAudit: z.string().describe('Validation against safety protocols.'),
 });
 
 export type ToolForgeInput = z.infer<typeof ToolForgeInputSchema>;
@@ -25,14 +29,21 @@ export async function forgeDynamicTool(input: ToolForgeInput): Promise<ToolForge
     model: 'googleai/gemini-2.5-flash',
     input: input,
     output: {schema: ToolForgeOutputSchema},
-    prompt: `You are the Tool Forge for a Liquid Intelligence Network. 
-    You have encountered a novel environment you haven't been integrated before.
-    Read the description of the environment and the task goal.
-    Generate the necessary code to perform the task.
-    Also provide a brief report on your reverse engineering process and a safety audit.
-
+    prompt: `You are the Zero-Shot Tool Forge (Month 2 Protocol).
+    You have encountered a novel environment. 
+    
+    Input Parameters:
     Environment: {{{environmentDescription}}}
-    Task Goal: {{{taskGoal}}}`,
+    Goal: {{{taskGoal}}}
+    {{#if previousErrors}}
+    Previous Error Context: {{{previousErrors}}}
+    {{/if}}
+
+    Task:
+    1. Reverse engineer the provided specs.
+    2. Write a clean, sandboxed Python script to achieve the goal.
+    3. If previous errors exist, explain the fix in the self-correction log.
+    4. Perform a safety audit to ensure no data escape.`,
   });
   return output!;
 }
