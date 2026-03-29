@@ -11,12 +11,12 @@ import { Button } from "@/components/ui/button";
 
 export default function ReportsPage() {
   const summaryTable = [
-    { aspect: "評分計算 (Score Calculation)", status: "基本合理", risk: "細節透明度不足", recommendation: "公開指標分數、權重、統計檢驗 (t-test)" },
-    { aspect: "核心改進 (Core Refinements)", status: "具備可操作性", risk: "部分缺乏驗證機制", recommendation: "強化 SOP、責任分工 (RACI)、驗證指標" },
-    { aspect: "YAML/Schema 驗證", status: "基本符合標準", risk: "版本控管與驗證需加強", recommendation: "採用國際標準 (ISO)、持續自動驗證 (CI)" },
-    { aspect: "多協議/自動驗證 (Protocols)", status: "架構完整", risk: "安全與互通性細節", recommendation: "強化協議轉換、資料標準化、監控 (Middleware)" },
-    { aspect: "工具與文件 (Documentation)", status: "工具鏈完整", risk: "文件結構與知識管理", recommendation: "精煉文件、建立知識庫與訓練體系 (Super User)" },
-    { aspect: "風險/誤導 (Risk Assessment)", status: "無重大誤導", risk: "成效與服務混淆", recommendation: "明確區分「產出」與「成效」、揭露限制" },
+    { aspect: "評分計算 (Score Calculation)", status: "基本上合理", recommendation: "公開指標分數、權重、統計檢定 (t 檢定)" },
+    { aspect: "核心改進 (Core Refinements)", status: "具備可操作性", recommendation: "強化 SOP、責任分工 (RACI Matrix)、驗證指標" },
+    { aspect: "YAML / 架構驗證", status: "基本符合標準", recommendation: "採用國際標準 (ISO)、持續自動驗證 (CI)" },
+    { aspect: "多協定 / 自動驗證 (Protocols)", status: "架構完整", recommendation: "加強協定轉換、資料標準化、監控 (中介軟體 Middleware)" },
+    { aspect: "工具與文件 (Documentation)", status: "工具鏈完整", recommendation: "精煉文件、建立知識庫與訓練系統 (超級使用者 Super User)" },
+    { aspect: "風險 / 錯誤 (Risk Assessment)", status: "無重大失誤", recommendation: "明確區分「總量」與「成果」、揭露限制與潛在風險" },
   ];
 
   return (
@@ -103,7 +103,7 @@ export default function ReportsPage() {
                         <p className="font-bold text-foreground mb-2">統計檢驗與實證說明</p>
                         依據教育評量理論，分數從 35 提升至 95 需經由 t 檢定驗證顯著性。本方案之 Cronbach’s α 值達 0.92，顯示評分項目間具備高度一致性。
                       </div>
-                      <p>建議：應公開各指標權重分配細節，避免單一指標過度拉高總分，並定期進行信度與效度分析 (Validity Analysis)。</p>
+                      <p>核心需求：應公開各指標權重分配細節，並定期進行信度與效度分析 (Validity Analysis)，確保數據非單一指標拉抬。</p>
                     </AccordionContent>
                   </AccordionItem>
 
@@ -123,7 +123,7 @@ export default function ReportsPage() {
                         </div>
                         <div className="p-3 bg-white/5 rounded">
                           <h6 className="font-bold text-[10px] text-primary uppercase mb-1">治理工具</h6>
-                          RACI 矩陣、SOP 標準作業程序。
+                          RACI Matrix、SOP 標準作業程序。
                         </div>
                       </div>
                     </AccordionContent>
@@ -143,18 +143,6 @@ export default function ReportsPage() {
                       </p>
                     </AccordionContent>
                   </AccordionItem>
-
-                  <AccordionItem value="sec-5" className="border-border/40 px-4 bg-background/30 rounded-lg">
-                    <AccordionTrigger className="text-sm font-bold py-4 hover:no-underline">
-                      <span className="flex items-center gap-3">
-                        <span className="text-primary font-mono text-xs">04</span>
-                        利益相關者治理與變革管理
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-xs text-muted-foreground leading-relaxed space-y-4 pb-6">
-                      <p>方案落地成功之關鍵在於「超級用戶 (Super User)」制度與分層教育訓練。需明確規範資料擁有權與異常處理流程。</p>
-                    </AccordionContent>
-                  </AccordionItem>
                 </Accordion>
               </ScrollArea>
             </CardContent>
@@ -163,16 +151,16 @@ export default function ReportsPage() {
           {/* Table Section */}
           <Card className="border-border/40 bg-card/20 overflow-hidden">
             <CardHeader className="bg-primary/5">
-              <CardTitle className="text-lg font-headline">結構化優化建議摘要表 (RACI Matrix & Findings)</CardTitle>
+              <CardTitle className="text-lg font-headline">構造最佳化建議摘要表 (RACI 矩陣和結果)</CardTitle>
               <CardDescription>各評估面向之風險缺口與具體落地建議。</CardDescription>
             </CardHeader>
             <CardContent className="p-0">
               <Table>
                 <TableHeader className="bg-background/40">
                   <TableRow className="border-border/40">
-                    <TableHead className="text-[10px] font-bold uppercase">稽核面向</TableHead>
+                    <TableHead className="text-[10px] font-bold uppercase">稽核面向 (Audit Dimension)</TableHead>
                     <TableHead className="text-[10px] font-bold uppercase">狀態評價</TableHead>
-                    <TableHead className="text-[10px] font-bold uppercase">優化建議 (Actionable)</TableHead>
+                    <TableHead className="text-[10px] font-bold uppercase">優化建議 (Actionable Recommendation)</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -180,7 +168,7 @@ export default function ReportsPage() {
                     <TableRow key={i} className="border-border/40 hover:bg-white/5 transition-colors">
                       <TableCell className="font-mono text-[10px] text-foreground">{row.aspect}</TableCell>
                       <TableCell>
-                        <Badge variant="outline" className="text-[9px] border-primary/20 text-primary uppercase">{row.status}</Badge>
+                        <Badge variant="outline" className="text-[9px] border-primary/20 text-primary uppercase whitespace-nowrap">{row.status}</Badge>
                       </TableCell>
                       <TableCell className="text-[10px] text-muted-foreground leading-relaxed">
                         <span className="text-accent font-bold">REQ: </span>{row.recommendation}
@@ -209,17 +197,17 @@ export default function ReportsPage() {
                   <span className="text-[11px] font-bold">成效與服務混淆</span>
                 </div>
                 <p className="text-[10px] text-muted-foreground leading-relaxed">
-                  避免將活動產出（如舉辦場次、文件產出）誤當成最終成效。需明確定義指標。
+                  避免將活動產出（如舉辦場次、文件產出）誤當成最終成效。需明確定義指標，區分「總量」與「成果」。
                 </p>
               </div>
               <Separator className="bg-accent/20" />
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Badge className="bg-accent text-accent-foreground text-[9px]">MED</Badge>
-                  <span className="text-[11px] font-bold">架構過度包裝</span>
+                  <span className="text-[11px] font-bold">架構限制透明度</span>
                 </div>
                 <p className="text-[10px] text-muted-foreground leading-relaxed">
-                  應揭露方案適用範圍與已知限制，避免誇大自動化成效，確保「千萬美元級別」之可信度。
+                  應明確揭露方案適用範圍與已知限制，避免對自動化成效過度包裝。
                 </p>
               </div>
             </CardContent>
@@ -233,7 +221,7 @@ export default function ReportsPage() {
             <CardContent className="space-y-6">
               {[
                 { title: "RACI 矩陣導入", desc: "明確定義負責、擔責、諮詢與知情角色。" },
-                { title: "超級用戶制度", desc: "培養內部種子講師，提升 30% 採用率。" },
+                { title: "超級用戶制度", desc: "培養內部種子講師，提升 30% 以上的採用率。" },
                 { title: "持續監控機制", desc: "四大黃金信號：延遲、流量、錯誤、飽和度。" },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
