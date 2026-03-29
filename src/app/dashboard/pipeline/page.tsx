@@ -65,8 +65,12 @@ export default function PipelineGeneratorPage() {
               onClick={handleGenerate}
               disabled={loading || !arch}
             >
-              {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
-              Generate Zero-Failure Pipeline
+              {loading ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Sparkles className="mr-2 h-4 w-4" />
+              )}
+              <span>Generate Zero-Failure Pipeline</span>
             </Button>
           </CardContent>
         </Card>

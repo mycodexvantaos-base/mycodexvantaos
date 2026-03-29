@@ -38,8 +38,12 @@ export default function AnalysisPage() {
           onClick={runAnalysis}
           disabled={loading}
         >
-          {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <SearchCheck className="mr-2 h-4 w-4" />}
-          Run Meticulous Analysis
+          {loading ? (
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <SearchCheck className="mr-2 h-4 w-4" />
+          )}
+          <span>Run Meticulous Analysis</span>
         </Button>
       </div>
 

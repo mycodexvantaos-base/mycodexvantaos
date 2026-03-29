@@ -47,8 +47,12 @@ export default function ChecklistsPage() {
           onClick={runValidation}
           disabled={loading}
         >
-          {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <ClipboardCheck className="mr-2 h-4 w-4" />}
-          Enforce Policies
+          {loading ? (
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <ClipboardCheck className="mr-2 h-4 w-4" />
+          )}
+          <span>Enforce Policies</span>
         </Button>
       </div>
 

@@ -39,8 +39,12 @@ export default function RefinementPage() {
           onClick={getRefinements}
           disabled={loading}
         >
-          {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Repeat className="mr-2 h-4 w-4" />}
-          Generate Refinement Plan
+          {loading ? (
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <Repeat className="mr-2 h-4 w-4" />
+          )}
+          <span>Generate Refinement Plan</span>
         </Button>
       </div>
 
