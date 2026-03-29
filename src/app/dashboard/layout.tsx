@@ -1,4 +1,5 @@
 import { SidebarProvider, SidebarInset, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarFooter } from "@/components/ui/sidebar";
+import { Badge } from "@/components/ui/badge";
 import { Shield, LayoutDashboard, Database, Repeat, ClipboardCheck, History, Settings, FileCode, SearchCheck, ScrollText, Cpu } from "lucide-react";
 import Link from "next/link";
 
