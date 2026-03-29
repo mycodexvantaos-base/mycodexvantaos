@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ScrollText, CheckCircle2, AlertCircle, ShieldCheck, Zap, Info, ArrowUpRight, FileText, Download, Share2, ClipboardList } from "lucide-react";
+import { ScrollText, CheckCircle2, AlertCircle, ShieldCheck, Zap, Info, ArrowUpRight, FileText, Download, Share2, ClipboardList, Network } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function ReportsPage() {
@@ -42,10 +42,10 @@ export default function ReportsPage() {
         </div>
         <div className="flex flex-col gap-3">
           <Button className="bg-primary text-primary-foreground font-bold uppercase text-[10px] tracking-widest px-8">
-            <Download className="mr-2 h-4 w-4" /> Export PDF
+            <Download className="mr-2 h-4 w-4" /> <span>Export PDF</span>
           </Button>
           <Button variant="outline" className="border-border font-bold uppercase text-[10px] tracking-widest px-8">
-            <Share2 className="mr-2 h-4 w-4" /> Distribute
+            <Share2 className="mr-2 h-4 w-4" /> <span>Distribute</span>
           </Button>
         </div>
       </div>
@@ -139,7 +139,7 @@ export default function ReportsPage() {
                     <AccordionContent className="text-xs text-muted-foreground leading-relaxed space-y-4 pb-6">
                       <p>採用 Schema 驅動設計 (JSON Schema/OpenAPI) 可降低配置錯誤率達 30%。本方案應強制於 CI 流程執行 Lint 與 Validation。</p>
                       <p className="italic text-accent/80 font-mono text-[10px]">
-                        // 最佳實踐：於 CI/CD Pipeline 中執行靜態分析、依賴掃描與合規檢查。
+                        {"// 最佳實踐：於 CI/CD Pipeline 中執行靜態分析、依賴掃描與合規檢查。"}
                       </p>
                     </AccordionContent>
                   </AccordionItem>
