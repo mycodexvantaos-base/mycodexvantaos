@@ -27,7 +27,7 @@ export type PulseSensingOutput = z.infer<typeof PulseSensingOutputSchema>;
 
 export async function senseGlobalPulse(input: PulseSensingInput): Promise<PulseSensingOutput> {
   const {output} = await ai.generate({
-    model: 'googleai/gemini-2.0-flash',
+    model: 'googleai/gemini-2.5-flash',
     input: input,
     output: {schema: PulseSensingOutputSchema},
     prompt: `You are the global pulse sensor for a Liquid Intelligence Network. 
