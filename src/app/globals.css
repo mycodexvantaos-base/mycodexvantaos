@@ -26,7 +26,7 @@
     --chart-1: 180 100% 50%;
     --chart-2: 45 100% 50%;
     --chart-3: 220 10% 98%;
-    --radius: 0.25rem; /* Sharper corners for industrial feel */
+    --radius: 0.25rem;
     --sidebar-background: 220 25% 3%;
     --sidebar-foreground: 220 10% 85%;
     --sidebar-primary: 180 100% 50%;
@@ -65,4 +65,34 @@
   background: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 255, 0.02) 50%);
   background-size: 100% 4px;
   pointer-events: none;
+  z-index: 100;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.97; }
+  5% { opacity: 0.95; }
+  10% { opacity: 0.9; }
+  15% { opacity: 0.95; }
+  20% { opacity: 0.98; }
+  25% { opacity: 0.95; }
+  30% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+.animate-flicker {
+  animation: flicker 0.1s infinite;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 2px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
 }

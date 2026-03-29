@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { senseGlobalPulse, PulseSensingOutput } from "@/ai/flows/global-pulse-sensing";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -49,7 +49,7 @@ export default function PulseSensingPage() {
           ) : (
             <Waves className="mr-2 h-4 w-4" />
           )}
-          <span>開啟全球感知</span>
+          <span>開啟全球感知 (INVOKE PERCEPTION)</span>
         </Button>
       </div>
 
@@ -66,7 +66,7 @@ export default function PulseSensingPage() {
                  <Globe className="h-32 w-32" />
                </div>
                <CardHeader>
-                 <CardTitle className="text-2xl font-headline">網路穩定性評估</CardTitle>
+                 <CardTitle className="text-2xl font-headline">網絡穩定性評估</CardTitle>
                  <CardDescription className="font-mono text-[10px] uppercase tracking-widest">Global Stability Metric</CardDescription>
                </CardHeader>
                <CardContent>

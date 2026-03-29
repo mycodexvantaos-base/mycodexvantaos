@@ -22,7 +22,7 @@ export type ToolForgeOutput = z.infer<typeof ToolForgeOutputSchema>;
 
 export async function forgeDynamicTool(input: ToolForgeInput): Promise<ToolForgeOutput> {
   const {output} = await ai.generate({
-    model: 'googleai/gemini-2.5-flash',
+    model: 'googleai/gemini-2.0-flash',
     input: input,
     output: {schema: ToolForgeOutputSchema},
     prompt: `You are the Tool Forge for a Liquid Intelligence Network. 

@@ -1,6 +1,6 @@
 import { SidebarProvider, SidebarInset, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarFooter } from "@/components/ui/sidebar";
 import { Badge } from "@/components/ui/badge";
-import { Globe, LayoutDashboard, Database, Repeat, ClipboardCheck, History, Settings, FileCode, SearchCheck, ScrollText, Cpu, Activity, Zap, Users, ShieldAlert } from "lucide-react";
+import { Globe, LayoutDashboard, History, ScrollText, Cpu, Activity, Zap, Users, ShieldAlert } from "lucide-react";
 import Link from "next/link";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -60,7 +60,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <header className="h-16 flex items-center px-10 border-b border-border/10 glass-panel sticky top-0 z-50">
             <div className="flex-1 flex items-center gap-4">
               <Badge variant="outline" className="text-[9px] font-mono border-primary/30 text-primary uppercase bg-primary/5">
-                Node: Mycelium-Global-01
+                Node: Sentinel-Master-01
               </Badge>
               <div className="h-4 w-[1px] bg-border/40" />
               <h2 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Protocol: Liquid Consensus Layer v2</h2>
