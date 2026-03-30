@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -7,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Zap, Loader2, Terminal, ShieldCheck, Cpu, Code, History, AlertCircle } from "lucide-react";
+import { Zap, Loader2, Terminal, ShieldCheck, Cpu, Code, History, AlertCircle, Target } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function ToolForgePage() {
