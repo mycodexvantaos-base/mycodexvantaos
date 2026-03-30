@@ -1,9 +1,8 @@
-
 "use client";
 
 import { SidebarProvider, SidebarInset, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroup, SidebarGroupLabel, SidebarFooter } from "@/components/ui/sidebar";
 import { Badge } from "@/components/ui/badge";
-import { Globe, LayoutDashboard, History, ScrollText, Cpu, Activity, Zap, Users, ShieldAlert, Network, Settings, ClipboardCheck, FileCode, Search, Target, BookOpen } from "lucide-react";
+import { Globe, LayoutDashboard, History, ScrollText, Cpu, Activity, Zap, Users, ShieldAlert, Network, Settings, ClipboardCheck, FileCode, Search, Target, BookOpen, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -15,6 +14,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       label: "核心感知 (Core Intel)",
       items: [
         { icon: LayoutDashboard, label: "Command Center", href: "/dashboard" },
+        { icon: Sparkles, label: "Intelligence Hub", href: "/dashboard/intelligence" },
         { icon: Activity, label: "Pulse Sensing", href: "/dashboard/pulse" },
         { icon: Users, label: "Swarm Orchestration", href: "/dashboard/swarm" },
         { icon: ShieldAlert, label: "Global Consensus", href: "/dashboard/consensus" },
