@@ -47,6 +47,7 @@ analyze_packages() {
         "providers" "scheduler" "security-secrets" "security-validation"
         "service-discovery" "session-runtime" "storage" "ui-generator" "governance-policy"
         "native-queue" "native-logging" "native-validation"
+        "connector-github" "connector-redis" "connector-postgresql" "connector-s3" "connector-auth"
     )
     
     for pkg in "${packages[@]}"; do
@@ -156,6 +157,11 @@ analyze_layers() {
     # Layer D: Connector
     [ -d "$PROJECT_ROOT/packages/providers" ] && covered=$((covered + 1))
     [ -d "$PROJECT_ROOT/packages/service-discovery" ] && covered=$((covered + 1))
+    [ -d "$PROJECT_ROOT/packages/connector-github" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/connector-redis" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/connector-postgresql" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/connector-s3" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/connector-auth" ] && covered=$((covered + 1)) && total=$((total + 1))
     total=$((total + 2))
     
     # Layer E: Deployment
