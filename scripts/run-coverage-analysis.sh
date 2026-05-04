@@ -38,13 +38,14 @@ analyze_packages() {
     
     local packages=(
         "ai-agent" "ai-embedding" "ai-llm" "ai-memory"
-        "builder" "runtime" "deployment" "config-sync"
+        "api-generator" "schema-generator" "workflow-generator" "test-generator" "deployment-manifest-generator"
+        "background-job-runtime" "builder" "runtime" "deployment" "config-sync"
         "core-auth" "core-config" "core-gateway" "core-kernel"
         "database" "data-graph" "data-pipeline" "data-vector-store"
-        "events" "monitoring" "platform-notification" "platform-observability"
-        "platform-scheduler" "security-secrets" "security-validation"
-        "service-discovery" "storage" "providers" "governance-policy"
-        "docs-search"
+        "docs-search" "events" "execution" "monitoring" "plugin-loader"
+        "platform-notification" "platform-observability" "platform-scheduler"
+        "providers" "scheduler" "security-secrets" "security-validation"
+        "service-discovery" "session-runtime" "storage" "ui-generator" "governance-policy"
     )
     
     for pkg in "${packages[@]}"; do
@@ -126,10 +127,19 @@ analyze_layers() {
     # Layer A: Builder
     [ -d "$PROJECT_ROOT/packages/builder" ] && covered=$((covered + 1)) && total=$((total + 1))
     [ -d "$PROJECT_ROOT/packages/ui-generator" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/api-generator" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/schema-generator" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/workflow-generator" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/test-generator" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/deployment-manifest-generator" ] && covered=$((covered + 1)) && total=$((total + 1))
     
     # Layer B: Runtime
     [ -d "$PROJECT_ROOT/packages/runtime" ] && covered=$((covered + 1)) && total=$((total + 1))
     [ -d "$PROJECT_ROOT/packages/execution" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/session-runtime" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/background-job-runtime" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/scheduler" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/plugin-loader" ] && covered=$((covered + 1)) && total=$((total + 1))
     
     # Layer C: Native Services
     [ -d "$PROJECT_ROOT/packages/database" ] && covered=$((covered + 1))
