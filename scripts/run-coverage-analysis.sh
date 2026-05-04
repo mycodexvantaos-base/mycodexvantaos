@@ -46,6 +46,7 @@ analyze_packages() {
         "platform-notification" "platform-observability" "platform-scheduler"
         "providers" "scheduler" "security-secrets" "security-validation"
         "service-discovery" "session-runtime" "storage" "ui-generator" "governance-policy"
+        "native-queue" "native-logging" "native-validation"
     )
     
     for pkg in "${packages[@]}"; do
@@ -147,6 +148,9 @@ analyze_layers() {
     [ -d "$PROJECT_ROOT/packages/core-auth" ] && covered=$((covered + 1))
     [ -d "$PROJECT_ROOT/packages/events" ] && covered=$((covered + 1))
     [ -d "$PROJECT_ROOT/packages/security-secrets" ] && covered=$((covered + 1))
+    [ -d "$PROJECT_ROOT/packages/native-queue" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/native-logging" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/native-validation" ] && covered=$((covered + 1)) && total=$((total + 1))
     total=$((total + 5))
     
     # Layer D: Connector

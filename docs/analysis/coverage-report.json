@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-04T12:38:18Z",
-  "overallCoverage": 83,
+  "timestamp": "2026-05-04T12:42:52Z",
+  "overallCoverage": 82,
   "metrics": [
     {
       "type": "packages",
-      "total": 39,
+      "total": 42,
       "covered": 39,
-      "percentage": 100
+      "percentage": 92
     },
     {
       "type": "services",
@@ -16,15 +16,15 @@
     },
     {
       "type": "layers",
-      "total": 47,
-      "covered": 27,
-      "percentage": 57
+      "total": 50,
+      "covered": 30,
+      "percentage": 60
     },
     {
       "type": "tests",
-      "total": 51,
-      "covered": 120,
-      "percentage": 235
+      "total": 54,
+      "covered": 123,
+      "percentage": 227
     },
     {
       "type": "specs",
