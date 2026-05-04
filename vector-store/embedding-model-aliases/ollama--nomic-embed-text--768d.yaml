@@ -1,0 +1,15 @@
+# vector-store/embedding-model-aliases/ollama--nomic-embed-text--768d.yaml
+# 9.3 — Format: <provider>--<model-name>--<dimension>d
+apiVersion: mycodexvantaos.org/v1
+kind: EmbeddingModelAlias
+metadata:
+  name: ollama--nomic-embed-text--768d
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  provider: ollama
+  modelName: nomic-embed-text
+  dimension: 768
+  providerInstance: embedding-ollama
+  maxTokens: 8192
+  description: "Ollama nomic-embed-text. Open-source, local inference, 768 dimensions."

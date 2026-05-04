@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/providers/security/trivy/config.schema.json",
+  "title": "security-trivy Configuration",
+  "type": "object",
+  "required": [],
+  "properties": {
+    "severity": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+        "CRITICAL",
+        "HIGH"
+      ]
+    },
+    "ignoreUnfixed": {
+      "type": "boolean",
+      "default": false
+    },
+    "timeout": {
+      "type": "string",
+      "default": "5m0s"
+    }
+  }
+}

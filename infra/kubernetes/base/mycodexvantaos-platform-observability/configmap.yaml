@@ -1,0 +1,10 @@
+# infra/kubernetes/base/mycodexvantaos-platform-observability/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycodexvantaos-platform-observability
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-platform-observability
+data:
+  MYCODEXVANTAOS_MYCODEXVANTAOS_PLATFORM_OBSERVABILITY_LOG_LEVEL: info
+  MYCODEXVANTAOS_MYCODEXVANTAOS_PLATFORM_OBSERVABILITY_PORT: "3000"

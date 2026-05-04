@@ -1,0 +1,10 @@
+# infra/kubernetes/base/mycodexvantaos-data-vector-store/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycodexvantaos-data-vector-store
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-data-vector-store
+data:
+  MYCODEXVANTAOS_MYCODEXVANTAOS_DATA_VECTOR_STORE_LOG_LEVEL: info
+  MYCODEXVANTAOS_MYCODEXVANTAOS_DATA_VECTOR_STORE_PORT: "3000"

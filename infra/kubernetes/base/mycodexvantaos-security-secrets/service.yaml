@@ -1,0 +1,16 @@
+# infra/kubernetes/base/mycodexvantaos-security-secrets/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mycodexvantaos-security-secrets
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-security-secrets
+spec:
+  selector:
+    app.kubernetes.io/name: mycodexvantaos-security-secrets
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+      protocol: TCP
+  type: ClusterIP

@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/schemas/service-manifest.schema.json",
+  "title": "MyCodexVantaOS Service / Module Manifest",
+  "description": "Schema for modules/<service-id>/module-manifest.yaml. Based on naming-spec-v1.md 5.1, 5.3, 6.3, 11.",
+  "type": "object",
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "additionalProperties": false,
+  "properties": {
+    "apiVersion": {
+      "type": "string",
+      "const": "mycodexvantaos.org/v1",
+      "description": "API version of this manifest format."
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["Service", "Module"],
+      "description": "Kind of manifest. Service or Module (they share the same schema)."
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^mycodexvantaos-[a-z0-9]+(?:-[a-z0-9]+)+$",
+          "description": "5.1, 6.4 — Must equal the service-id exactly. CI hard enforced."
+        },
+        "labels": {
+          "type": "object",
+          "description": "Arbitrary key-value labels. Version and environment info MUST go here, not in name.",
+          "additionalProperties": { "type": "string" }
+        },
+        "annotations": {
+          "type": "object",
+          "description": "Arbitrary key-value annotations.",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "spec": {
+      "type": "object",
+      "required": ["domain", "capabilities", "lifecycle"],
+      "additionalProperties": false,
+      "properties": {
+        "domain": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "description": "The domain segment extracted from the service-id (e.g. 'core', 'ai', 'data')."
+        },
+        "capabilities": {
+          "type": "array",
+          "description": "5.5 — List of canonical capability-ids this service depends on.",
+          "minItems": 0,
+          "items": {
+            "type": "string",
+            "enum": [
+              "database", "storage", "auth", "queue", "state-store",
+              "secrets", "repo", "deploy", "validation", "security",
+              "observability", "notification", "scheduler", "vector-store",
+              "embedding", "llm", "graph", "cache", "search"
+            ]
+          }
+        },
+        "providers": {
+          "type": "object",
+          "description": "8 — Maps capability-id to selected provider-instance for this service.",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^(database|storage|auth|queue|state-store|secrets|repo|deploy|validation|security|observability|notification|scheduler|vector-store|embedding|llm|graph|cache|search)-[a-z0-9-]+$"
+          }
+        },
+        "lifecycle": {
+          "type": "object",
+          "required": ["stage"],
+          "additionalProperties": false,
+          "description": "11 — Lifecycle metadata. Version and environment are NEVER in the name.",
+          "properties": {
+            "stage": {
+              "type": "string",
+              "enum": ["experimental", "alpha", "beta", "stable", "deprecated", "archived"],
+              "description": "11.1 — Current lifecycle stage."
+            },
+            "since": {
+              "type": "string",
+              "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+",
+              "description": "11.2 — SemVer tag when this stage was entered."
+            },
+            "replacement": {
+              "type": "string",
+              "pattern": "^urn:mycodexvantaos:[a-z-]+:[a-z-]+:[a-z0-9-]+$",
+              "description": "11.3 — URN of the replacement resource (no version in URN)."
+            },
+            "replacementVersion": {
+              "type": "string",
+              "pattern": "^v[0-9]+",
+              "description": "11.3 — Version of the replacement, separate from URN."
+            }
+          }
+        },
+        "urn": {
+          "type": "string",
+          "pattern": "^urn:mycodexvantaos:[a-z-]+:[a-z-]+:[a-z0-9-]+$",
+          "description": "7.5 — Canonical URN for external identification."
+        },
+        "packageName": {
+          "type": "string",
+          "pattern": "^@mycodexvantaos/[a-z0-9]+(?:-[a-z0-9]+)+$",
+          "description": "7.1 — npm package name, derived from service-id."
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of this service."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+# infra/kubernetes/base/mycodexvantaos-governance-policy/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycodexvantaos-governance-policy
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-governance-policy
+data:
+  MYCODEXVANTAOS_MYCODEXVANTAOS_GOVERNANCE_POLICY_LOG_LEVEL: info
+  MYCODEXVANTAOS_MYCODEXVANTAOS_GOVERNANCE_POLICY_PORT: "3000"

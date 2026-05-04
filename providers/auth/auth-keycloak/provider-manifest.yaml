@@ -1,0 +1,19 @@
+# providers/auth/auth-keycloak/provider-manifest.yaml
+# 8.1 — provider instance: auth-keycloak
+# 8.2 — capability (auth) precedes provider name (keycloak)
+apiVersion: mycodexvantaos.org/v1
+kind: Provider
+metadata:
+  name: auth-keycloak
+  capability: auth
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+    mycodexvantaos.org/specRef: "8.1"
+spec:
+  providerName: keycloak
+  isNative: false
+  lifecycle:
+    stage: stable
+  envVarPrefix: MYCODEXVANTAOS_AUTH
+  configSchemaRef: ./config.schema.json
+  description: "Keycloak identity and access management provider."

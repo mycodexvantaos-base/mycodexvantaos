@@ -1,0 +1,39 @@
+{
+  "enabled": true,
+  "tests": [
+    {
+      "name": "initialization",
+      "description": "Measure initialization time",
+      "iterations": 100,
+      "max_duration_ms": 500,
+      "warmup_iterations": 10
+    },
+    {
+      "name": "concurrent_operations",
+      "description": "Measure concurrent operation throughput",
+      "iterations": 50,
+      "max_duration_ms": 1000,
+      "warmup_iterations": 5,
+      "concurrency": [
+        1,
+        5,
+        10,
+        20,
+        50
+      ]
+    },
+    {
+      "name": "memory_usage",
+      "description": "Measure memory consumption",
+      "iterations": 100,
+      "max_memory_mb": 100,
+      "warmup_iterations": 10
+    }
+  ],
+  "reporting": {
+    "enabled": true,
+    "format": "html",
+    "output_path": "benchmark/results",
+    "comparison_baseline": "main/branch"
+  }
+}

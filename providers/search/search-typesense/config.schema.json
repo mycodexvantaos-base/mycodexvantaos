@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/providers/search/typesense/config.schema.json",
+  "title": "search-typesense Configuration",
+  "type": "object",
+  "required": [
+    "host"
+  ],
+  "properties": {
+    "host": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_SEARCH_TYPESENSE_HOST"
+    },
+    "port": {
+      "type": "integer",
+      "default": 8108
+    },
+    "apiKey": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_SEARCH_TYPESENSE_API_KEY"
+    },
+    "protocol": {
+      "type": "string",
+      "enum": [
+        "http",
+        "https"
+      ],
+      "default": "http"
+    }
+  }
+}

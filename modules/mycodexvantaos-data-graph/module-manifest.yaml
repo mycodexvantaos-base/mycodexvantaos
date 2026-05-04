@@ -1,0 +1,23 @@
+# modules/mycodexvantaos-data-graph/module-manifest.yaml
+# 6.3 — metadata.name MUST equal the directory name and service-id exactly (6.4)
+apiVersion: mycodexvantaos.org/v1
+kind: Module
+metadata:
+  name: mycodexvantaos-data-graph
+  labels:
+    mycodexvantaos.org/domain: data
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  domain: data
+  capabilities:
+    - graph
+    - database
+  providers:
+    graph: graph-neo4j
+    database: database-postgres
+  lifecycle:
+    stage: stable
+    since: "v1.0.0"
+  urn: "urn:mycodexvantaos:manifest:service:mycodexvantaos-data-graph"
+  packageName: "@mycodexvantaos/data-graph"
+  description: "Knowledge graph storage and query service."

@@ -1,0 +1,4 @@
+# modules/mycodexvantaos-data-graph/capabilities.yaml
+capabilities:
+    - graph
+    - database

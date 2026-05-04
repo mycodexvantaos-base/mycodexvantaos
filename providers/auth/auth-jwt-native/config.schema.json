@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/providers/auth/jwt-native/config.schema.json",
+  "title": "auth-jwt-native Configuration",
+  "type": "object",
+  "required": [
+    "jwtSecret"
+  ],
+  "properties": {
+    "jwtSecret": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_AUTH_JWT_SECRET"
+    },
+    "jwtExpiresIn": {
+      "type": "string",
+      "default": "24h"
+    },
+    "algorithm": {
+      "type": "string",
+      "enum": [
+        "HS256",
+        "RS256"
+      ],
+      "default": "HS256"
+    }
+  }
+}

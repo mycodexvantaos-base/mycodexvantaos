@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/schemas/exception-record.schema.json",
+  "title": "MyCodexVantaOS Naming Exception Record",
+  "description": "Schema for each exception entry in governance/exceptions.yaml. Based on naming-spec-v1.md 15.1.",
+  "type": "object",
+  "required": ["id", "rule", "scope", "reason", "approver", "expiresAt", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^exception--[0-9]{8}--[a-z0-9]{6}$",
+      "description": "9.8, 15.1 — Unique exception id in timestamped-id format: exception--<YYYYMMDD>--<random6>"
+    },
+    "rule": {
+      "type": "string",
+      "enum": [
+        "service-id",
+        "package-short-id",
+        "package-name",
+        "capability-id",
+        "provider-instance",
+        "env-var",
+        "urn",
+        "vector-collection",
+        "embedding-model-alias",
+        "retrieval-pipeline-id",
+        "search-index-id",
+        "graph-node-id",
+        "graph-db-index-id",
+        "timestamped-id",
+        "content-addressed-id",
+        "uuid-based-id",
+        "forbidden-legacy-prefix",
+        "no-version-in-canonical",
+        "no-environment-in-canonical"
+      ],
+      "description": "15.1 — The naming rule-id being deviated from."
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1,
+      "description": "15.1 — Affected resource scope (e.g. a specific service-id, directory, or pattern)."
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 20,
+      "description": "15.1 — Technical justification for the deviation. Must be substantive."
+    },
+    "approver": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "15.1 — Architecture committee member id who approved this exception."
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date",
+      "description": "15.1, 15.2 — ISO 8601 date. Exceptions MUST NOT be indefinite."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "expired", "revoked"],
+      "description": "15.1 — Current status of this exception record."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 date when this exception was first registered."
+    },
+    "mitigationPlan": {
+      "type": "string",
+      "description": "Optional: description of the migration plan to eventually comply with the rule."
+    }
+  }
+}

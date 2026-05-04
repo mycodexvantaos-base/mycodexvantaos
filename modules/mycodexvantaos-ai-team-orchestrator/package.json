@@ -1,0 +1,37 @@
+{
+  "name": "@mycodexvantaos/ai-team-orchestrator",
+  "version": "1.0.0",
+  "description": "Core orchestrator for multi-agent AI teams in MyCodeXvantaOS",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/**/*.ts",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "uuid": "^9.0.0",
+    "rxjs": "^7.8.0",
+    "eventemitter3": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/uuid": "^9.0.0",
+    "typescript": "^5.3.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.0",
+    "ts-jest": "^29.1.0"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "orchestrator",
+    "multi-agent",
+    "mycodexvantaos"
+  ],
+  "author": "MyCodeXvantaOS Team",
+  "license": "MIT"
+}

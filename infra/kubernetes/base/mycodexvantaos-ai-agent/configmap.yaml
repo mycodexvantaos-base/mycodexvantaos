@@ -1,0 +1,10 @@
+# infra/kubernetes/base/mycodexvantaos-ai-agent/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycodexvantaos-ai-agent
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-ai-agent
+data:
+  MYCODEXVANTAOS_MYCODEXVANTAOS_AI_AGENT_LOG_LEVEL: info
+  MYCODEXVANTAOS_MYCODEXVANTAOS_AI_AGENT_PORT: "3000"

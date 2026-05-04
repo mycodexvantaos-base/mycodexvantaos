@@ -1,0 +1,56 @@
+# mycodexvantaos/providers/deploy/deploy-native/provider-manifest.yaml
+apiVersion: mycodexvantaos.org/v1
+kind: Provider
+metadata:
+  name: deploy-native
+  capability: deployment
+  description: Native deployment provider for local and Docker deployments
+  version: "1.0.0"
+  author: MyCodeXvantaOS Team
+  tags:
+    - deployment
+    - native
+    - local
+    - docker
+    - zero-dependencies
+
+spec:
+  providerName: native
+  isNative: true
+  priority: 100  # Highest priority - always available as fallback
+  
+  capabilities:
+    - local-deployment
+    - docker-deployment
+    - static-site-hosting
+    - process-management
+  
+  requirements:
+    external: []  # No external dependencies
+    runtime:
+      - nodejs >= 18.0.0
+  
+  configuration:
+    type: object
+    properties:
+      port:
+        type: number
+        default: 3000
+        description: Default port for local deployments
+      host:
+        type: string
+        default: "localhost"
+        description: Host address for local deployments
+      dockerEnabled:
+        type: boolean
+        default: false
+        description: Enable Docker container deployment
+      autoReload:
+        type: boolean
+        default: true
+        description: Enable auto-reload for development
+  
+  # Native provider is always available
+  availability:
+    always: true
+    healthCheck: "internal"

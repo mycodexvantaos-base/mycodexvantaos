@@ -1,0 +1,33 @@
+{
+  "name": "@mycodexvantaos/platform-observability",
+  "version": "0.0.1",
+  "description": "Platform observability and monitoring",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config ../../jest.config.js",
+    "clean": "rm -rf dist",
+    "lint": "eslint src/**/*.ts"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "ts-jest": "^29.0.0"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mycodexvantaos/platform.git",
+    "directory": "packages/platform-observability"
+  },
+  "author": "MyCodeXvantaOS Team",
+  "keywords": [
+    "mycodexvantaos",
+    "native-services",
+    "platform-observability"
+  ]
+}

@@ -1,0 +1,10 @@
+# infra/kubernetes/base/mycodexvantaos-ai-embedding/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycodexvantaos-ai-embedding
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-ai-embedding
+data:
+  MYCODEXVANTAOS_MYCODEXVANTAOS_AI_EMBEDDING_LOG_LEVEL: info
+  MYCODEXVANTAOS_MYCODEXVANTAOS_AI_EMBEDDING_PORT: "3000"

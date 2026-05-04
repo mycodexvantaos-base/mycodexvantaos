@@ -1,0 +1,16 @@
+# vector-store/collections/mycodexvantaos-docs-search--docs--openai-text-embedding-3-small-1536d.yaml
+# 9.2 — Format: <service-id>--<purpose>--<embedding-model-alias>
+apiVersion: mycodexvantaos.org/v1
+kind: VectorCollection
+metadata:
+  name: mycodexvantaos-docs-search--docs--openai-text-embedding-3-small-1536d
+  serviceId: mycodexvantaos-docs-search
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  purpose: docs
+  embeddingModelAlias: openai--text-embedding-3-small--1536d
+  dimension: 1536
+  provider: vector-store-pgvector
+  distanceMetric: cosine
+  indexType: hnsw

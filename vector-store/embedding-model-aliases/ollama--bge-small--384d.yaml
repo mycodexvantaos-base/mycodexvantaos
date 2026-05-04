@@ -1,0 +1,15 @@
+# vector-store/embedding-model-aliases/ollama--bge-small--384d.yaml
+# 9.3 — Format: <provider>--<model-name>--<dimension>d
+apiVersion: mycodexvantaos.org/v1
+kind: EmbeddingModelAlias
+metadata:
+  name: ollama--bge-small--384d
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  provider: ollama
+  modelName: bge-small
+  dimension: 384
+  providerInstance: embedding-ollama
+  maxTokens: 512
+  description: "Ollama BGE-small. Lightweight, fast, 384 dimensions."

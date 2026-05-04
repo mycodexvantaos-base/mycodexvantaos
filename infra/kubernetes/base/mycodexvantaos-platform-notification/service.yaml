@@ -1,0 +1,16 @@
+# infra/kubernetes/base/mycodexvantaos-platform-notification/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mycodexvantaos-platform-notification
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-platform-notification
+spec:
+  selector:
+    app.kubernetes.io/name: mycodexvantaos-platform-notification
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+      protocol: TCP
+  type: ClusterIP

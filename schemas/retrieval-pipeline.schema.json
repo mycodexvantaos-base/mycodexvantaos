@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/schemas/retrieval-pipeline.schema.json",
+  "title": "MyCodexVantaOS Retrieval Pipeline Definition",
+  "description": "Schema for vector-store/retrieval-pipelines/*.yaml. Based on naming-spec-v1.md 9.4.",
+  "type": "object",
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "additionalProperties": false,
+  "properties": {
+    "apiVersion": { "type": "string", "const": "mycodexvantaos.org/v1" },
+    "kind": { "type": "string", "const": "RetrievalPipeline" },
+    "metadata": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^retrieval--[a-z0-9-]+--[a-z0-9-]+$",
+          "description": "9.4 — Format: retrieval--<strategy>--<store-type>"
+        },
+        "labels": { "type": "object", "additionalProperties": { "type": "string" } }
+      }
+    },
+    "spec": {
+      "type": "object",
+      "required": ["strategy", "storeType", "provider"],
+      "additionalProperties": false,
+      "properties": {
+        "strategy": {
+          "type": "string",
+          "enum": ["dense", "sparse", "hybrid"],
+          "description": "Retrieval strategy."
+        },
+        "storeType": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "Backing store type (e.g. 'pgvector', 'qdrant', 'memory')."
+        },
+        "provider": {
+          "type": "string",
+          "pattern": "^vector-store-[a-z0-9-]+$",
+          "description": "8.1 — Provider instance."
+        },
+        "embeddingModelAlias": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+--[a-z0-9-]+--[0-9]+d$",
+          "description": "9.3 — Optional embedding model alias used by this pipeline."
+        },
+        "topK": { "type": "integer", "minimum": 1, "default": 10 },
+        "rerankEnabled": { "type": "boolean", "default": false },
+        "description": { "type": "string" }
+      }
+    }
+  }
+}

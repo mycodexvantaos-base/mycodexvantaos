@@ -1,0 +1,16 @@
+# vector-store/retrieval-pipelines/retrieval--dense--qdrant.yaml
+# 9.4 — Format: retrieval--<strategy>--<store-type>
+apiVersion: mycodexvantaos.org/v1
+kind: RetrievalPipeline
+metadata:
+  name: retrieval--dense--qdrant
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  strategy: dense
+  storeType: qdrant
+  provider: vector-store-qdrant
+  embeddingModelAlias: openai--text-embedding-3-small--1536d
+  topK: 10
+  rerankEnabled: false
+  description: "Dense semantic retrieval using Qdrant."

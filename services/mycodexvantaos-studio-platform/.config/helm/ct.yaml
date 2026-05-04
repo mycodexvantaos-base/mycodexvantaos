@@ -1,0 +1,6 @@
+# .config/helm/ct.yaml
+remote: origin
+target-branch: main
+chart-dirs:
+  - deploy/helm
+helm-extra-args: --timeout 600s

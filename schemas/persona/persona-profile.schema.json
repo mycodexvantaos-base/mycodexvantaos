@@ -1,0 +1,268 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:mycodexvantaos:schema:persona-profile",
+  "title": "Persona Profile Schema",
+  "description": "Schema for MyCodeXvantaOS Persona Profile definitions",
+  "type": "object",
+  "required": ["urn", "name", "version", "archetype", "behavioral_parameters"],
+  "additionalProperties": false,
+  "properties": {
+    "urn": {
+      "type": "string",
+      "pattern": "^urn:mycodexvantaos:persona:[a-z0-9-]+$",
+      "description": "Unique resource identifier for the persona"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Display name of the persona"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of the persona profile"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Brief description of the persona's purpose and characteristics"
+    },
+    "archetype": {
+      "type": "string",
+      "enum": [
+        "disrupter",
+        "analyst",
+        "mediator",
+        "architect",
+        "critic",
+        "creative_thinker",
+        "facilitator",
+        "mentor"
+      ],
+      "description": "Core archetype that defines the persona's fundamental approach"
+    },
+    "core_paradigm": {
+      "type": "object",
+      "properties": {
+        "philosophy": {
+          "type": "string",
+          "description": "Core philosophical approach"
+        },
+        "mission": {
+          "type": "string",
+          "description": "Primary mission statement"
+        },
+        "value_proposition": {
+          "type": "string",
+          "description": "Unique value this persona provides"
+        }
+      }
+    },
+    "behavioral_parameters": {
+      "type": "object",
+      "description": "Quantifiable behavioral characteristics",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "properties": {
+        "intellectual_provocation": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5,
+          "description": "Tendency to provoke intellectual discourse"
+        },
+        "critical_intensity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5,
+          "description": "Intensity of critical analysis"
+        },
+        "constructive_orientation": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5,
+          "description": "Tendency toward constructive solutions"
+        },
+        "empathy_level": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5,
+          "description": "Level of empathy in communication"
+        },
+        "analytical_depth": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5,
+          "description": "Depth of analysis applied to problems"
+        },
+        "solution_focus": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5,
+          "description": "Focus on generating actionable solutions"
+        },
+        "communication_clarity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5,
+          "description": "Clarity and directness in communication"
+        },
+        "adaptability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5,
+          "description": "Ability to adapt approach based on context"
+        }
+      }
+    },
+    "permitted_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of capabilities this persona is permitted to use"
+    },
+    "restricted_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of capabilities this persona is restricted from using"
+    },
+    "interaction_patterns": {
+      "type": "object",
+      "properties": {
+        "response_style": {
+          "type": "string",
+          "enum": ["direct", "diplomatic", "analytical", "provocative", "supportive"],
+          "default": "direct"
+        },
+        "engagement_level": {
+          "type": "string",
+          "enum": ["passive", "reactive", "proactive", "aggressive"],
+          "default": "proactive"
+        },
+        "feedback_approach": {
+          "type": "string",
+          "enum": ["constructive", "critical", "balanced", "encouraging"],
+          "default": "balanced"
+        }
+      }
+    },
+    "response_protocols": {
+      "type": "object",
+      "properties": {
+        "critique_to_solution_ratio": {
+          "type": "string",
+          "pattern": "^\\d+:\\d+$",
+          "default": "1:2",
+          "description": "Ratio of critique to solution content"
+        },
+        "minimum_solution_depth": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "default": 3
+        },
+        "action_steps_required": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "ethical_boundaries": {
+      "type": "object",
+      "properties": {
+        "avoid_sarcasm": {
+          "type": "boolean",
+          "default": true
+        },
+        "no_shaming": {
+          "type": "boolean",
+          "default": true
+        },
+        "respect_autonomy": {
+          "type": "boolean",
+          "default": true
+        },
+        "support_without_dependency": {
+          "type": "boolean",
+          "default": true
+        },
+        "truth_with_constructive_intent": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "quality_metrics": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      },
+      "description": "Quality thresholds for persona outputs"
+    },
+    "memory_config": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["sliding_window", "summary", "vector_store"],
+          "default": "sliding_window"
+        },
+        "max_tokens": {
+          "type": "integer",
+          "minimum": 1000,
+          "maximum": 100000,
+          "default": 4000
+        },
+        "compression_enabled": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "governance_tier": {
+      "type": "integer",
+      "minimum": -1,
+      "maximum": 3,
+      "default": 0,
+      "description": "Governance permission tier for this persona"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "author": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

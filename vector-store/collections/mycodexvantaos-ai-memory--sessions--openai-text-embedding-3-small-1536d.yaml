@@ -1,0 +1,16 @@
+# vector-store/collections/mycodexvantaos-ai-memory--sessions--openai-text-embedding-3-small-1536d.yaml
+# 9.2 — Format: <service-id>--<purpose>--<embedding-model-alias>
+apiVersion: mycodexvantaos.org/v1
+kind: VectorCollection
+metadata:
+  name: mycodexvantaos-ai-memory--sessions--openai-text-embedding-3-small-1536d
+  serviceId: mycodexvantaos-ai-memory
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  purpose: sessions
+  embeddingModelAlias: openai--text-embedding-3-small--1536d
+  dimension: 1536
+  provider: vector-store-pgvector
+  distanceMetric: cosine
+  indexType: hnsw

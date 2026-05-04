@@ -1,0 +1,34 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rel:  <https://mycodexvantaos.org/ns/relations#> .
+
+# §10.2 — Relation types use UPPER_SNAKE_CASE (graph-internal only, must not leak to canonical ids)
+
+rel:DEPENDS_ON a owl:ObjectProperty ;
+    rdfs:label "DEPENDS_ON" ;
+    rdfs:comment "Service A depends on capability/service B." .
+
+rel:IMPLEMENTS a owl:ObjectProperty ;
+    rdfs:label "IMPLEMENTS" ;
+    rdfs:comment "Service implements a capability." .
+
+rel:PROVIDES_CAPABILITY a owl:ObjectProperty ;
+    rdfs:label "PROVIDES_CAPABILITY" ;
+    rdfs:comment "Provider instance provides a canonical capability." .
+
+rel:HAS_VECTOR_INDEX a owl:ObjectProperty ;
+    rdfs:label "HAS_VECTOR_INDEX" ;
+    rdfs:comment "Service owns a vector collection." .
+
+rel:GOVERNED_BY a owl:ObjectProperty ;
+    rdfs:label "GOVERNED_BY" ;
+    rdfs:comment "Resource is governed by a policy." .
+
+rel:REPLACED_BY a owl:ObjectProperty ;
+    rdfs:label "REPLACED_BY" ;
+    rdfs:comment "Deprecated resource is replaced by another." .
+
+rel:AUDITED_BY a owl:ObjectProperty ;
+    rdfs:label "AUDITED_BY" ;
+    rdfs:comment "Resource is subject to an audit record." .

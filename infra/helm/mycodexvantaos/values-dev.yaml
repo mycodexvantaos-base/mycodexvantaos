@@ -1,0 +1,13 @@
+# infra/helm/mycodexvantaos/values-dev.yaml
+# Environment-specific overrides for dev.
+# 12.2 — 'dev'/'staging'/'prod' appears ONLY in this file and namespace names.
+global:
+  imageTag: "latest"
+
+services:
+  mycodexvantaos-core-kernel:
+    replicas: 1
+  mycodexvantaos-ai-embedding:
+    replicas: 1
+  mycodexvantaos-ai-llm:
+    replicas: 1

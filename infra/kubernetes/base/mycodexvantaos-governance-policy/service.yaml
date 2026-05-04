@@ -1,0 +1,16 @@
+# infra/kubernetes/base/mycodexvantaos-governance-policy/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mycodexvantaos-governance-policy
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-governance-policy
+spec:
+  selector:
+    app.kubernetes.io/name: mycodexvantaos-governance-policy
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+      protocol: TCP
+  type: ClusterIP

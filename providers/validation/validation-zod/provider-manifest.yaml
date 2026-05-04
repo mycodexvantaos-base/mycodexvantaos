@@ -1,0 +1,19 @@
+# providers/validation/validation-zod/provider-manifest.yaml
+# 8.1 — provider instance: validation-zod
+# 8.2 — capability (validation) precedes provider name (zod)
+apiVersion: mycodexvantaos.org/v1
+kind: Provider
+metadata:
+  name: validation-zod
+  capability: validation
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+    mycodexvantaos.org/specRef: "8.1"
+spec:
+  providerName: zod
+  isNative: true
+  lifecycle:
+    stage: stable
+  envVarPrefix: MYCODEXVANTAOS_VALIDATION
+  configSchemaRef: ./config.schema.json
+  description: "Zod TypeScript-first schema validation provider (native)."

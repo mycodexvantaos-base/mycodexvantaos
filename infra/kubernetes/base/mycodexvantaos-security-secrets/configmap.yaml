@@ -1,0 +1,10 @@
+# infra/kubernetes/base/mycodexvantaos-security-secrets/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycodexvantaos-security-secrets
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-security-secrets
+data:
+  MYCODEXVANTAOS_MYCODEXVANTAOS_SECURITY_SECRETS_LOG_LEVEL: info
+  MYCODEXVANTAOS_MYCODEXVANTAOS_SECURITY_SECRETS_PORT: "3000"

@@ -1,0 +1,59 @@
+{
+  "timestamp": "2026-05-04T11:35:34Z",
+  "overallCoverage": 81,
+  "metrics": [
+    {
+      "type": "packages",
+      "total": 28,
+      "covered": 28,
+      "percentage": 100
+    },
+    {
+      "type": "services",
+      "total": 25,
+      "covered": 25,
+      "percentage": 100
+    },
+    {
+      "type": "layers",
+      "total": 38,
+      "covered": 18,
+      "percentage": 47
+    },
+    {
+      "type": "tests",
+      "total": 41,
+      "covered": 109,
+      "percentage": 265
+    },
+    {
+      "type": "specs",
+      "total": 6,
+      "covered": 6,
+      "percentage": 100
+    },
+    {
+      "type": "config",
+      "total": 11,
+      "covered": 10,
+      "percentage": 90
+    },
+    {
+      "type": "docs",
+      "total": 10,
+      "covered": 5,
+      "percentage": 50
+    },
+    {
+      "type": "ci_rules",
+      "total": 20,
+      "covered": 20,
+      "percentage": 100
+    }
+  ],
+  "recommendations": [
+    "改善文檔覆蓋率",
+    "增加測試檔案覆蓋",
+    "完善服務配置"
+  ]
+}

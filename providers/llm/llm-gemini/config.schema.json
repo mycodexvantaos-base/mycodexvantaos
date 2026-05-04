@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "llm-gemini-config",
+  "title": "Google Gemini LLM Provider Configuration",
+  "description": "Configuration for Google Gemini LLM provider",
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Enable Gemini LLM provider"
+    },
+    "apiKey": {
+      "type": "string",
+      "description": "Google GenAI API Key (can also use GOOGLE_GENAI_API_KEY env var)"
+    },
+    "model": {
+      "type": "string",
+      "default": "gemini-2.0-flash",
+      "enum": ["gemini-2.0-flash", "gemini-2.0-pro", "gemini-1.5-flash", "gemini-1.5-pro"],
+      "description": "Gemini model to use"
+    },
+    "maxTokens": {
+      "type": "integer",
+      "default": 8192,
+      "description": "Maximum tokens for response"
+    },
+    "temperature": {
+      "type": "number",
+      "default": 0.7,
+      "minimum": 0,
+      "maximum": 2,
+      "description": "Response randomness"
+    },
+    "fallbackToNative": {
+      "type": "boolean",
+      "default": true,
+      "description": "Fall back to native provider when API unavailable"
+    }
+  },
+  "required": []
+}

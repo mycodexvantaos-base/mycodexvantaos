@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/providers/repo/github/config.schema.json",
+  "title": "repo-github Configuration",
+  "type": "object",
+  "required": [
+    "token"
+  ],
+  "properties": {
+    "token": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_REPO_GITHUB_TOKEN"
+    },
+    "org": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_REPO_GITHUB_ORG",
+      "default": "mycodexvantaos"
+    },
+    "apiBaseUrl": {
+      "type": "string",
+      "default": "https://api.github.com"
+    }
+  }
+}

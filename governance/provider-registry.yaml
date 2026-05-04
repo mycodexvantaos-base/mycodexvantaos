@@ -1,0 +1,225 @@
+# governance/provider-registry.yaml
+# Registered provider instances for mycodexvantaos platform.
+# Based on naming-spec-v1.md 8.1, 8.2
+# Format: <capability-id>-<provider-name>
+# Rule: capability segment MUST come first. Provider name MUST NOT be used as capability-id.
+
+apiVersion: mycodexvantaos.org/v1
+kind: ProviderRegistry
+metadata:
+  name: platform-provider-registry
+  labels:
+    managed-by: naming-spec-v1
+    specRef: "8"
+
+providers:
+  # capability: database
+  - name: database-postgres
+    capability: database
+    providerName: postgres
+    isNative: false
+    lifecycle: stable
+
+  - name: database-sqlite
+    capability: database
+    providerName: sqlite
+    isNative: true
+    lifecycle: stable
+
+  # capability: vector-store
+  - name: vector-store-pgvector
+    capability: vector-store
+    providerName: pgvector
+    isNative: false
+    lifecycle: stable
+
+  - name: vector-store-qdrant
+    capability: vector-store
+    providerName: qdrant
+    isNative: false
+    lifecycle: stable
+
+  # capability: llm
+  - name: llm-openai
+    capability: llm
+    providerName: openai
+    isNative: false
+    lifecycle: stable
+
+  - name: llm-ollama
+    capability: llm
+    providerName: ollama
+    isNative: true
+    lifecycle: stable
+
+  - name: llm-anthropic
+    capability: llm
+    providerName: anthropic
+    isNative: false
+    lifecycle: beta
+
+  # capability: embedding
+  - name: embedding-openai
+    capability: embedding
+    providerName: openai
+    isNative: false
+    lifecycle: stable
+
+  - name: embedding-cohere
+    capability: embedding
+    providerName: cohere
+    isNative: false
+    lifecycle: stable
+
+  - name: embedding-ollama
+    capability: embedding
+    providerName: ollama
+    isNative: true
+    lifecycle: stable
+
+  # capability: cache
+  - name: cache-redis
+    capability: cache
+    providerName: redis
+    isNative: false
+    lifecycle: stable
+
+  # capability: graph
+  - name: graph-neo4j
+    capability: graph
+    providerName: neo4j
+    isNative: false
+    lifecycle: stable
+
+  - name: graph-memgraph
+    capability: graph
+    providerName: memgraph
+    isNative: false
+    lifecycle: beta
+
+  # capability: storage
+  - name: storage-s3
+    capability: storage
+    providerName: s3
+    isNative: false
+    lifecycle: stable
+
+  - name: storage-minio
+    capability: storage
+    providerName: minio
+    isNative: true
+    lifecycle: stable
+
+  # capability: auth
+  - name: auth-keycloak
+    capability: auth
+    providerName: keycloak
+    isNative: false
+    lifecycle: stable
+
+  - name: auth-jwt-native
+    capability: auth
+    providerName: jwt-native
+    isNative: true
+    lifecycle: stable
+
+  # capability: queue
+  - name: queue-rabbitmq
+    capability: queue
+    providerName: rabbitmq
+    isNative: false
+    lifecycle: stable
+
+  - name: queue-kafka
+    capability: queue
+    providerName: kafka
+    isNative: false
+    lifecycle: stable
+
+  # capability: secrets
+  - name: secrets-vault
+    capability: secrets
+    providerName: vault
+    isNative: false
+    lifecycle: stable
+
+  - name: secrets-k8s-native
+    capability: secrets
+    providerName: k8s-native
+    isNative: true
+    lifecycle: stable
+
+  # capability: observability
+  - name: observability-opentelemetry
+    capability: observability
+    providerName: opentelemetry
+    isNative: false
+    lifecycle: stable
+
+  - name: observability-prometheus
+    capability: observability
+    providerName: prometheus
+    isNative: false
+    lifecycle: stable
+
+  # capability: search
+  - name: search-elasticsearch
+    capability: search
+    providerName: elasticsearch
+    isNative: false
+    lifecycle: stable
+
+  - name: search-typesense
+    capability: search
+    providerName: typesense
+    isNative: false
+    lifecycle: stable
+
+  # capability: state-store
+  - name: state-store-redis
+    capability: state-store
+    providerName: redis
+    isNative: false
+    lifecycle: stable
+
+  # capability: notification
+  - name: notification-sendgrid
+    capability: notification
+    providerName: sendgrid
+    isNative: false
+    lifecycle: stable
+
+  # capability: scheduler
+  - name: scheduler-temporal
+    capability: scheduler
+    providerName: temporal
+    isNative: false
+    lifecycle: stable
+
+  # capability: repo
+  - name: repo-github
+    capability: repo
+    providerName: github
+    isNative: false
+    lifecycle: stable
+
+  # capability: deploy
+  - name: deploy-argocd
+    capability: deploy
+    providerName: argocd
+    isNative: false
+    lifecycle: stable
+
+  # capability: validation
+  - name: validation-zod
+    capability: validation
+    providerName: zod
+    isNative: true
+    lifecycle: stable
+
+  # capability: security
+  - name: security-trivy
+    capability: security
+    providerName: trivy
+    isNative: false
+    lifecycle: stable
