@@ -4,7 +4,7 @@ module.exports = {
   roots: ['<rootDir>'],
   testMatch: ['**/__tests__/**/*.test.ts'],
   transform: {
-    '^.+\.tsx?$': ['ts-jest', {
+    '^.+\\.tsx?$': ['ts-jest', {
       tsconfig: {
         module: 'commonjs',
         esModuleInterop: true,
@@ -16,7 +16,10 @@ module.exports = {
       }
     }]
   },
-  collectCoverageFrom: ['src/**/*.ts', '!src/**/*.d.ts'],
-  coverageReporters: ['text'],
+  collectCoverageFrom: [
+    'src/**/*.ts',
+    '!src/**/*.d.ts'
+  ],
+  coverageReporters: ['text', 'json'],
   testTimeout: 15000
 };

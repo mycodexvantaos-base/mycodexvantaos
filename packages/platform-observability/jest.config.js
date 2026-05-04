@@ -4,12 +4,22 @@ module.exports = {
   roots: ['<rootDir>'],
   testMatch: ['**/__tests__/**/*.test.ts'],
   transform: {
-    '^.+\.ts$': 'ts-jest',
+    '^.+\\.tsx?$': ['ts-jest', {
+      tsconfig: {
+        module: 'commonjs',
+        esModuleInterop: true,
+        allowSyntheticDefaultImports: true,
+        target: 'ES2020',
+        sourceMap: true,
+        inlineSourceMap: true,
+        inlineSources: true
+      }
+    }]
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   collectCoverageFrom: [
     'src/**/*.ts',
-    '!src/**/*.d.ts',
-    '!src/index.ts',
+    '!src/**/*.d.ts'
   ],
+  coverageReporters: ['text', 'json'],
+  testTimeout: 15000
 };

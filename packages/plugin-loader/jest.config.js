@@ -1,13 +1,25 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  roots: ['<rootDir>/src'],
+  roots: ['<rootDir>'],
   testMatch: ['**/__tests__/**/*.test.ts'],
+  transform: {
+    '^.+\\.tsx?$': ['ts-jest', {
+      tsconfig: {
+        module: 'commonjs',
+        esModuleInterop: true,
+        allowSyntheticDefaultImports: true,
+        target: 'ES2020',
+        sourceMap: true,
+        inlineSourceMap: true,
+        inlineSources: true
+      }
+    }]
+  },
   collectCoverageFrom: [
     'src/**/*.ts',
-    '!src/**/*.d.ts',
-    '!**/__tests__/**'
+    '!src/**/*.d.ts'
   ],
-  coverageDirectory: 'coverage',
-  coverageReporters: ['text', 'lcov', 'html']
+  coverageReporters: ['text', 'json'],
+  testTimeout: 15000
 };

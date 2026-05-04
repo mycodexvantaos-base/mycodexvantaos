@@ -16,7 +16,10 @@ module.exports = {
       }
     }]
   },
-  collectCoverageFrom: ['src/**/*.ts', '!src/**/*.d.ts'],
-  coverageReporters: ['text'],
+  collectCoverageFrom: [
+    'src/**/*.ts',
+    '!src/**/*.d.ts'
+  ],
+  coverageReporters: ['text', 'json'],
   testTimeout: 15000
 };
