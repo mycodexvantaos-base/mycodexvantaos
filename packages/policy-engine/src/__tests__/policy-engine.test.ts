@@ -1,16 +1,10 @@
-/**
- * policy-engine Tests
- */
-
-import { policy-engine } from '../index';
 import { PolicyEngine } from '../index';
 
 describe('policy-engine', () => {
-  let instance: any;
+  let instance: PolicyEngine;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new PolicyEngine({});
+    instance = new PolicyEngine();
   });
 
   test('should initialize', () => {

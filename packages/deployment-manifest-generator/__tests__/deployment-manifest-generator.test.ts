@@ -237,7 +237,7 @@ describe('DeploymentManifestGenerator', () => {
         'password': 'test'
       });
 
-      expect(secret).toContain('c2VjcmV0'); // base64 of 'secret'
+      expect(secret).toContain('dGVzdA=='); // base64 of 'test'
     });
   });
 

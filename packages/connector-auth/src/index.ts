@@ -139,7 +139,8 @@ export class AuthConnector {
       return { success: false, error: 'Not connected' };
     }
 
-    const user = this.users.values().find(
+    const usersArray = Array.from(this.users.values());
+    const user = usersArray.find(
       (u) => u.email === credentials.email
     );
 

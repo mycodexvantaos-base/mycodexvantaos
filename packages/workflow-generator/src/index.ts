@@ -84,7 +84,7 @@ export class WorkflowGenerator {
       }
 
       // Add retry policy if enabled
-      if (this.options.retryStrategy !== 'none') {
+      if (this.options.retryStrategy && this.options.retryStrategy !== 'none') {
         step.retryPolicy = {
           maxAttempts: 3,
           backoff: this.options.retryStrategy,
@@ -114,19 +114,17 @@ export class WorkflowGenerator {
     const steps: WorkflowStep[] = [];
     const finalStepId = finalTask ? finalTask.id : 'finish';
 
-    // Create parallel branches
-    const branchIds: string[][] = [];
-    for (const branch of parallelTasks) {
-      const branchStepIds: string[] = [];
-      
-      // Create sequence step for each branch
-      const parallelStepId = `parallel_${branch.length}_${steps.length}`;
-      const parallelStep: WorkflowStep = {
-        id: parallelStepId,
-        name: `Execute branch ${branchIds.length + 1}`,
-        type: 'parallel',
-        config: {
-          branches: branch.map(task => ({
+    // Create a single parallel step with all branches
+    const parallelStep: WorkflowStep = {
+      id: 'parallel_0',
+      name: 'Execute parallel branches',
+      type: 'parallel',
+      config: {
+        branches: parallelTasks.map((branch, branchIndex) => ({
+          id: `branch_${branchIndex}`,
+          name: `Branch ${branchIndex + 1}`,
+          type: 'action',
+          steps: branch.map(task => ({
             id: task.id,
             name: task.name,
             type: 'action',
@@ -135,13 +133,12 @@ export class WorkflowGenerator {
               type: task.type
             }
           }))
-        },
-        next: finalStepId
-      };
+        }))
+      },
+      next: finalStepId
+    };
 
-      steps.push(parallelStep);
-      branchIds.push(branch.map(t => t.id));
-    }
+    steps.push(parallelStep);
 
     // Add final task if provided
     if (finalTask) {
@@ -313,6 +310,7 @@ export class WorkflowGenerator {
   ): WorkflowDefinition {
     const steps: WorkflowStep[] = [];
     let currentId = 'start';
+    let parallelStepId: string | undefined;
 
     // Add source steps
     const sourceIds: string[] = [];

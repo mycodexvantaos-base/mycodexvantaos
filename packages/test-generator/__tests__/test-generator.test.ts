@@ -142,7 +142,7 @@ describe('TestGenerator', () => {
     it('should include Playwright imports', () => {
       const testSuite = generator.generateE2ETest('Test', []);
 
-      expect(testSuite.imports).toContain('@playwright/test');
+      expect(testSuite.imports?.some(i => i.includes('@playwright/test'))).toBe(true);
     });
 
     it('should include step execution in test method', () => {
@@ -195,7 +195,7 @@ describe('TestGenerator', () => {
   describe('generateCoverageConfig', () => {
     it('should generate coverage configuration with defaults', () => {
       const config = generator.generateCoverageConfig();
-      const parsed = JSON.parse(config.replace('export default ', ''));
+      const parsed = JSON.parse(config.replace('export default ', '').replace(/;$/, ''));
 
       expect(parsed.coverageThreshold.global.statements).toBe(80);
       expect(parsed.coverageThreshold.global.branches).toBe(80);
@@ -210,7 +210,7 @@ describe('TestGenerator', () => {
         functions: 95,
         lines: 90
       });
-      const parsed = JSON.parse(config.replace('export default ', ''));
+      const parsed = JSON.parse(config.replace('export default ', '').replace(/;$/, ''));
 
       expect(parsed.coverageThreshold.global.statements).toBe(90);
       expect(parsed.coverageThreshold.global.branches).toBe(85);
@@ -220,7 +220,7 @@ describe('TestGenerator', () => {
 
     it('should specify correct coverage collection paths', () => {
       const config = generator.generateCoverageConfig();
-      const parsed = JSON.parse(config.replace('export default ', ''));
+      const parsed = JSON.parse(config.replace('export default ', '').replace(/;$/, ''));
 
       expect(parsed.collectCoverageFrom).toContain('src/**/*.ts');
       expect(parsed.collectCoverageFrom).toContain('!src/**/*.d.ts');

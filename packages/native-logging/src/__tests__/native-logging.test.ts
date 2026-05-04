@@ -177,8 +177,8 @@ describe('NativeLogger', () => {
 
   describe('Singleton Functions', () => {
     beforeEach(() => {
-      // Reset singleton
-      (getDefaultLogger as any) = () => getDefaultLogger();
+      // Reset singleton - just create a new default logger
+      setDefaultLogger(new NativeLogger({ name: 'default' }));
     });
 
     test('should create logger with factory function', () => {

@@ -1,16 +1,10 @@
-/**
- * analytics Tests
- */
-
-import { analytics } from '../index';
 import { Analytics } from '../index';
 
 describe('analytics', () => {
-  let instance: any;
+  let instance: Analytics;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new Analytics({});
+    instance = new Analytics();
   });
 
   test('should initialize', () => {

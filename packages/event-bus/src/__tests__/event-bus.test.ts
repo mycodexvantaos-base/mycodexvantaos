@@ -1,16 +1,10 @@
-/**
- * event-bus Tests
- */
-
-import { event-bus } from '../index';
 import { EventBus } from '../index';
 
 describe('event-bus', () => {
-  let instance: any;
+  let instance: EventBus;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new EventBus({});
+    instance = new EventBus();
   });
 
   test('should initialize', () => {

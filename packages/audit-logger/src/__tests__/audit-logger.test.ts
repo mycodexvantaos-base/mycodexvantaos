@@ -1,16 +1,10 @@
-/**
- * audit-logger Tests
- */
-
-import { audit-logger } from '../index';
 import { AuditLogger } from '../index';
 
 describe('audit-logger', () => {
-  let instance: any;
+  let instance: AuditLogger;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new AuditLogger({});
+    instance = new AuditLogger();
   });
 
   test('should initialize', () => {

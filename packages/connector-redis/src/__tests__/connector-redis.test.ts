@@ -258,7 +258,7 @@ describe('RedisConnector', () => {
     test('should set substring', async () => {
       await connector.set('key', 'Hello World');
       const length = await connector.setrange('key', 6, 'Universe');
-      expect(length).toBe(13);
+      expect(length).toBe(14);  // "Hello Universe" is 14 characters
       expect(await connector.get('key')).toBe('Hello Universe');
     });
 

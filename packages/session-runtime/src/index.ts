@@ -33,6 +33,7 @@ export interface SessionRuntimeOptions {
   defaultTTL?: number;
   cleanupInterval?: number;
   store?: SessionStore;
+  autoStartCleanup?: boolean;
 }
 
 export class MemorySessionStore implements SessionStore {
@@ -70,8 +71,10 @@ export class SessionRuntime {
     this.defaultTTL = options.defaultTTL || 3600; // 1 hour default
     this.cleanupInterval = options.cleanupInterval || 300000; // 5 minutes
 
-    // Start cleanup timer
-    this.startCleanup();
+    // Only start cleanup timer if not disabled (for tests)
+    if (options.autoStartCleanup !== false) {
+      this.startCleanup();
+    }
   }
 
   /**
@@ -133,6 +136,7 @@ export class SessionRuntime {
       id: session.id, // Preserve ID
       createdAt: session.createdAt, // Preserve creation time
       updatedAt: new Date(),
+      // Merge data by default
       data: {
         ...session.data,
         ...(data.data || {})
@@ -151,12 +155,13 @@ export class SessionRuntime {
    * Delete a session
    */
   async delete(sessionId: string): Promise<boolean> {
-    try {
-      await this.store.delete(sessionId);
-      return true;
-    } catch (error) {
+    const session = await this.get(sessionId);
+    if (!session) {
       return false;
     }
+    
+    await this.store.delete(sessionId);
+    return true;
   }
 
   /**
@@ -276,10 +281,21 @@ export class SessionRuntime {
       return false;
     }
 
-    const { [key]: removed, ...rest } = session.data;
-    const updated = await this.update(sessionId, { data: rest });
+    // Create a new data object without the key
+    const newData: Record<string, any> = { ...session.data };
+    delete newData[key];
 
-    return updated !== null;
+    // Deep merge - don't use update() here to avoid merging
+    const updatedSession: SessionData = {
+      ...session,
+      data: newData,
+      updatedAt: new Date()
+    };
+
+    // Directly update the store
+    await this.store.set(sessionId, updatedSession);
+
+    return true;
   }
 
   /**

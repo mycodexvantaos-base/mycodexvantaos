@@ -19,6 +19,7 @@ export interface LogEntry {
   context?: Record<string, any>;
   error?: Error;
   metadata?: Record<string, any>;
+  includeTimestamp?: boolean;
 }
 
 export interface LoggerOptions {

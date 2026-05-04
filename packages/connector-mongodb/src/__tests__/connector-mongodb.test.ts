@@ -1,16 +1,13 @@
-/**
- * connector-mongodb Tests
- */
-
-import { connector-mongodb } from '../index';
-import { ConnectorMongodb } from '../index';
+import { MongoConnector } from '../index';
 
 describe('connector-mongodb', () => {
-  let instance: any;
+  let instance: MongoConnector;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new ConnectorMongodb({});
+    instance = new MongoConnector({
+      connectionString: 'mongodb://localhost:27017',
+      database: 'test'
+    });
   });
 
   test('should initialize', () => {

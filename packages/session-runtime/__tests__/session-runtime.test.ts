@@ -1,4 +1,4 @@
-import { SessionRuntime, MemorySessionStore, SessionStore, SessionData } from '../src/index';
+import { SessionRuntime, MemorySessionStore, SessionStore, SessionData, SessionRuntimeOptions } from '../src/index';
 
 describe('SessionRuntime', () => {
   let runtime: SessionRuntime;
@@ -6,7 +6,8 @@ describe('SessionRuntime', () => {
   beforeEach(() => {
     runtime = new SessionRuntime({
       defaultTTL: 3600,
-      cleanupInterval: 10000
+      cleanupInterval: 10000,
+      autoStartCleanup: false
     });
   });
 
@@ -88,9 +89,8 @@ describe('SessionRuntime', () => {
     });
 
     it('should return null for expired session', async () => {
-      const session = await runtime.create('user123', { ttl: 0 });
+      const session = await runtime.create('user123', { ttl: -1 });
       
-      await new Promise(resolve => setTimeout(resolve, 100));
       
       const retrieved = await runtime.get(session.id);
       expect(retrieved).toBeNull();
@@ -199,9 +199,8 @@ describe('SessionRuntime', () => {
   describe('getActiveSessions', () => {
     it('should return only non-expired sessions', async () => {
       await runtime.create('user1', { ttl: 3600 });
-      await runtime.create('user2', { ttl: 0 });
+      await runtime.create('user2', { ttl: -1 });
 
-      await new Promise(resolve => setTimeout(resolve, 100));
 
       const activeSessions = await runtime.getActiveSessions();
       expect(activeSessions).toHaveLength(1);
@@ -269,9 +268,7 @@ describe('SessionRuntime', () => {
     });
 
     it('should return false for expired session', async () => {
-      const session = await runtime.create('user123', { ttl: 0 });
-
-      await new Promise(resolve => setTimeout(resolve, 100));
+      const session = await runtime.create('user123', { ttl: -1 }); // Negative TTL = already expired
 
       const isValid = await runtime.isValid(session.id);
       expect(isValid).toBe(false);
@@ -345,10 +342,8 @@ describe('SessionRuntime', () => {
   describe('cleanup', () => {
     it('should remove expired sessions', async () => {
       await runtime.create('user1', { ttl: 3600 });
-      await runtime.create('user2', { ttl: 0 });
-      await runtime.create('user3', { ttl: 0 });
-
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await runtime.create('user2', { ttl: -1 }); // Already expired (negative TTL = past time)
+      await runtime.create('user3', { ttl: -1 });
 
       const cleaned = await runtime.cleanup();
 

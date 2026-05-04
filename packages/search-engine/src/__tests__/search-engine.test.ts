@@ -1,16 +1,10 @@
-/**
- * search-engine Tests
- */
-
-import { search-engine } from '../index';
 import { SearchEngine } from '../index';
 
 describe('search-engine', () => {
-  let instance: any;
+  let instance: SearchEngine;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new SearchEngine({});
+    instance = new SearchEngine();
   });
 
   test('should initialize', () => {

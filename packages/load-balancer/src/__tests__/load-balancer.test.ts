@@ -1,16 +1,10 @@
-/**
- * load-balancer Tests
- */
-
-import { load-balancer } from '../index';
 import { LoadBalancer } from '../index';
 
 describe('load-balancer', () => {
-  let instance: any;
+  let instance: LoadBalancer;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new LoadBalancer({});
+    instance = new LoadBalancer();
   });
 
   test('should initialize', () => {

@@ -88,7 +88,7 @@ export class NativeValidator {
       }
 
       // Validate min/max for numbers
-      if (fieldConfig.type === 'number' || fieldConfig.type === 'string') {
+      if (fieldConfig.type === 'number') {
         if (fieldConfig.min !== undefined && value < fieldConfig.min) {
           fieldErrors.push({
             field: fieldName,
@@ -100,6 +100,24 @@ export class NativeValidator {
           fieldErrors.push({
             field: fieldName,
             message: `Field '${fieldName}' must be at most ${fieldConfig.max}`,
+            value
+          });
+        }
+      }
+
+      // Validate string length min/max
+      if (fieldConfig.type === 'string' && typeof value === 'string') {
+        if (fieldConfig.min !== undefined && value.length < fieldConfig.min) {
+          fieldErrors.push({
+            field: fieldName,
+            message: `Field '${fieldName}' must be at least ${fieldConfig.min} characters`,
+            value
+          });
+        }
+        if (fieldConfig.max !== undefined && value.length > fieldConfig.max) {
+          fieldErrors.push({
+            field: fieldName,
+            message: `Field '${fieldName}' must be at most ${fieldConfig.max} characters`,
             value
           });
         }

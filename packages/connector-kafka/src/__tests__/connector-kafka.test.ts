@@ -1,16 +1,13 @@
-/**
- * connector-kafka Tests
- */
-
-import { connector-kafka } from '../index';
-import { ConnectorKafka } from '../index';
+import { KafkaConnector } from '../index';
 
 describe('connector-kafka', () => {
-  let instance: any;
+  let instance: KafkaConnector;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new ConnectorKafka({});
+    instance = new KafkaConnector({
+      brokers: ['localhost:9092'],
+      clientId: 'test-client'
+    });
   });
 
   test('should initialize', () => {

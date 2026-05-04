@@ -149,8 +149,11 @@ export class NativeQueue<T = any> {
   /**
    * Process the queue
    */
-  private async process(): Promise<void> {
-    if (!this.isRunning) return;
+  async process(): Promise<void> {
+    // Auto-start if not running
+    if (!this.isRunning) {
+      this.isRunning = true;
+    }
     if (this.processingTasks.size >= this.options.maxConcurrent) return;
 
     // Find next pending task

@@ -142,7 +142,7 @@ export class GitHubConnector {
       throw new Error(`GitHub API Error: ${response.status} - ${error}`);
     }
 
-    return response.json();
+    return response.json() as Promise<T>;
   }
 
   private async post<T>(

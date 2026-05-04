@@ -1,16 +1,12 @@
-/**
- * connector-elastic Tests
- */
-
-import { connector-elastic } from '../index';
-import { ConnectorElastic } from '../index';
+import { ElasticConnector } from '../index';
 
 describe('connector-elastic', () => {
-  let instance: any;
+  let instance: ElasticConnector;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new ConnectorElastic({});
+    instance = new ElasticConnector({
+      nodes: ['http://localhost:9200']
+    });
   });
 
   test('should initialize', () => {

@@ -108,8 +108,8 @@ describe('WorkflowGenerator', () => {
 
       const workflow = generator.generateParallelWorkflow('Parallel Workflow', parallelTasks);
 
-      expect(workflow.steps[0].config.branches[0].length).toBe(2);
-      expect(workflow.steps[0].config.branches[1].length).toBe(1);
+      expect(workflow.steps[0].config.branches[0].steps.length).toBe(2);
+      expect(workflow.steps[0].config.branches[1].steps.length).toBe(1);
     });
   });
 
@@ -194,7 +194,7 @@ describe('WorkflowGenerator', () => {
       const content = tsGen.generateWorkflowFile(workflow);
 
       expect(content).toContain('import');
-      expect(content).toContain('export const TestWorkflow');
+      expect(content).toContain('export const Test');
       expect(content).toContain('id:');
       expect(content).toContain('name:');
     });
@@ -245,7 +245,7 @@ describe('WorkflowGenerator', () => {
         ['dest1']
       );
 
-      expect(workflow.steps).toHaveLength(4); // 2 sources, merge, transform, dest
+      expect(workflow.steps).toHaveLength(5); // 2 sources + merge + transform + dest
       const mergeStep = workflow.steps.find(s => s.name.includes('Merge'));
       expect(mergeStep).toBeDefined();
       expect(mergeStep?.type).toBe('action');

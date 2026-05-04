@@ -35,7 +35,7 @@ export class StateManager {
     return Array.from(this.states.values());
   }
 
-  async watch(key: string, callback: (value: any) => void): void {
+  async watch(key: string, callback: (value: any) => void): Promise<void> {
     // Watch implementation
   }
 }

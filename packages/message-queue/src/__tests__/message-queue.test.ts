@@ -1,16 +1,10 @@
-/**
- * message-queue Tests
- */
-
-import { message-queue } from '../index';
 import { MessageQueue } from '../index';
 
 describe('message-queue', () => {
-  let instance: any;
+  let instance: MessageQueue;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new MessageQueue({});
+    instance = new MessageQueue();
   });
 
   test('should initialize', () => {

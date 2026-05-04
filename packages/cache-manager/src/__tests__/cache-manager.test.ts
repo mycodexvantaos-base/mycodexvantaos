@@ -1,16 +1,10 @@
-/**
- * cache-manager Tests
- */
-
-import { cache-manager } from '../index';
 import { CacheManager } from '../index';
 
 describe('cache-manager', () => {
-  let instance: any;
+  let instance: CacheManager;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new CacheManager({});
+    instance = new CacheManager();
   });
 
   test('should initialize', () => {

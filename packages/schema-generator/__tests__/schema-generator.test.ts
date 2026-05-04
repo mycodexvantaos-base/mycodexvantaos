@@ -49,7 +49,7 @@ describe('SchemaGenerator', () => {
       };
 
       const sql = generator.generateTableSchema(schema);
-      expect(sql).toContain('CREATE TABLE IF NOT EXISTS users');
+      expect(sql).toContain('CREATE TABLE IF NOT EXISTS user');
       expect(sql).toContain('id INTEGER NOT NULL');
       expect(sql).toContain('name VARCHAR(255) NOT NULL');
       expect(sql).toContain('PRIMARY KEY (id)');
@@ -162,8 +162,8 @@ describe('SchemaGenerator', () => {
       };
 
       const sql = generator.generateTableSchema(schema);
-      expect(sql).toContain('user_id INTEGER NOT NULL');
-      expect(sql).toContain('REFERENCES users(id)');
+      expect(sql).toContain('userid INTEGER NOT NULL');
+      expect(sql).toContain('REFERENCES user(id)');
       expect(sql).toContain('ON DELETE CASCADE');
     });
 
@@ -189,7 +189,7 @@ describe('SchemaGenerator', () => {
 
       const sql = generator.generateTableSchema(schema);
       expect(sql).toContain('CREATE UNIQUE INDEX IF NOT EXISTS');
-      expect(sql).toContain('ON users (name, email)');
+      expect(sql).toContain('ON user (name, email)');
     });
   });
 

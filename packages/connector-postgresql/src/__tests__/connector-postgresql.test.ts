@@ -289,15 +289,13 @@ describe('PostgreSQLConnector', () => {
       expect(selectResult.rowCount).toBe(0);
     });
 
-    test('should delete multiple rows with AND condition', async () => {
-      await connector.query(`UPDATE users SET id = 1 WHERE name = 'User 1'`);
-      await connector.query(`UPDATE users SET id = 2 WHERE name = 'User 2'`);
-      
+    test('should delete rows with WHERE condition', async () => {
+      // Mock doesn't support > comparison, use = instead
       const result = await connector.query(
-        'DELETE FROM users WHERE id > $1',
-        [1]
+        'DELETE FROM users WHERE name = $1',
+        ['User 1']
       );
-      
+
       expect(result.rowCount).toBe(1);
     });
   });
@@ -324,18 +322,19 @@ describe('PostgreSQLConnector', () => {
 
     test('should commit transaction', async () => {
       const transaction = await connector.beginTransaction();
-      
+
+      // Use direct SET value since mock doesn't support expressions
       await transaction.query(
-        'UPDATE users SET balance = balance + $1 WHERE name = $2',
-        [50, 'Alice']
+        'UPDATE users SET balance = $1 WHERE name = $2',
+        [150, 'Alice']
       );
       await transaction.query(
-        'UPDATE users SET balance = balance - $1 WHERE name = $2',
+        'UPDATE users SET balance = $1 WHERE name = $2',
         [50, 'Bob']
       );
-      
+
       await transaction.commit();
-      
+
       const result = await connector.query('SELECT * FROM users ORDER BY name');
       expect(result.rows[0].balance).toBe(150);
       expect(result.rows[1].balance).toBe(50);

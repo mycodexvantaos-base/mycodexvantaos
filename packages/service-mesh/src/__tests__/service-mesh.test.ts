@@ -1,16 +1,10 @@
-/**
- * service-mesh Tests
- */
-
-import { service-mesh } from '../index';
 import { ServiceMesh } from '../index';
 
 describe('service-mesh', () => {
-  let instance: any;
+  let instance: ServiceMesh;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new ServiceMesh({});
+    instance = new ServiceMesh();
   });
 
   test('should initialize', () => {

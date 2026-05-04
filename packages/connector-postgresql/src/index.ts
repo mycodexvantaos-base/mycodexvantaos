@@ -39,7 +39,7 @@ export class PostgreSQLConnector {
     idleTimeoutMs: number;
   };
   private connected: boolean = false;
-  private tables: Map<string, Map<string, any>[]> = new Map();
+  private tables: Map<string, Record<string, any>[]> = new Map();
   private autoIncrement: Map<string, Map<string, number>> = new Map();
 
   constructor(config: PostgreSQLConfig) {
@@ -201,21 +201,24 @@ export class PostgreSQLConnector {
     const autoIncrementMap = this.autoIncrement.get(tableName)!;
     const row: Record<string, any> = {};
 
+    // Process columns and values
     for (let i = 0; i < columns.length; i++) {
       const column = columns[i];
-      // Check if it's a return value
-      if (sql.toLowerCase().includes('returning') && column.toLowerCase() === 'id') {
-        const currentId = (autoIncrementMap.get('id') || 0) + 1;
-        autoIncrementMap.set('id', currentId);
-        row[column] = currentId;
-      } else if (values && values[i] !== undefined) {
+      if (values && values[i] !== undefined) {
         row[column] = values[i];
       }
     }
 
+    // Handle RETURNING clause - generate auto-increment id if requested
+    const returningMatch = sql.match(/RETURNING\s+(\w+)/i);
+    if (returningMatch && returningMatch[1].toLowerCase() === 'id') {
+      const currentId = (autoIncrementMap.get('id') || 0) + 1;
+      autoIncrementMap.set('id', currentId);
+      row['id'] = currentId;
+    }
+
     this.tables.get(tableName)!.push(row);
 
-    const returningMatch = sql.match(/RETURNING\s+(\w+)/i);
     if (returningMatch) {
       return {
         rows: [row as T],
@@ -265,12 +268,13 @@ export class PostgreSQLConnector {
     
     for (const row of table) {
       let shouldUpdate = true;
+      let valueIndex = 0;
       
       // Apply WHERE clause
       const whereMatch = sql.match(/WHERE\s+(.+)$/i);
       if (whereMatch && values) {
         const conditions = whereMatch[1].split(/\s+AND\s+/i);
-        let valueIndex = 0;
+        valueIndex = 0;
         
         // First process SET values
         for (const assignment of assignments) {
@@ -297,7 +301,7 @@ export class PostgreSQLConnector {
         valueIndex = 0;
         for (const assignment of assignments) {
           const match = assignment.match(/(\w+)\s*=\s*\$?\d+/i);
-          if (match && values[valueIndex] !== undefined) {
+          if (match && values && values[valueIndex] !== undefined) {
             const column = match[1];
             row[column] = values[valueIndex];
             valueIndex++;

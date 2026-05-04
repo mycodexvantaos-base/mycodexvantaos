@@ -190,5 +190,4 @@ export function createUIGenerator(options?: GeneratorOptions): UIGenerator {
   return new UIGenerator(options);
 }
 
-// Export types
-export type { ComponentConfig, LayoutConfig, GeneratorOptions };
+// Types are already exported at the top of the file

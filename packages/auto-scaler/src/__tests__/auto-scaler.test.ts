@@ -1,16 +1,10 @@
-/**
- * auto-scaler Tests
- */
-
-import { auto-scaler } from '../index';
 import { AutoScaler } from '../index';
 
 describe('auto-scaler', () => {
-  let instance: any;
+  let instance: AutoScaler;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new AutoScaler({});
+    instance = new AutoScaler();
   });
 
   test('should initialize', () => {

@@ -354,33 +354,41 @@ export class RedisConnector {
    * Get info about server
    */
   async info(section?: string): Promise<string> {
-    const infoLines = [
-      `# Server`,
-      `redis_version=6.0.0`,
-      `os=Linux`,
-      `# Clients`,
-      `connected_clients=1`,
-      `# Memory`,
-      `used_memory=${this.store.size * 1024}`,
-      `# Persistence`,
-      `loading=0`,
-      `# Stats`,
-      `total_connections_received=1`,
-      `# Replication`,
-      `role=master`,
-      `# CPU`,
-      `used_cpu_sys=0.5`,
-      `used_cpu_user=0.3`
-    ];
+    const allInfo = `# Server
+redis_version=6.0.0
+os=Linux
+# Clients
+connected_clients=1
+# Memory
+used_memory=${this.store.size * 1024}
+# Persistence
+loading=0
+# Stats
+total_connections_received=1
+# Replication
+role=master
+# CPU
+used_cpu_sys=0.5
+used_cpu_user=0.3`;
 
     if (section) {
-      const sectionLines = infoLines.filter((line) => 
-        line.toLowerCase().includes(section.toLowerCase())
-      );
-      return sectionLines.join('\n');
+      // Find the section and return lines until next section
+      const lines = allInfo.split('\n');
+      const result: string[] = [];
+      let inSection = false;
+      
+      for (const line of lines) {
+        if (line.startsWith('# ')) {
+          inSection = line.toLowerCase().includes(section.toLowerCase());
+        }
+        if (inSection) {
+          result.push(line);
+        }
+      }
+      return result.join('\n');
     }
 
-    return infoLines.join('\n');
+    return allInfo;
   }
 
   /**

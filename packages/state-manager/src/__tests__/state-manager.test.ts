@@ -1,16 +1,10 @@
-/**
- * state-manager Tests
- */
-
-import { state-manager } from '../index';
 import { StateManager } from '../index';
 
 describe('state-manager', () => {
-  let instance: any;
+  let instance: StateManager;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new StateManager({});
+    instance = new StateManager();
   });
 
   test('should initialize', () => {

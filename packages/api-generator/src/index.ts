@@ -39,7 +39,7 @@ export interface ApiSchema {
 }
 
 export interface ApiGeneratorOptions {
-  apiType: 'rest' | 'graphql' | 'openapi';
+  apiType?: 'rest' | 'graphql' | 'openapi';
   basePath?: string;
   version?: string;
   authType?: 'none' | 'bearer' | 'basic' | 'apiKey';
@@ -53,7 +53,7 @@ export interface ModelDefinition {
 export class ApiGenerator {
   private options: ApiGeneratorOptions;
 
-  constructor(options: ApiGeneratorOptions) {
+  constructor(options: ApiGeneratorOptions = {}) {
     this.options = {
       apiType: 'rest',
       basePath: '/api/v1',
@@ -364,7 +364,7 @@ export class ApiGenerator {
       const modelName = model.name;
       const modelNameLower = modelName.toLowerCase();
       schema += `  ${modelNameLower}s(page: Int, limit: Int): [${modelName}!]!\n`;
-      schema += `  ${modelName Lower}(id: ID!): ${modelName}\n`;
+      schema += `  ${modelNameLower}(id: ID!): ${modelName}\n`;
     }
     schema += `}\n\n`;
 

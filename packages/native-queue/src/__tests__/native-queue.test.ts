@@ -282,7 +282,7 @@ describe('NativeQueue', () => {
       await queueWithTimeout.waitForCompletion();
       queueWithTimeout.stop();
 
-      const task = queueWithTimeout.getTask('task-2');
+      const task = queueWithTimeout.getTask('task-1');
       expect(task?.status).toBe('failed');
       expect(task?.error?.message).toBe('Task timeout');
     });

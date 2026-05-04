@@ -1,16 +1,10 @@
-/**
- * advanced-monitoring Tests
- */
-
-import { advanced-monitoring } from '../index';
 import { AdvancedMonitoring } from '../index';
 
 describe('advanced-monitoring', () => {
-  let instance: any;
+  let instance: AdvancedMonitoring;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new AdvancedMonitoring({});
+    instance = new AdvancedMonitoring();
   });
 
   test('should initialize', () => {

@@ -1,16 +1,13 @@
-/**
- * rate-limiter Tests
- */
-
-import { rate-limiter } from '../index';
 import { RateLimiter } from '../index';
 
 describe('rate-limiter', () => {
-  let instance: any;
+  let instance: RateLimiter;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new RateLimiter({});
+    instance = new RateLimiter({
+      windowMs: 60000,
+      maxRequests: 100
+    });
   });
 
   test('should initialize', () => {

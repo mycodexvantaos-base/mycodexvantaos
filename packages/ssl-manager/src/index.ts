@@ -39,7 +39,7 @@ export class SSLManager {
 
   async checkExpiry(): Promise<Certificate[]> {
     const now = Date.now();
-    const expiringSoon = [];
+    const expiringSoon: Certificate[] = [];
 
     for (const cert of this.certificates.values()) {
       if (cert.expiresAt - now < 7 * 24 * 60 * 60 * 1000) { // 7 days

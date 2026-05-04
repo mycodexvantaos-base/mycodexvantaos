@@ -1,16 +1,10 @@
-/**
- * api-gateway Tests
- */
-
-import { api-gateway } from '../index';
 import { ApiGateway } from '../index';
 
 describe('api-gateway', () => {
-  let instance: any;
+  let instance: ApiGateway;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new ApiGateway({});
+    instance = new ApiGateway({ port: 3000, routes: [] });
   });
 
   test('should initialize', () => {

@@ -1,16 +1,10 @@
-/**
- * ssl-manager Tests
- */
-
-import { ssl-manager } from '../index';
-import { SslManager } from '../index';
+import { SSLManager } from '../index';
 
 describe('ssl-manager', () => {
-  let instance: any;
+  let instance: SSLManager;
 
   beforeEach(() => {
-    // Initialize instance based on component type
-    instance = new SslManager({});
+    instance = new SSLManager();
   });
 
   test('should initialize', () => {

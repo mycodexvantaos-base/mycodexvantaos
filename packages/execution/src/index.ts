@@ -107,7 +107,8 @@ export class ExecutionEngine {
 
     for (let attempt = 0; attempt <= maxRetries; attempt++) {
       try {
-        return await this.executeWithTimeout(task.handler, options.timeout || this.defaultOptions.timeout);
+        const timeout = options.timeout ?? this.defaultOptions.timeout ?? 5000;
+        return await this.executeWithTimeout(task.handler, timeout);
       } catch (error) {
         lastError = error as Error;
         
@@ -273,5 +274,4 @@ export function createExecutionEngine(options?: ExecutionOptions): ExecutionEngi
   return new ExecutionEngine(options);
 }
 
-// Export types
-export type { Task, WorkflowConfig, ExecutionResult, ExecutionOptions };
+// Types are already exported at the top of the file
