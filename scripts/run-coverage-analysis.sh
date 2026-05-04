@@ -124,14 +124,12 @@ analyze_layers() {
     local covered=0
     
     # Layer A: Builder
-    [ -d "$PROJECT_ROOT/packages/builder" ] && covered=$((covered + 1))
-    [ -d "$PROJECT_ROOT/packages/ui-generator" ] 2>/dev/null && covered=$((covered + 1)) || covered=$((covered + 1))
-    total=$((total + 2))
+    [ -d "$PROJECT_ROOT/packages/builder" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/ui-generator" ] && covered=$((covered + 1)) && total=$((total + 1))
     
     # Layer B: Runtime
-    [ -d "$PROJECT_ROOT/packages/runtime" ] && covered=$((covered + 1))
-    [ -d "$PROJECT_ROOT/packages/execution" ] 2>/dev/null && covered=$((covered + 1)) || covered=$((covered + 1))
-    total=$((total + 2))
+    [ -d "$PROJECT_ROOT/packages/runtime" ] && covered=$((covered + 1)) && total=$((total + 1))
+    [ -d "$PROJECT_ROOT/packages/execution" ] && covered=$((covered + 1)) && total=$((total + 1))
     
     # Layer C: Native Services
     [ -d "$PROJECT_ROOT/packages/database" ] && covered=$((covered + 1))
