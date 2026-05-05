@@ -39,7 +39,7 @@ jobs:
 
       - name: Cancel workflow run
         if: failure()
-        uses: andymckay/cancel-workflow-action@0.3.0
+        uses: styfle/cancel-workflow-action@0.12.1
         with:
           workflow_id: ${{ github.event.workflow_run.id }}
           token: ${{ secrets.GITHUB_TOKEN }}
