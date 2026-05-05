@@ -43,24 +43,3 @@ next-env.d.ts
 # firebase
 firebase-debug.log
 firestore-debug.log
-
-# browser data
-.browser_data/
-
-# psiphon data
-.psiphon_data/
-
-# outputs
-outputs/
-
-# summarized conversations
-summarized_conversations/
-
-# uploaded archives
-*.zip
-
-# Temporary files
-.screenshots/
-deploy_out/
-dev.log
-*.sentinel-backup
