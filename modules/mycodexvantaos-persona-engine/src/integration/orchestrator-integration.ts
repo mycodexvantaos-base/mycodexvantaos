@@ -253,7 +253,7 @@ export class PersonaOrchestratorIntegration {
     };
 
     return {
-      urn: `urn:mycodexvantaos:persona:${archetype}-primary`,
+      urn: `urn:mycodexvantaos:persona:${archetype.replace(/_/g, '-')}-primary`,
       name: `${archetype.charAt(0).toUpperCase() + archetype.slice(1).replace('_', ' ')} Primary`,
       archetype,
       version: '1.0.0',

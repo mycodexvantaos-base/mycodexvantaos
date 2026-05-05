@@ -8,7 +8,7 @@ import type { ValidationContext, RuleResult } from "../validate-architecture.js"
 
 export function run(ctx: ValidationContext): RuleResult[] {
   const results: RuleResult[] = [];
-  const LEGACY = /^(mycodexvanta-os|codexvanta|codexvanta-os)/;
+  const LEGACY = /^(mycodexvanta-os|codexvanta|codexvanta-os)(\b|[^o]|$)/;
 
   const allNames = [
     ...ctx.serviceIds,
