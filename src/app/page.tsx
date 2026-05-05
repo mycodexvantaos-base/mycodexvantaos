@@ -1,146 +1,82 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Bot, Code, Combine, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Logo } from '@/components/icons/logo';
+import { Shield, Zap, Cpu, Search, Activity, ArrowRight, Globe, Layers } from 'lucide-react';
 
-export default function LandingPage() {
-  const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-image');
-  const featureImage1 = PlaceHolderImages.find((img) => img.id === 'feature-image-1');
-  const featureImage2 = PlaceHolderImages.find((img) => img.id === 'feature-image-2');
-  const featureImage3 = PlaceHolderImages.find((img) => img.id === 'feature-image-3');
-
-  const features = [
-    {
-      icon: <Bot className="h-8 w-8 text-accent" />,
-      title: 'AI-Powered Code Editor',
-      description: 'Enhance your workflow with AI-driven code completion, inline suggestions, and a conversational assistant.',
-      image: featureImage1,
-    },
-    {
-      icon: <Search className="h-8 w-8 text-accent" />,
-      title: 'Ecosystem Research Workbench',
-      description: 'Utilize powerful tools and visualizations to analyze code editor ecosystems, market trends, and platform governance.',
-      image: featureImage2,
-    },
-    {
-      icon: <Combine className="h-8 w-8 text-accent" />,
-      title: 'Extensible Plugin Marketplace',
-      description: 'Customize your experience by browsing, installing, and managing a wide range of community-built extensions.',
-      image: featureImage3,
-    },
-  ];
-
+export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center">
-          <Link href="/" className="flex items-center space-x-2">
-            <Logo className="h-8 w-8 text-primary" />
-            <span className="font-bold font-headline">MyCodeXvantaOS Studio</span>
+    <div className="flex flex-col min-h-screen scanline">
+      <header className="px-4 lg:px-6 h-16 flex items-center border-b border-border/40 bg-background/95 backdrop-blur sticky top-0 z-50">
+        <Link href="/" className="flex items-center gap-2">
+          <Globe className="h-6 w-6 text-primary animate-pulse" />
+          <span className="text-xl font-bold tracking-tight font-headline">SENTINEL <span className="text-primary/50 text-xs ml-1 uppercase tracking-widest font-mono">Liquid</span></span>
+        </Link>
+        <nav className="ml-auto flex gap-4 sm:gap-6">
+          <Link className="text-sm font-medium hover:text-primary transition-colors" href="/dashboard">
+            Network Access
           </Link>
-          <div className="flex flex-1 items-center justify-end space-x-4">
-            <nav className="flex items-center space-x-2">
-              <Button variant="ghost" asChild>
-                <Link href="/dashboard">Login</Link>
-              </Button>
-              <Button asChild>
-                <Link href="/dashboard">
-                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </nav>
-          </div>
-        </div>
+        </nav>
       </header>
-
       <main className="flex-1">
-        <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-          <div className="mx-auto max-w-4xl text-center">
-            <h1 className="text-4xl font-extrabold tracking-tight font-headline lg:text-5xl">
-              The Next Evolution of Code Intelligence
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground">
-              MyCodeXvantaOS Studio is an open, extensible platform for developers and researchers to build, analyze, and collaborate on the future of code editing.
-            </p>
-            <div className="mt-8 flex justify-center gap-4">
-              <Button size="lg" asChild>
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-background via-sidebar-background to-background relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/liquid1/1200/800')] opacity-5 grayscale blur-sm" />
+          <div className="container px-4 md:px-6 mx-auto relative z-10">
+            <div className="flex flex-col items-center space-y-4 text-center">
+              <div className="space-y-4">
+                <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-bold uppercase tracking-[0.3em] text-primary">
+                  The Mycelial Intelligence Network
+                </div>
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none font-headline max-w-4xl">
+                  集中全球頂尖行動力與 <span className="text-primary italic">流動智慧</span>
+                </h1>
+                <p className="mx-auto max-w-[800px] text-muted-foreground md:text-xl font-light">
+                  不再是死板的架構審計，而是感知世界脈動、動態聚合全人類智慧的有機網路。
+                </p>
+              </div>
+              <div className="flex gap-4 pt-4">
                 <Link href="/dashboard">
-                  Launch Dashboard <ArrowRight className="ml-2 h-5 w-5" />
+                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 h-12 uppercase tracking-widest text-xs">
+                    進入指揮中心 <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link href="#">View Documentation</Link>
-              </Button>
+                <Button variant="outline" className="border-primary/20 hover:bg-primary/5 px-10 h-12 uppercase tracking-widest text-xs">
+                  讀取通訊協議
+                </Button>
+              </div>
             </div>
           </div>
-          {heroImage && (
-            <div className="relative mx-auto mt-8 w-full max-w-6xl rounded-xl border shadow-xl shadow-primary/10">
-              <div className="absolute inset-0 -z-10 bg-primary/5 blur-3xl"></div>
-              <Image
-                src={heroImage.imageUrl}
-                alt={heroImage.description}
-                width={1200}
-                height={675}
-                className="rounded-lg"
-                data-ai-hint={heroImage.imageHint}
-                priority
-              />
-            </div>
-          )}
         </section>
 
-        <section id="features" className="container space-y-12 py-12 sm:py-24">
-          <div className="mx-auto flex max-w-3xl flex-col items-center gap-2 text-center">
-            <h2 className="text-3xl font-bold leading-tight tracking-tighter font-headline md:text-4xl">
-              A Unified Development & Research Hub
-            </h2>
-            <p className="max-w-[700px] text-muted-foreground">
-              From writing production-grade code to conducting deep market analysis, our integrated toolset has you covered.
-            </p>
-          </div>
-          <div className="mx-auto grid justify-center gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => (
-              <Card key={feature.title} className="max-w-sm overflow-hidden transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
-                <CardHeader className="p-0">
-                  {feature.image && (
-                     <Image
-                      src={feature.image.imageUrl}
-                      alt={feature.image.description}
-                      width={600}
-                      height={400}
-                      className="aspect-video w-full object-cover"
-                      data-ai-hint={feature.image.imageHint}
-                    />
-                  )}
-                </CardHeader>
-                <CardContent className="p-6">
-                  <div className="mb-4 flex items-center gap-4">
-                    {feature.icon}
-                    <CardTitle className="font-headline text-xl">{feature.title}</CardTitle>
-                  </div>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+        <section className="w-full py-24 bg-card/50 border-y border-border/40">
+          <div className="container px-4 md:px-6 mx-auto">
+            <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="flex flex-col space-y-3 p-6 group hover:bg-primary/5 transition-all duration-500 rounded-lg border border-transparent hover:border-primary/10">
+                <Activity className="h-10 w-10 text-primary" />
+                <h3 className="text-lg font-bold font-headline uppercase tracking-wider">全球脈動感測</h3>
+                <p className="text-sm text-muted-foreground font-light leading-relaxed">24/7 監聽全球數據流，即時識別異常並自發生成目標，化被動為演化。</p>
+              </div>
+              <div className="flex flex-col space-y-3 p-6 group hover:bg-primary/5 transition-all duration-500 rounded-lg border border-transparent hover:border-primary/10">
+                <Cpu className="h-10 w-10 text-primary" />
+                <h3 className="text-lg font-bold font-headline uppercase tracking-wider">即時工具鍛造</h3>
+                <p className="text-sm text-muted-foreground font-light leading-relaxed">面對未知環境時，AI 自主研讀手冊、編寫程式碼並生成即時控制工具。</p>
+              </div>
+              <div className="flex flex-col space-y-3 p-6 group hover:bg-primary/5 transition-all duration-500 rounded-lg border border-transparent hover:border-primary/10">
+                <Layers className="h-10 w-10 text-primary" />
+                <h3 className="text-lg font-bold font-headline uppercase tracking-wider">動態蜂群協作</h3>
+                <p className="text-sm text-muted-foreground font-light leading-relaxed">毫秒級徵召全球專精模型與人類專家，針對流動性任務進行有機聚合。</p>
+              </div>
+              <div className="flex flex-col space-y-3 p-6 group hover:bg-primary/5 transition-all duration-500 rounded-lg border border-transparent hover:border-primary/10">
+                <Shield className="h-10 w-10 text-primary" />
+                <h3 className="text-lg font-bold font-headline uppercase tracking-wider">人機心智融合</h3>
+                <p className="text-sm text-muted-foreground font-light leading-relaxed">關鍵時刻調動全人類專家節點，實現價值共識與極致決策能力。</p>
+              </div>
+            </div>
           </div>
         </section>
       </main>
-
-      <footer className="border-t py-6 md:py-8">
-        <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} MyCodeXvantaOS Studio. All rights reserved.
-          </p>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon">
-              <Code className="h-5 w-5" />
-            </Button>
-            <p className="text-sm text-muted-foreground">An Open Source Initiative.</p>
-          </div>
-        </div>
+      <footer className="py-10 w-full border-t border-border/40 bg-sidebar-background text-center">
+        <p className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground/60 font-mono">
+          SENTINEL v3.0-ORGANIC | ENFORCING GLOBAL SYMBIOSIS
+        </p>
       </footer>
     </div>
   );

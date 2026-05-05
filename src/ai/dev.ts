@@ -1,8 +1,10 @@
 import { config } from 'dotenv';
 config();
 
-import '@/ai/flows/ai-agent-code-generation-refactoring.ts';
-import '@/ai/flows/ai-research-data-summarization.ts';
-import '@/ai/flows/conversational-ai-assistant.ts';
-import '@/ai/flows/ai-code-completion-flow.ts';
-import '@/ai/flows/vulnerability-scanner-flow.ts';
+import '@/ai/flows/analyze-architecture-for-risks.ts';
+import '@/ai/flows/generate-ci-cd-pipeline.ts';
+import '@/ai/flows/validate-and-suggest-checklists.ts';
+import '@/ai/flows/suggest-architecture-refinements-flow.ts';
+import '@/ai/flows/global-pulse-sensing.ts';
+import '@/ai/flows/zero-shot-tool-forge.ts';
+import '@/ai/flows/advanced-analysis-flow.ts';

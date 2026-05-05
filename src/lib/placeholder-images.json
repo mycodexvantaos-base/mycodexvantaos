@@ -1,34 +1,16 @@
 {
   "placeholderImages": [
     {
-      "id": "user-avatar-1",
-      "description": "User avatar",
-      "imageUrl": "https://picsum.photos/seed/user1/40/40",
-      "imageHint": "person portrait"
+      "id": "hero-abstract",
+      "description": "Abstract technical lines and dots representing system architecture",
+      "imageUrl": "https://picsum.photos/seed/sentinel1/1200/600",
+      "imageHint": "technical architecture"
     },
     {
-      "id": "hero-image",
-      "description": "Abstract hero image representing AI and code",
-      "imageUrl": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMGNvZGV8ZW58MHx8fHwxNzcyNTYwOTIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract code"
-    },
-    {
-      "id": "feature-image-1",
-      "description": "Feature image for AI-Powered Code Editor",
-      "imageUrl": "https://images.unsplash.com/photo-1720962158937-7ea890052166?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmdXR1cmlzdGljJTIwaW50ZXJmYWNlfGVufDB8fHx8MTc3MjU2MzY1NXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "futuristic interface"
-    },
-    {
-      "id": "feature-image-2",
-      "description": "Feature image for Ecosystem Research Workbench",
-      "imageUrl": "https://picsum.photos/seed/feature2/600/400",
-      "imageHint": "data visualization"
-    },
-    {
-      "id": "feature-image-3",
-      "description": "Feature image for Extensible Plugin Marketplace",
-      "imageUrl": "https://picsum.photos/seed/feature3/600/400",
-      "imageHint": "glowing grid"
+      "id": "server-meticulous",
+      "description": "High detail server components represent zero-failure focus",
+      "imageUrl": "https://picsum.photos/seed/sentinel2/600/400",
+      "imageHint": "server components"
     }
   ]
 }
