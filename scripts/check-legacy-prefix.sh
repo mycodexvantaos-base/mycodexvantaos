@@ -76,8 +76,10 @@ for SCAN_DIR in "${SCAN_DIRS[@]}"; do
     TOTAL_SCANNED=$((TOTAL_SCANNED + 1))
 
     for PATTERN in "${PATTERNS[@]}"; do
-      if grep -q "${PATTERN}" "${FILE}" 2>/dev/null; then
-        MATCHES=$(grep -n "${PATTERN}" "${FILE}" | head -5)
+      # Use grep -E to avoid matching the correct prefix 'mycodexvantaos'
+      # We look for the pattern as a whole word or followed by something other than 'os'
+      if grep -qE "(^|[^a-zA-Z0-9])${PATTERN}([^a-zA-Z0-9]|$)" "${FILE}" 2>/dev/null; then
+        MATCHES=$(grep -nE "(^|[^a-zA-Z0-9])${PATTERN}([^a-zA-Z0-9]|$)" "${FILE}" | head -5)
         echo "VIOLATION: Legacy prefix '${PATTERN}' found in ${FILE}"
         echo "${MATCHES}" | while IFS= read -r LINE; do
           echo "  ${LINE}"
