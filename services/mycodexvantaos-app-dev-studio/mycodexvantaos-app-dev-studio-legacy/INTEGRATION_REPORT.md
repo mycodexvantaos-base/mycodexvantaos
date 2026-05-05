@@ -1,8 +1,8 @@
-# Launch-Pad 整合報告
+# App Dev Studio 整合報告
 
 **整合日期**: 2026-04-27
-**來源專案**: Launch-Pad (Firebase Studio Next.js 專案)
-**目標位置**: mycodexvantaos/services/mycodexvantaos-launch-pad
+**來源專案**: App Dev Studio (MyCodeXvantaOS Next.js 專案)
+**目標位置**: mycodexvantaos/services/mycodexvantaos-app-dev-studio
 
 ---
 
@@ -25,11 +25,11 @@
 ## 二、整合變更
 
 ### 2.1 命名變更
-- `name`: `nextn` → `@mycodexvantaos/launch-pad`
+- `name`: `nextn` → `@mycodexvantaos/app-dev-studio`
 
 ### 2.2 目錄結構
 ```
-mycodexvantaos-launch-pad/
+mycodexvantaos-app-dev-studio/
 ├── .agents/              # Genkit 技能文檔
 ├── .config/              # Helm 配置
 ├── .github/workflows/    # CI/CD 工作流

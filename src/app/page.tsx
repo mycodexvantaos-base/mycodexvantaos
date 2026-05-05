@@ -39,7 +39,7 @@ export default function LandingPage() {
         <div className="container flex h-14 items-center">
           <Link href="/" className="flex items-center space-x-2">
             <Logo className="h-8 w-8 text-primary" />
-            <span className="font-bold font-headline">EcoDev AI Studio</span>
+            <span className="font-bold font-headline">MyCodeXvantaOS Studio</span>
           </Link>
           <div className="flex flex-1 items-center justify-end space-x-4">
             <nav className="flex items-center space-x-2">
@@ -63,7 +63,7 @@ export default function LandingPage() {
               The Next Evolution of Code Intelligence
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              EcoDev AI Studio is an open, extensible platform for developers and researchers to build, analyze, and collaborate on the future of code editing.
+              MyCodeXvantaOS Studio is an open, extensible platform for developers and researchers to build, analyze, and collaborate on the future of code editing.
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <Button size="lg" asChild>
@@ -132,7 +132,7 @@ export default function LandingPage() {
       <footer className="border-t py-6 md:py-8">
         <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} EcoDev AI Studio. All rights reserved.
+            © {new Date().getFullYear()} MyCodeXvantaOS Studio. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="icon">

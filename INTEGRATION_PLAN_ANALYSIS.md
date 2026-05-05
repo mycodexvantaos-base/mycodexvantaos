@@ -541,7 +541,7 @@ export class SecuritySecretsService {
 | 任务 | 预计时间 | 负责模块 | 交付物 |
 |------|----------|----------|--------|
 | 共享组件提取 | 3 天 | shared/ | 组件库 |
-| Launch Pad 整合 | 4 天 | launch-pad | 统一入口 |
+| Launch Pad 整合 | 4 天 | app-dev-studio | 统一入口 |
 | API 文档生成 | 2 天 | docs/ | OpenAPI 规格 |
 | 性能基准测试 | 2 天 | benchmark/ | 性能报告 |
 

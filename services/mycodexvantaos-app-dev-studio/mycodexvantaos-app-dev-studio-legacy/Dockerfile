@@ -1,4 +1,4 @@
-# Dockerfile for mycodexvantaos-launch-pad
+# Dockerfile for mycodexvantaos-app-dev-studio
 # Multi-stage build for optimized production image
 
 # Stage 1: Build

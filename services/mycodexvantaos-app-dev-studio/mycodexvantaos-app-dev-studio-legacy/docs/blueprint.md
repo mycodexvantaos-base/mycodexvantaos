@@ -1,4 +1,4 @@
-# **App Name**: EcoDev AI Studio
+# **App Name**: MyCodeXvantaOS Studio
 
 ## Core Features:
 

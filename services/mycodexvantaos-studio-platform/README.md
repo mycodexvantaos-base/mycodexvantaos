@@ -1,4 +1,4 @@
-# EcoDev AI Studio Platform
+# MyCodeXvantaOS Studio Platform
 
 A Next.js 15 application following MyCodeXvantaOS Provider Architecture with native-first design principles.
 

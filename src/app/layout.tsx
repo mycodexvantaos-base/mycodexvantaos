@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'EcoDev AI Studio',
+  title: 'MyCodeXvantaOS Studio',
   description: 'AI-Powered Code Editor and Research Platform',
 };
 

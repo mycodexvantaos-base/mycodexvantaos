@@ -1,10 +1,10 @@
 # config/config.yaml
-# Default configuration for mycodexvantaos-launch-pad
+# Default configuration for mycodexvantaos-app-dev-studio
 # This file contains service-specific configuration
 
 # Service configuration
 service:
-  name: mycodexvantaos-launch-pad
+  name: mycodexvantaos-app-dev-studio
   version: v1.0.0
   environment: production
 
@@ -23,7 +23,7 @@ logging:
   outputs:
     - stdout
   fields:
-    service: mycodexvantaos-launch-pad
+    service: mycodexvantaos-app-dev-studio
 
 # Metrics configuration
 metrics:

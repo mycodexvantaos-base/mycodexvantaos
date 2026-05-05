@@ -81,7 +81,7 @@ Priority 1 actions focused on resolving critical infrastructure gaps in the MyCo
   - mycodexvantaos-ai-team-service
   - mycodexvantaos-app-dev-studio
   - mycodexvantaos-app-validation
-  - mycodexvantaos-launch-pad
+  - mycodexvantaos-app-dev-studio
   - mycodexvantaos-platform-validation
   - mycodexvantaos-studio-platform
 

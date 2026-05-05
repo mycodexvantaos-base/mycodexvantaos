@@ -6,8 +6,8 @@ export async function GET() {
 
   // In a real app, you'd fetch this from a database or auth service
   const userProfile = {
-    name: 'Eco Developer',
-    email: 'dev@ecostudio.ai',
+    name: 'VantaOS Developer',
+    email: 'admin@mycodexvantaos.dev',
     avatarUrl: userAvatar?.imageUrl || 'https://picsum.photos/seed/user1/40/40',
     avatarHint: userAvatar?.imageHint || 'person portrait',
   };

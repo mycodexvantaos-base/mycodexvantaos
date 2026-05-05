@@ -212,7 +212,7 @@ MyCodeXvantaOS implements a six-layer architecture model that provides clear sep
 - Coordinate service updates and rollbacks
 
 **Key Services:**
-- mycodexvantaos-launch-pad - Launch and deployment service
+- mycodexvantaos-app-dev-studio - Launch and deployment service
 - mycodexvantaos-app-validation - Application validation
 - mycodexvantaos-platform-validation - Platform validation
 - All microservices in the `services/` directory
@@ -518,7 +518,7 @@ The CI pipeline enforces:
 ### Platform Services (4 services)
 
 15. **mycodexvantaos-governance-policy** - Governance policy engine
-16. **mycodexvantaos-launch-pad** - Deployment launch service
+16. **mycodexvantaos-app-dev-studio** - Deployment launch service
 17. **mycodexvantaos-platform-notification** - Notification system
 18. **mycodexvantaos-platform-observability** - Observability platform
 

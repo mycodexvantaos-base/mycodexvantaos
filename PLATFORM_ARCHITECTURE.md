@@ -34,7 +34,7 @@ MyCodexVantaOS is organized into six distinct architectural layers, each with cl
 │                    MyCodexVantaOS Platform                      │
 ├─────────────────────────────────────────────────────────────────┤
 │  Layer A — Application Layer                                    │
-│  Builder · UI Generator · App Dev Studio (EcoDev AI Studio)    │
+│  Builder · UI Generator · App Dev Studio (MyCodeXvantaOS Studio)    │
 ├─────────────────────────────────────────────────────────────────┤
 │  Layer B — Runtime & Execution Layer                            │
 │  Runtime · Execution Engine · Background Job Runtime           │

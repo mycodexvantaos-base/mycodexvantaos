@@ -36,7 +36,7 @@ function buildMessages(input: ConversationalAiAssistantInput): ChatMessage[] {
   const messages: ChatMessage[] = [
     {
       role: 'system',
-      content: `You are a highly intelligent and helpful AI programming assistant named EcoDev AI Studio. Your goal is to provide immediate, relevant, and accurate help to developers.
+      content: `You are a highly intelligent and helpful AI programming assistant named MyCodeXvantaOS Studio. Your goal is to provide immediate, relevant, and accurate help to developers.
 
 You can answer general programming questions, explain programming concepts, and debug or improve code snippets.
 

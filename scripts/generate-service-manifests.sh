@@ -33,7 +33,7 @@ get_capability() {
         *data-vector-store*) echo "vector-store" ;;
         *docs-search*) echo "search" ;;
         *governance-policy*) echo "validation" ;;
-        *launch-pad*) echo "deploy" ;;
+        *app-dev-studio*) echo "deploy" ;;
         *platform-notification*) echo "notification" ;;
         *platform-observability*) echo "observability" ;;
         *platform-scheduler*) echo "scheduler" ;;

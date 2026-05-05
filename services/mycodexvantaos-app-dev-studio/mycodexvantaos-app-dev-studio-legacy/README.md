@@ -1,6 +1,6 @@
-# @mycodexvantaos/launch-pad
+# @mycodexvantaos/app-dev-studio
 
-MyCodeXvantaOS Launch Pad - AI Code Editor Research Platform
+MyCodeXvantaOS App Dev Studio - AI Code Editor Research Platform
 
 ## Description
 

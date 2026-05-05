@@ -57,13 +57,13 @@ export function Header() {
         </Link>
         <Menubar className="border-none bg-transparent p-0">
           <MenubarMenu>
-            <MenubarTrigger className="font-semibold text-base font-headline">EcoDev AI Studio</MenubarTrigger>
+            <MenubarTrigger className="font-semibold text-base font-headline">MyCodeXvantaOS Studio</MenubarTrigger>
             <MenubarContent>
-              <MenubarItem>About EcoDev AI Studio</MenubarItem>
+              <MenubarItem>About MyCodeXvantaOS Studio</MenubarItem>
               <MenubarSeparator />
               <MenubarItem>Preferences...</MenubarItem>
               <MenubarSeparator />
-              <MenubarItem>Quit EcoDev AI Studio</MenubarItem>
+              <MenubarItem>Quit MyCodeXvantaOS Studio</MenubarItem>
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
