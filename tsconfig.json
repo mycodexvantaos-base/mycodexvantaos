@@ -3,7 +3,9 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "commonjs",
-    "lib": ["ES2020"],
+    "lib": [
+      "ES2020"
+    ],
     "declaration": true,
     "strict": true,
     "noImplicitAny": false,
@@ -26,46 +28,125 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@mycodexvantaos/core-kernel": ["packages/core-kernel/src"],
-      "@mycodexvantaos/core-config": ["packages/core-config/src"],
-      "@mycodexvantaos/core-auth": ["packages/core-auth/src"],
-      "@mycodexvantaos/core-gateway": ["packages/core-gateway/src"],
-      "@mycodexvantaos/ai-llm": ["packages/ai-llm/src"],
-      "@mycodexvantaos/ai-agent": ["packages/ai-agent/src"],
-      "@mycodexvantaos/ai-embedding": ["packages/ai-embedding/src"],
-      "@mycodexvantaos/ai-memory": ["packages/ai-memory/src"],
-      "@mycodexvantaos/database": ["packages/database/src"],
-      "@mycodexvantaos/storage": ["packages/storage/src"],
-      "@mycodexvantaos/events": ["packages/events/src"],
-      "@mycodexvantaos/monitoring": ["packages/monitoring/src"],
-      "@mycodexvantaos/deployment": ["packages/deployment/src"],
-      "@mycodexvantaos/builder": ["packages/builder/src"],
-      "@mycodexvantaos/runtime": ["packages/runtime/src"],
-      "@mycodexvantaos/providers": ["packages/providers/src"],
-      "@mycodexvantaos/data-vector-store": ["packages/data-vector-store/src"],
-      "@mycodexvantaos/data-graph": ["packages/data-graph/src"],
-      "@mycodexvantaos/data-pipeline": ["packages/data-pipeline/src"],
-      "@mycodexvantaos/platform-observability": ["packages/platform-observability/src"],
-      "@mycodexvantaos/platform-notification": ["packages/platform-notification/src"],
-      "@mycodexvantaos/platform-scheduler": ["packages/platform-scheduler/src"],
-      "@mycodexvantaos/security-secrets": ["packages/security-secrets/src"],
-      "@mycodexvantaos/security-validation": ["packages/security-validation/src"],
-      "@mycodexvantaos/governance-policy": ["packages/governance-policy/src"],
-      "@mycodexvantaos/config-sync": ["packages/config-sync/src"],
-      "@mycodexvantaos/service-discovery": ["packages/service-discovery/src"],
-      "@mycodexvantaos/docs-search": ["packages/docs-search/src"],
+      "@mycodexvantaos/core-kernel": [
+        "packages/core-kernel/src"
+      ],
+      "@mycodexvantaos/core-config": [
+        "packages/core-config/src"
+      ],
+      "@mycodexvantaos/core-auth": [
+        "packages/core-auth/src"
+      ],
+      "@mycodexvantaos/core-gateway": [
+        "packages/core-gateway/src"
+      ],
+      "@mycodexvantaos/ai-llm": [
+        "packages/ai-llm/src"
+      ],
+      "@mycodexvantaos/ai-agent": [
+        "packages/ai-agent/src"
+      ],
+      "@mycodexvantaos/ai-embedding": [
+        "packages/ai-embedding/src"
+      ],
+      "@mycodexvantaos/ai-memory": [
+        "packages/ai-memory/src"
+      ],
+      "@mycodexvantaos/database": [
+        "packages/database/src"
+      ],
+      "@mycodexvantaos/storage": [
+        "packages/storage/src"
+      ],
+      "@mycodexvantaos/events": [
+        "packages/events/src"
+      ],
+      "@mycodexvantaos/monitoring": [
+        "packages/monitoring/src"
+      ],
+      "@mycodexvantaos/deployment": [
+        "packages/deployment/src"
+      ],
+      "@mycodexvantaos/builder": [
+        "packages/builder/src"
+      ],
+      "@mycodexvantaos/runtime": [
+        "packages/runtime/src"
+      ],
+      "@mycodexvantaos/providers": [
+        "packages/providers/src"
+      ],
+      "@mycodexvantaos/data-vector-store": [
+        "packages/data-vector-store/src"
+      ],
+      "@mycodexvantaos/data-graph": [
+        "packages/data-graph/src"
+      ],
+      "@mycodexvantaos/data-pipeline": [
+        "packages/data-pipeline/src"
+      ],
+      "@mycodexvantaos/platform-observability": [
+        "packages/platform-observability/src"
+      ],
+      "@mycodexvantaos/platform-notification": [
+        "packages/platform-notification/src"
+      ],
+      "@mycodexvantaos/platform-scheduler": [
+        "packages/platform-scheduler/src"
+      ],
+      "@mycodexvantaos/security-secrets": [
+        "packages/security-secrets/src"
+      ],
+      "@mycodexvantaos/security-validation": [
+        "packages/security-validation/src"
+      ],
+      "@mycodexvantaos/governance-policy": [
+        "packages/governance-policy/src"
+      ],
+      "@mycodexvantaos/config-sync": [
+        "packages/config-sync/src"
+      ],
+      "@mycodexvantaos/service-discovery": [
+        "packages/service-discovery/src"
+      ],
+      "@mycodexvantaos/docs-search": [
+        "packages/docs-search/src"
+      ],
       "@mycodexvantaos/*": [
         "packages/*/src",
         "modules/*/src",
         "services/*/src"
+      ],
+      "@/*": [
+        "./src/*"
       ]
     },
-    "jsx": "react-jsx"
+    "jsx": "preserve",
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
-    "packages/**/*.ts",
+    "ci/**/*.ts",
     "modules/**/*.ts",
-    "ci/**/*.ts"
+    "packages/**/*.ts",
+    ".next/types/**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/__tests__/**", "services", "src", "*.ts", "simulation-global.ts"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/__tests__/**",
+    "services",
+    "*.ts",
+    "simulation-global.ts"
+  ]
 }
