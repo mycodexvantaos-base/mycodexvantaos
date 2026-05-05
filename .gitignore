@@ -58,3 +58,9 @@ summarized_conversations/
 
 # uploaded archives
 *.zip
+
+# Temporary files
+.screenshots/
+deploy_out/
+dev.log
+*.sentinel-backup
