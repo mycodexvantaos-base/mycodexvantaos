@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import {
   DropdownMenu,
@@ -23,6 +22,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/icons/logo';
+import { Badge } from '@/components/ui/badge';
 
 type UserProfile = {
   name: string;
@@ -50,88 +50,82 @@ export function Header() {
   }, []);
 
   return (
-    <header className="flex h-12 items-center justify-between border-b border-border px-4">
-      <div className="flex items-center gap-4">
-        <Link href="/" className="flex items-center gap-2">
-          <Logo className="h-7 w-7 text-primary" />
+    <header className="flex h-14 items-center justify-between border-b border-border bg-card/80 backdrop-blur-md px-4">
+      <div className="flex items-center gap-6">
+        <Link href="/" className="flex items-center gap-2 group">
+          <Logo className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
+          <div className="flex flex-col">
+            <span className="font-bold text-sm font-headline leading-none">MyCodeXvantaOS</span>
+            <span className="text-[8px] uppercase tracking-widest text-primary font-bold">Era-3 Sovereign Core (P3)</span>
+          </div>
         </Link>
-        <Menubar className="border-none bg-transparent p-0">
+        <Menubar className="border-none bg-transparent p-0 hidden md:flex">
           <MenubarMenu>
-            <MenubarTrigger className="font-semibold text-base font-headline">MyCodeXvantaOS Studio</MenubarTrigger>
+            <MenubarTrigger className="text-xs font-medium cursor-pointer">平台</MenubarTrigger>
             <MenubarContent>
-              <MenubarItem>About MyCodeXvantaOS Studio</MenubarItem>
+              <MenubarItem>關於 Era-3</MenubarItem>
               <MenubarSeparator />
-              <MenubarItem>Preferences...</MenubarItem>
+              <MenubarItem>主權偏好設定...</MenubarItem>
               <MenubarSeparator />
-              <MenubarItem>Quit MyCodeXvantaOS Studio</MenubarItem>
+              <MenubarItem>切換 Reality 映射模式</MenubarItem>
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
-            <MenubarTrigger>File</MenubarTrigger>
+            <MenubarTrigger className="text-xs font-medium cursor-pointer">核心</MenubarTrigger>
             <MenubarContent>
-              <MenubarItem>New File <MenubarShortcut>⌘N</MenubarShortcut></MenubarItem>
-              <MenubarItem>New Window</MenubarItem>
+              <MenubarItem>新建 Reality 節點 <MenubarShortcut>⌘N</MenubarShortcut></MenubarItem>
+              <MenubarItem>主權協作面板</MenubarItem>
               <MenubarSeparator />
-              <MenubarItem>Open File...</MenubarItem>
-              <MenubarItem>Open Project...</MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem>Save</MenubarItem>
-              <MenubarItem>Save As...</MenubarItem>
+              <MenubarItem>同步到 Reality Mesh</MenubarItem>
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
-            <MenubarTrigger>Edit</MenubarTrigger>
+            <MenubarTrigger className="text-xs font-medium cursor-pointer">治理</MenubarTrigger>
             <MenubarContent>
-                <MenubarItem>Undo</MenubarItem>
-                <MenubarItem>Redo</MenubarItem>
+                <MenubarItem>Era-3 P3 合成擴張</MenubarItem>
+                <MenubarItem>跨節點主權協同</MenubarItem>
                 <MenubarSeparator />
-                <MenubarItem>Cut</MenubarItem>
-                <MenubarItem>Copy</MenubarItem>
-                <MenubarItem>Paste</MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-          <MenubarMenu>
-            <MenubarTrigger>View</MenubarTrigger>
-             <MenubarContent>
-                <MenubarItem>Appearance</MenubarItem>
-                <MenubarItem>Editor Layout</MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-           <MenubarMenu>
-            <MenubarTrigger>Help</MenubarTrigger>
-             <MenubarContent>
-                <MenubarItem>Documentation</MenubarItem>
-                <MenubarItem>Show Release Notes</MenubarItem>
+                <MenubarItem>查看 Synthesis 報告</MenubarItem>
             </MenubarContent>
           </MenubarMenu>
         </Menubar>
       </div>
+      
       <div className="flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/20">
+          <div className="h-2 w-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#2663D9]"></div>
+          <span className="text-[10px] font-code text-primary uppercase tracking-wider">Era-3 P3 Synthesis Expansion Active</span>
+        </div>
+        
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-              <Avatar className="h-8 w-8">
+            <Button variant="ghost" className="relative h-9 w-9 rounded-full ring-offset-background transition-all hover:ring-2 hover:ring-primary">
+              <Avatar className="h-9 w-9 border border-border">
                 {userProfile ? (
                   <AvatarImage src={userProfile.avatarUrl} alt="User Avatar" data-ai-hint={userProfile.avatarHint} />
                 ) : (
-                   <div className="h-8 w-8 rounded-full bg-muted animate-pulse" />
+                   <div className="h-full w-full bg-muted animate-pulse" />
                 )}
-                <AvatarFallback>
-                  {userProfile ? userProfile.name.charAt(0).toUpperCase() : ''}
+                <AvatarFallback className="bg-secondary text-xs">
+                  {userProfile ? userProfile.name.charAt(0).toUpperCase() : 'OS'}
                 </AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>{userProfile ? userProfile.name : 'My Account'}</DropdownMenuLabel>
-            {userProfile && <DropdownMenuSeparator />}
-            {userProfile && <DropdownMenuItem disabled className="text-xs text-muted-foreground">{userProfile.email}</DropdownMenuItem>}
+          <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuLabel className="flex flex-col">
+              <span className="font-bold">{userProfile ? userProfile.name : '主權管理員'}</span>
+              <span className="text-xs text-muted-foreground font-normal">{userProfile ? userProfile.email : 'sovereign@mycodexvantaos.local'}</span>
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Subscription</DropdownMenuItem>
+            <DropdownMenuItem className="text-xs">
+              帳戶角色
+              <Badge variant="outline" className="ml-auto text-[10px] h-4 bg-primary/10 text-primary border-primary/20">Sovereign Architect</Badge>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem asChild><Link href="/">Log out</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild className="text-xs text-destructive focus:text-destructive">
+               <Link href="/">登出主權智能</Link>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

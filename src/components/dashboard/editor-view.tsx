@@ -1,84 +1,80 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { X } from 'lucide-react';
+import { X, Cpu, Layers } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const sampleCode = `
-import { useState } from 'react';
-
-type GreeterProps = {
-  name: string;
-};
+import { PieceTable } from '@/core/kernel/textBuffer';
+import { ViewportRenderer } from '@/core/kernel/rendering';
 
 /**
- * A simple component to greet a user.
- * @param name The name of the user to greet.
- * @returns A JSX element with a greeting.
+ * @MyCodeXvantaOS 核心渲染邏輯
+ * 採用 Piece Table 數據結構優化超大文件處理 (O(1) 行查詢)
+ * 結合 Viewport Virtualization 確保 60fps 滾動效能
  */
-function Greeter({ name }: GreeterProps) {
-  const [count, setCount] = useState(0);
+class EditorEngine {
+  private buffer: PieceTable;
+  private renderer: ViewportRenderer;
 
-  const increment = () => {
-    setCount(prevCount => prevCount + 1);
-  };
+  constructor(content: string) {
+    this.buffer = new PieceTable(content);
+    this.renderer = new ViewportRenderer({
+      lineHeight: 18,
+      virtualization: true,
+      gpuAcceleration: true
+    });
+  }
 
-  return (
-    <div className="p-4 bg-gray-800 rounded-lg">
-      <h1 className="text-2xl text-white">
-        Hello, {name}!
-      </h1>
-      <p className="text-gray-400 mt-2">
-        You've clicked the button {count} times.
-      </p>
-      <button 
-        onClick={increment}
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-      >
-        Click me
-      </button>
-    </div>
-  );
+  public render(viewportHeight: number) {
+    const visibleLines = this.renderer.calculateVisibleRange(viewportHeight);
+    return this.buffer.getRange(visibleLines);
+  }
 }
 
-export default Greeter;
+export default EditorEngine;
 `.trim();
 
 export function EditorView() {
   return (
     <div className="flex h-full flex-col bg-background">
-      <Tabs defaultValue="editor-view.tsx" className="flex h-full flex-col">
-        <div className="border-b border-border">
+      <div className="flex items-center justify-between border-b border-border bg-card/30 px-2 h-10">
+        <Tabs defaultValue="editor-view.tsx" className="flex-1">
           <TabsList className="h-10 justify-start rounded-none bg-transparent p-0">
-            <TabsTrigger value="page.tsx" className="h-10 rounded-none border-b-2 border-transparent bg-transparent px-4 py-2 text-muted-foreground shadow-none data-[state=active]:border-accent data-[state=active]:bg-secondary/30 data-[state=active]:text-foreground">
-              page.tsx
-              <X className="ml-2 h-3.5 w-3.5 text-muted-foreground/50 hover:text-foreground" />
-            </TabsTrigger>
-            <TabsTrigger value="editor-view.tsx" className="h-10 rounded-none border-b-2 border-transparent bg-transparent px-4 py-2 text-muted-foreground shadow-none data-[state=active]:border-accent data-[state=active]:bg-secondary/30 data-[state=active]:text-foreground">
+            <TabsTrigger value="editor-view.tsx" className="h-10 rounded-none border-b-2 border-transparent bg-transparent px-4 py-2 text-xs text-muted-foreground shadow-none data-[state=active]:border-accent data-[state=active]:bg-secondary/30 data-[state=active]:text-foreground">
               editor-view.tsx
-              <X className="ml-2 h-3.5 w-3.5 text-muted-foreground/50 hover:text-foreground" />
-            </TabsTrigger>
-             <TabsTrigger value="header.tsx" className="h-10 rounded-none border-b-2 border-transparent bg-transparent px-4 py-2 text-muted-foreground shadow-none data-[state=active]:border-accent data-[state=active]:bg-secondary/30 data-[state=active]:text-foreground">
-              header.tsx
-              <X className="ml-2 h-3.5 w-3.5 text-muted-foreground/50 hover:text-foreground" />
+              <X className="ml-2 h-3 w-3 text-muted-foreground/50 hover:text-foreground" />
             </TabsTrigger>
           </TabsList>
+        </Tabs>
+        <div className="flex items-center gap-2 px-2">
+           <Badge variant="outline" className="text-[8px] bg-primary/5 text-primary border-primary/20 h-5 flex gap-1">
+             <Cpu className="h-2 w-2" /> PIECE-TABLE ACTIVE
+           </Badge>
+           <Badge variant="outline" className="text-[8px] bg-accent/5 text-accent border-accent/20 h-5 flex gap-1">
+             <Layers className="h-2 w-2" /> VIRTUAL-RENDER ON
+           </Badge>
         </div>
-        <TabsContent value="editor-view.tsx" className="flex-1 overflow-hidden p-0 m-0">
-          <ScrollArea className="h-full">
-            <div className="flex text-sm font-code">
-              <div className="w-12 select-none py-4 text-right text-muted-foreground/50">
-                {Array.from({ length: 32 }, (_, i) => (
-                  <div key={i} className="px-4">{i + 1}</div>
-                ))}
-              </div>
-              <pre className="flex-1 py-4">
-                <code className="text-foreground">{sampleCode}</code>
-              </pre>
+      </div>
+      
+      <div className="flex-1 overflow-hidden relative">
+        <ScrollArea className="h-full">
+          <div className="flex text-xs font-code">
+            <div className="w-10 select-none py-4 text-right text-muted-foreground/30 border-r border-border/20 bg-secondary/5">
+              {Array.from({ length: 30 }, (_, i) => (
+                <div key={i} className="px-3">{i + 1}</div>
+              ))}
             </div>
-          </ScrollArea>
-        </TabsContent>
-        <TabsContent value="page.tsx" className="flex-1 p-4">Empty file: page.tsx</TabsContent>
-        <TabsContent value="header.tsx" className="flex-1 p-4">Empty file: header.tsx</TabsContent>
-      </Tabs>
+            <pre className="flex-1 py-4 px-4 overflow-x-auto">
+              <code className="text-foreground/90">{sampleCode}</code>
+            </pre>
+          </div>
+        </ScrollArea>
+        
+        {/* 背景裝飾：架構水印 */}
+        <div className="absolute bottom-4 right-6 opacity-5 pointer-events-none select-none">
+           <p className="text-6xl font-black italic">MYCODEXVANTAOS</p>
+        </div>
+      </div>
     </div>
   );
 }

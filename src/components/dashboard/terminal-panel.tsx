@@ -22,11 +22,11 @@ export function TerminalPanel() {
         <TabsContent value="terminal" className="flex-1 overflow-hidden p-0 m-0">
           <ScrollArea className="h-full">
             <pre className="p-4 text-xs font-code text-muted-foreground">
-              <p>MyCodeXvantaOS Studio v1.0.0</p>
+              <p>EcoDev AI Studio v1.0.0</p>
               <p>
-                <span className="text-accent">user@mycodexvantaos</span>
+                <span className="text-accent">user@ecostudio</span>
                 <span className="text-primary">:</span>
-                <span className="text-blue-400">~/mycodexvantaos/studio</span>
+                <span className="text-blue-400">~/projects/ecostudio</span>
                 <span className="text-primary">$ </span>
                 <span>npm install</span>
               </p>
@@ -34,9 +34,9 @@ export function TerminalPanel() {
               <p>210 packages are looking for funding</p>
               <p>  run `npm fund` for details</p>
               <p>
-                <span className="text-accent">user@mycodexvantaos</span>
+                <span className="text-accent">user@ecostudio</span>
                 <span className="text-primary">:</span>
-                <span className="text-blue-400">~/mycodexvantaos/studio</span>
+                <span className="text-blue-400">~/projects/ecostudio</span>
                 <span className="text-primary">$ </span>
                 <span className="animate-pulse">|</span>
               </p>

@@ -4,95 +4,59 @@
 
 @layer base {
   :root {
-    --background: 220 20% 4%;
-    --foreground: 220 10% 98%;
-    --card: 220 20% 6%;
-    --card-foreground: 220 10% 98%;
-    --popover: 220 20% 4%;
-    --popover-foreground: 220 10% 98%;
-    --primary: 180 100% 50%; /* Cyan-Teal for high-tech feel */
-    --primary-foreground: 180 100% 10%;
-    --secondary: 220 20% 12%;
-    --secondary-foreground: 220 10% 98%;
-    --muted: 220 20% 12%;
-    --muted-foreground: 220 10% 60%;
-    --accent: 45 100% 50%; /* Gold for high-value alerts */
-    --accent-foreground: 220 20% 4%;
-    --destructive: 0 84.2% 60.2%;
+    /* MyCodeXvantaOS 品牌色系 - 專業深邃版 */
+    --background: 222 61% 3%; 
+    --foreground: 210 40% 98%;
+    --card: 222 47% 5%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 5%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 221 70% 50%; 
+    --primary-foreground: 210 40% 98%;
+    --secondary: 222 30% 10%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 222 30% 10%;
+    --muted-foreground: 215 20% 60%;
+    --accent: 160 68% 60%; 
+    --accent-foreground: 222 61% 3%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-    --border: 220 20% 15%;
-    --input: 220 20% 15%;
-    --ring: 180 100% 50%;
-    --chart-1: 180 100% 50%;
-    --chart-2: 45 100% 50%;
-    --chart-3: 220 10% 98%;
-    --radius: 0.25rem;
-    --sidebar-background: 220 25% 3%;
-    --sidebar-foreground: 220 10% 85%;
-    --sidebar-primary: 180 100% 50%;
-    --sidebar-primary-foreground: 180 100% 10%;
-    --sidebar-accent: 220 20% 10%;
-    --sidebar-accent-foreground: 220 10% 100%;
-    --sidebar-border: 220 20% 10%;
-    --sidebar-ring: 180 100% 50%;
+    --border: 222 30% 15%;
+    --input: 222 30% 15%;
+    --ring: 221 70% 50%;
+    --radius: 0.75rem;
   }
 }
 
 @layer base {
-  * { @apply border-border; }
-  body { @apply bg-background text-foreground font-body antialiased; }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  code, pre {
+    @apply font-code;
+  }
 }
 
-.font-headline { font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: -0.025em; }
-.font-mono { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
-
-/* Industrial glass effect */
 .glass-panel {
-  background: rgba(10, 12, 16, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  @apply bg-card/60 backdrop-blur-xl border border-white/5 shadow-2xl;
 }
 
-/* Scanline effect for high-tech feel */
-.scanline {
-  position: relative;
-  overflow: hidden;
-}
-.scanline::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 255, 0.02) 50%);
-  background-size: 100% 4px;
-  pointer-events: none;
-  z-index: 100;
+.neon-glow {
+  text-shadow: 0 0 15px hsl(var(--accent) / 0.6);
 }
 
-@keyframes flicker {
-  0% { opacity: 0.97; }
-  5% { opacity: 0.95; }
-  10% { opacity: 0.9; }
-  15% { opacity: 0.95; }
-  20% { opacity: 0.98; }
-  25% { opacity: 0.95; }
-  30% { opacity: 0.9; }
-  100% { opacity: 1; }
+.primary-glow {
+  box-shadow: 0 0 30px hsl(var(--primary) / 0.25);
 }
 
-.animate-flicker {
-  animation: flicker 0.1s infinite;
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: hsl(var(--border));
-  border-radius: 2px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary));
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
