@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { AdminHeader } from '@/components/dashboard/header';
+import { Header } from '@/components/dashboard/header';
 import { IconSidebar } from '@/components/dashboard/icon-sidebar';
 import { AiPanel } from '@/components/dashboard/ai-panel';
 import { StatusBar } from '@/components/dashboard/status-bar';
@@ -17,7 +17,7 @@ export default function DashboardLayout({
   return (
     <TooltipProvider delayDuration={0}>
       <div className="flex h-screen flex-col bg-background text-foreground font-body">
-        <AdminHeader />
+        <Header />
         <div className="flex flex-1 overflow-hidden">
           <IconSidebar />
           <div className="flex flex-1 flex-col overflow-hidden">
