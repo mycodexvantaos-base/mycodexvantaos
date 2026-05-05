@@ -1,0 +1,89 @@
+# service-manifest.yaml
+# Service manifest for mycodexvantaos-app-dev-studio
+# Generated automatically by MyCodeXvantaOS governance tooling
+# Do not edit manually unless you know what you're doing
+
+apiVersion: mycodexvantaos.org/v1
+kind: ServiceManifest
+metadata:
+  name: mycodexvantaos-app-dev-studio
+  namespace: mycodexvantaos
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-app-dev-studio
+    app.kubernetes.io/part-of: mycodexvantaos
+    app.kubernetes.io/version: v1.0.0
+    layer: Deployment
+    capability: deploy
+  annotations:
+    governance.mycodexvantaos.org/spec: platform-governance-spec-v1.0.0
+    governance.mycodexvantaos.org/last-audit-date: 2026-05-04T11:33:07Z
+
+spec:
+  # Service identification
+  serviceName: mycodexvantaos-app-dev-studio
+  serviceVersion: v1.0.0
+  
+  # Layer and capability mapping
+  layer: Deployment
+  capability: deploy
+  
+  # Service configuration
+  description: MyCodeXvantaOS mycodexvantaos-app-dev-studio service
+  category: platform
+  
+  # Health and availability
+  healthCheck:
+    enabled: true
+    endpoint: /health
+    interval: 30s
+    timeout: 5s
+    failureThreshold: 3
+  
+  # Resource requirements
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  
+  # Ports
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  
+  # Environment
+  env:
+    - name: NODE_ENV
+      value: "production"
+    - name: LOG_LEVEL
+      value: "info"
+  
+  # Dependencies
+  dependencies:
+    - name: mycodexvantaos-core-kernel
+      required: true
+    - name: mycodexvantaos-core-config
+      required: true
+  
+  # Security
+  security:
+    serviceAccountName: mycodexvantaos-app-dev-studio
+    rbac:
+      enabled: true
+  
+  # Observability
+  observability:
+    metrics:
+      enabled: true
+      port: 9090
+      path: /metrics
+    tracing:
+      enabled: true
+      samplingRate: 0.1
+    logging:
+      level: info
+      format: json

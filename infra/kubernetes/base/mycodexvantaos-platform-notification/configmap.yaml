@@ -1,0 +1,10 @@
+# infra/kubernetes/base/mycodexvantaos-platform-notification/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycodexvantaos-platform-notification
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-platform-notification
+data:
+  MYCODEXVANTAOS_MYCODEXVANTAOS_PLATFORM_NOTIFICATION_LOG_LEVEL: info
+  MYCODEXVANTAOS_MYCODEXVANTAOS_PLATFORM_NOTIFICATION_PORT: "3000"

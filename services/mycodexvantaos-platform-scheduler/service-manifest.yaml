@@ -1,0 +1,89 @@
+# service-manifest.yaml
+# Service manifest for mycodexvantaos-platform-scheduler
+# Generated automatically by MyCodeXvantaOS governance tooling
+# Do not edit manually unless you know what you're doing
+
+apiVersion: mycodexvantaos.org/v1
+kind: ServiceManifest
+metadata:
+  name: mycodexvantaos-platform-scheduler
+  namespace: mycodexvantaos
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-platform-scheduler
+    app.kubernetes.io/part-of: mycodexvantaos
+    app.kubernetes.io/version: v1.0.0
+    layer: Native Services
+    capability: scheduler
+  annotations:
+    governance.mycodexvantaos.org/spec: platform-governance-spec-v1.0.0
+    governance.mycodexvantaos.org/last-audit-date: 2026-05-04T11:33:07Z
+
+spec:
+  # Service identification
+  serviceName: mycodexvantaos-platform-scheduler
+  serviceVersion: v1.0.0
+  
+  # Layer and capability mapping
+  layer: Native Services
+  capability: scheduler
+  
+  # Service configuration
+  description: MyCodeXvantaOS mycodexvantaos-platform-scheduler service
+  category: platform
+  
+  # Health and availability
+  healthCheck:
+    enabled: true
+    endpoint: /health
+    interval: 30s
+    timeout: 5s
+    failureThreshold: 3
+  
+  # Resource requirements
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  
+  # Ports
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  
+  # Environment
+  env:
+    - name: NODE_ENV
+      value: "production"
+    - name: LOG_LEVEL
+      value: "info"
+  
+  # Dependencies
+  dependencies:
+    - name: mycodexvantaos-core-kernel
+      required: true
+    - name: mycodexvantaos-core-config
+      required: true
+  
+  # Security
+  security:
+    serviceAccountName: mycodexvantaos-platform-scheduler
+    rbac:
+      enabled: true
+  
+  # Observability
+  observability:
+    metrics:
+      enabled: true
+      port: 9090
+      path: /metrics
+    tracing:
+      enabled: true
+      samplingRate: 0.1
+    logging:
+      level: info
+      format: json

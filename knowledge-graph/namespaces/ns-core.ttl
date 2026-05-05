@@ -1,0 +1,12 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix :     <https://mycodexvantaos.org/ns/core#> .
+
+# Namespace IRI: https://mycodexvantaos.org/ns/core#
+# §10.1 — Domain: core
+# Terms: Service, Module, Capability, Policy
+
+<https://mycodexvantaos.org/ns/core>
+    a owl:Ontology ;
+    rdfs:label "mycodexvantaos core ontology" .

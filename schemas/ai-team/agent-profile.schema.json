@@ -1,0 +1,148 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:mycodexvantaos:schema:agent-profile",
+  "title": "AgentProfile",
+  "description": "Defines the identity, capabilities, and behavioral parameters of an AI agent in MyCodeXvantaOS",
+  "type": "object",
+  "required": ["id", "name", "role", "goal", "backstory", "allowed_tools", "version"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^urn:mycodexvantaos:agent:[a-z0-9-]+$",
+      "description": "Unique identifier following URN naming convention"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Human-readable name of the agent"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of the agent profile"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "architect",
+        "engineer",
+        "tester",
+        "reviewer",
+        "coordinator",
+        "analyst",
+        "ethicist",
+        "blockchain_expert",
+        "security_specialist",
+        "devops_engineer",
+        "data_scientist",
+        "custom"
+      ],
+      "description": "Primary role of the agent"
+    },
+    "goal": {
+      "type": "string",
+      "minLength": 10,
+      "description": "The primary objective this agent is designed to achieve"
+    },
+    "backstory": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Context and background that shapes the agent's behavior and decision-making"
+    },
+    "allowed_tools": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^urn:mycodexvantaos:tool:[a-z0-9-]+$"
+      },
+      "minItems": 0,
+      "description": "List of tool URNs this agent is authorized to use"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^urn:mycodexvantaos:capability:[a-z0-9-]+$"
+      },
+      "description": "Declared capabilities of this agent"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^urn:mycodexvantaos:(service|module|agent):[a-z0-9-]+$"
+      },
+      "description": "Services or modules this agent depends on"
+    },
+    "behavioral_parameters": {
+      "type": "object",
+      "properties": {
+        "creativity_level": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5
+        },
+        "risk_tolerance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.3
+        },
+        "verbosity": {
+          "type": "string",
+          "enum": ["concise", "normal", "detailed"],
+          "default": "normal"
+        },
+        "max_iterations": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 5,
+          "description": "Maximum number of self-correction iterations"
+        }
+      }
+    },
+    "memory_configuration": {
+      "type": "object",
+      "properties": {
+        "short_term_capacity": {
+          "type": "integer",
+          "minimum": 1000,
+          "maximum": 100000,
+          "default": 8000,
+          "description": "Token limit for short-term memory"
+        },
+        "long_term_enabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "memory_compression_threshold": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 1,
+          "default": 0.8,
+          "description": "Threshold to trigger memory compression"
+        }
+      }
+    },
+    "governance_tier": {
+      "type": "integer",
+      "minimum": -1,
+      "maximum": 3,
+      "default": 0,
+      "description": "Governance tier level (-1: experimental, 0: standard, 1: elevated, 2: high, 3: critical)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "experimental_controlled", "active", "deprecated", "retired"],
+      "default": "draft"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

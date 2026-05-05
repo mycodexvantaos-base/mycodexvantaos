@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/providers/validation/zod/config.schema.json",
+  "title": "validation-zod Configuration",
+  "type": "object",
+  "required": [],
+  "properties": {
+    "strictMode": {
+      "type": "boolean",
+      "default": true
+    },
+    "errorFormat": {
+      "type": "string",
+      "enum": [
+        "flat",
+        "nested"
+      ],
+      "default": "flat"
+    }
+  }
+}

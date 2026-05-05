@@ -1,0 +1,10 @@
+# infra/kubernetes/base/mycodexvantaos-ai-llm/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycodexvantaos-ai-llm
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-ai-llm
+data:
+  MYCODEXVANTAOS_MYCODEXVANTAOS_AI_LLM_LOG_LEVEL: info
+  MYCODEXVANTAOS_MYCODEXVANTAOS_AI_LLM_PORT: "3000"

@@ -1,0 +1,10 @@
+# infra/kubernetes/base/mycodexvantaos-data-graph/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycodexvantaos-data-graph
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-data-graph
+data:
+  MYCODEXVANTAOS_MYCODEXVANTAOS_DATA_GRAPH_LOG_LEVEL: info
+  MYCODEXVANTAOS_MYCODEXVANTAOS_DATA_GRAPH_PORT: "3000"

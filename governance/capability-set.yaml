@@ -1,0 +1,109 @@
+# governance/capability-set.yaml
+# Canonical capability set for mycodexvantaos platform.
+# Based on naming-spec-v1.md 5.5
+# This file is the authoritative source for all CI validators checking capability-id legality.
+# DO NOT add vendor names here — only abstract capability identifiers.
+
+apiVersion: mycodexvantaos.org/v1
+kind: CapabilitySet
+metadata:
+  name: canonical-capability-set
+  labels:
+    managed-by: naming-spec-v1
+    specRef: "5.5"
+
+capabilities:
+  - id: database
+    description: Relational database access and management.
+    category: data
+    stable: true
+
+  - id: storage
+    description: Object or file storage (blobs, assets, artifacts).
+    category: data
+    stable: true
+
+  - id: auth
+    description: Identity authentication and authorization.
+    category: security
+    stable: true
+
+  - id: queue
+    description: Message queue and event streaming.
+    category: infra
+    stable: true
+
+  - id: state-store
+    description: Key-value or distributed state storage.
+    category: data
+    stable: true
+
+  - id: secrets
+    description: Secret and credential management.
+    category: security
+    stable: true
+
+  - id: repo
+    description: Source code repository operations.
+    category: platform
+    stable: true
+
+  - id: deploy
+    description: Deployment execution and orchestration.
+    category: platform
+    stable: true
+
+  - id: validation
+    description: Data schema validation and enforcement.
+    category: governance
+    stable: true
+
+  - id: security
+    description: Security scanning, SAST, and vulnerability detection.
+    category: security
+    stable: true
+
+  - id: observability
+    description: Logging, metrics, and distributed tracing.
+    category: platform
+    stable: true
+
+  - id: notification
+    description: Outbound notification delivery (email, SMS, push).
+    category: platform
+    stable: true
+
+  - id: scheduler
+    description: Job scheduling and workflow orchestration.
+    category: platform
+    stable: true
+
+  - id: vector-store
+    description: Vector storage and approximate nearest-neighbor retrieval.
+    category: ai
+    stable: true
+
+  - id: embedding
+    description: Text or multimodal embedding generation.
+    category: ai
+    stable: true
+
+  - id: llm
+    description: Large language model inference and completions.
+    category: ai
+    stable: true
+
+  - id: graph
+    description: Knowledge graph storage and query.
+    category: data
+    stable: true
+
+  - id: cache
+    description: In-memory caching layer.
+    category: infra
+    stable: true
+
+  - id: search
+    description: Full-text search and indexing.
+    category: data
+    stable: true

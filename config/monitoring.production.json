@@ -1,0 +1,34 @@
+{
+  "enabled": true,
+  "metrics": {
+    "enabled": true,
+    "port": 9090,
+    "path": "/metrics"
+  },
+  "logging": {
+    "level": "info",
+    "format": "json",
+    "outputs": [
+      "console",
+      "file"
+    ],
+    "file_path": "/var/log/mycodexvantaos/app.log"
+  },
+  "tracing": {
+    "enabled": true,
+    "endpoint": "http://jaeger:14268/api/traces",
+    "sample_rate": 0.1
+  },
+  "alerts": {
+    "enabled": true,
+    "channels": [
+      "email",
+      "slack"
+    ],
+    "thresholds": {
+      "error_rate": 0.01,
+      "latency_ms": 5000,
+      "memory_mb": 512
+    }
+  }
+}

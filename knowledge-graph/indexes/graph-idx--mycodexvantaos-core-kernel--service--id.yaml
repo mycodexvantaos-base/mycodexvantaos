@@ -1,0 +1,14 @@
+# knowledge-graph/indexes/graph-idx--mycodexvantaos-core-kernel--service--id.yaml
+# 10.3 — Format: graph-idx--<service-id>--<label>--<property>
+apiVersion: mycodexvantaos.org/v1
+kind: GraphDbIndex
+metadata:
+  name: graph-idx--mycodexvantaos-core-kernel--service--id
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  serviceId: mycodexvantaos-core-kernel
+  nodeLabel: service
+  property: id
+  indexType: btree
+  unique: true

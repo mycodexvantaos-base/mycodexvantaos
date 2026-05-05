@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/providers/graph/neo4j/config.schema.json",
+  "title": "graph-neo4j Configuration",
+  "type": "object",
+  "required": [
+    "uri"
+  ],
+  "properties": {
+    "uri": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_GRAPH_NEO4J_URI",
+      "default": "bolt://localhost:7687"
+    },
+    "username": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_GRAPH_NEO4J_USER",
+      "default": "neo4j"
+    },
+    "password": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_GRAPH_NEO4J_PASSWORD"
+    },
+    "database": {
+      "type": "string",
+      "default": "neo4j"
+    }
+  }
+}

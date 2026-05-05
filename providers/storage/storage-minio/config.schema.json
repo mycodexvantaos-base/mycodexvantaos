@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/providers/storage/minio/config.schema.json",
+  "title": "storage-minio Configuration",
+  "type": "object",
+  "required": [
+    "endpoint"
+  ],
+  "properties": {
+    "endpoint": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_STORAGE_MINIO_ENDPOINT"
+    },
+    "bucket": {
+      "type": "string"
+    },
+    "accessKey": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_STORAGE_MINIO_ACCESS_KEY"
+    },
+    "secretKey": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_STORAGE_MINIO_SECRET_KEY"
+    }
+  }
+}

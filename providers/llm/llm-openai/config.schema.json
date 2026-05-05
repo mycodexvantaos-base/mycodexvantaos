@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/providers/llm/openai/config.schema.json",
+  "title": "llm-openai Configuration",
+  "type": "object",
+  "required": [
+    "apiKey"
+  ],
+  "properties": {
+    "apiKey": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_LLM_API_KEY"
+    },
+    "baseUrl": {
+      "type": "string",
+      "default": "https://api.openai.com/v1"
+    },
+    "defaultModel": {
+      "type": "string",
+      "default": "gpt-4o"
+    },
+    "maxRetries": {
+      "type": "integer",
+      "default": 3
+    },
+    "timeoutMs": {
+      "type": "integer",
+      "default": 30000
+    }
+  }
+}

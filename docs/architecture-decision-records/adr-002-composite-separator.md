@@ -1,0 +1,19 @@
+# ADR-002-COMPOSITE-SEPARATOR: Double-Hyphen as Composite Separator
+
+**Date**: 2026-04-18
+**Status**: Accepted
+**Spec Reference**: naming-spec-v1.md
+
+## Context
+
+Selects -- (double-hyphen) as the composite identifier separator to visually distinguish semantic hierarchy from single-word separators.
+
+## Decision
+
+Adopted as a hard rule in naming-spec-v1.md. Enforced by CI hard enforcement (14.1).
+
+## Consequences
+
+- Naming consistency is machine-verifiable across all platform resources.
+- Violations block merge via CI gate.
+- Exceptions require explicit registration in `governance/exceptions.yaml` (15).

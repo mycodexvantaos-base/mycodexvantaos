@@ -1,0 +1,214 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:mycodexvantaos:schema:agent-task",
+  "title": "AgentTask",
+  "description": "Defines a task that can be assigned to an AI agent",
+  "type": "object",
+  "required": ["id", "objective", "created_at", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^urn:mycodexvantaos:task:[a-z0-9-]+$",
+      "description": "Unique identifier for the task"
+    },
+    "parent_task_id": {
+      "type": ["string", "null"],
+      "pattern": "^urn:mycodexvantaos:task:[a-z0-9-]+$",
+      "description": "Parent task ID if this is a subtask"
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Clear statement of what needs to be accomplished"
+    },
+    "context": {
+      "type": "object",
+      "description": "Contextual information for task execution",
+      "properties": {
+        "background": {
+          "type": "string"
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["document", "code", "url", "artifact"]
+              },
+              "uri": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "decomposition": {
+      "type": "object",
+      "description": "Task decomposition into subtasks",
+      "properties": {
+        "strategy": {
+          "type": "string",
+          "enum": ["sequential", "parallel", "hybrid"]
+        },
+        "subtasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#"
+          }
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "subtask_id": {
+                "type": "string"
+              },
+              "depends_on": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "assigned_agents": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^urn:mycodexvantaos:agent:[a-z0-9-]+$"
+      },
+      "description": "Agents assigned to this task"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "normal", "high", "critical"],
+      "default": "normal"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "decomposing",
+        "assigned",
+        "in_progress",
+        "blocked",
+        "reviewing",
+        "completed",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "progress": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 0
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["success", "partial", "failure"]
+        },
+        "output": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "uri": {
+                "type": "string"
+              },
+              "checksum": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "metrics": {
+          "type": "object",
+          "properties": {
+            "execution_time_ms": {
+              "type": "integer"
+            },
+            "tokens_used": {
+              "type": "integer"
+            },
+            "iterations": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "object"
+        },
+        "retry_count": {
+          "type": "integer"
+        },
+        "recoverable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "started_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "deadline": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

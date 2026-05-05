@@ -1,0 +1,16 @@
+# vector-store/collections/mycodexvantaos-ai-memory--memories--bge-small-384.yaml
+# 9.2 — Format: <service-id>--<purpose>--<embedding-model-alias>
+apiVersion: mycodexvantaos.org/v1
+kind: VectorCollection
+metadata:
+  name: mycodexvantaos-ai-memory--memories--bge-small-384
+  serviceId: mycodexvantaos-ai-memory
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  purpose: memories
+  embeddingModelAlias: ollama--bge-small--384d
+  dimension: 384
+  provider: vector-store-pgvector
+  distanceMetric: cosine
+  indexType: hnsw

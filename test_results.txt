@@ -1,0 +1,9 @@
+
+> mycodexvantaos@ test /workspace/mycodexvantaos
+> jest --passWithNoTests --coverage --testTimeout=15000
+
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------|---------|----------|---------|---------|-------------------
+All files |       0 |        0 |       0 |       0 |                   
+----------|---------|----------|---------|---------|-------------------

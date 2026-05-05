@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/providers/deploy/argocd/config.schema.json",
+  "title": "deploy-argocd Configuration",
+  "type": "object",
+  "required": [
+    "serverUrl"
+  ],
+  "properties": {
+    "serverUrl": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_DEPLOY_ARGOCD_URL"
+    },
+    "token": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_DEPLOY_ARGOCD_TOKEN"
+    },
+    "project": {
+      "type": "string",
+      "default": "mycodexvantaos"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+# infra/kubernetes/base/mycodexvantaos-platform-observability/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mycodexvantaos-platform-observability
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-platform-observability
+spec:
+  selector:
+    app.kubernetes.io/name: mycodexvantaos-platform-observability
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+      protocol: TCP
+  type: ClusterIP

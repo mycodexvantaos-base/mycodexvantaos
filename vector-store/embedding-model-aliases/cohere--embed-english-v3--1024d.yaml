@@ -1,0 +1,15 @@
+# vector-store/embedding-model-aliases/cohere--embed-english-v3--1024d.yaml
+# 9.3 — Format: <provider>--<model-name>--<dimension>d
+apiVersion: mycodexvantaos.org/v1
+kind: EmbeddingModelAlias
+metadata:
+  name: cohere--embed-english-v3--1024d
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  provider: cohere
+  modelName: embed-english-v3
+  dimension: 1024
+  providerInstance: embedding-cohere
+  maxTokens: 512
+  description: "Cohere embed-english-v3. Strong English retrieval, 1024 dimensions."

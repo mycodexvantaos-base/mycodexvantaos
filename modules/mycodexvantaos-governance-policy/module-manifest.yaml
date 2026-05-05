@@ -1,0 +1,25 @@
+# modules/mycodexvantaos-governance-policy/module-manifest.yaml
+# 6.3 — metadata.name MUST equal the directory name and service-id exactly (6.4)
+apiVersion: mycodexvantaos.org/v1
+kind: Module
+metadata:
+  name: mycodexvantaos-governance-policy
+  labels:
+    mycodexvantaos.org/domain: governance
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  domain: governance
+  capabilities:
+    - database
+    - secrets
+    - observability
+  providers:
+    database: database-postgres
+    secrets: secrets-vault
+    observability: observability-opentelemetry
+  lifecycle:
+    stage: stable
+    since: "v1.0.0"
+  urn: "urn:mycodexvantaos:manifest:service:mycodexvantaos-governance-policy"
+  packageName: "@mycodexvantaos/governance-policy"
+  description: "Platform naming governance, policy management, and audit service."

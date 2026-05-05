@@ -1,0 +1,28 @@
+{
+  "name": "@mycodexvantaos/service-mesh",
+  "version": "1.0.0",
+  "description": "服務網格 for MyCodeXvantaOS - Layer A擴展",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "keywords": ["service-mesh", "servicemesh", "Layer A擴展", "mycodexvantaos"],
+  "author": "MyCodeXvantaOS",
+  "license": "MIT",
+  "dependencies": {
+    "@mycodexvantaos/runtime": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.40.0",
+    "prettier": "^2.8.8"
+  }
+}

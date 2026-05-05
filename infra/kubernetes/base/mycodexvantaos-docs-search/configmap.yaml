@@ -1,0 +1,10 @@
+# infra/kubernetes/base/mycodexvantaos-docs-search/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycodexvantaos-docs-search
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-docs-search
+data:
+  MYCODEXVANTAOS_MYCODEXVANTAOS_DOCS_SEARCH_LOG_LEVEL: info
+  MYCODEXVANTAOS_MYCODEXVANTAOS_DOCS_SEARCH_PORT: "3000"

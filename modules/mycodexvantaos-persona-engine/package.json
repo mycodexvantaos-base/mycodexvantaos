@@ -1,0 +1,50 @@
+{
+  "name": "@mycodexvantaos/persona-engine",
+  "version": "1.0.0",
+  "description": "MyCodeXvantaOS Persona Engine - Disrupter persona system with semantic mask detection and root cause analysis",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "ts-node src/tests/*.test.ts",
+    "test:coverage": "nyc npm test",
+    "lint": "eslint src/**/*.ts",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mycodexvantaos",
+    "persona",
+    "ai-agent",
+    "semantic-analysis",
+    "root-cause-analysis",
+    "disrupter"
+  ],
+  "author": "MyCodeXvantaOS Team",
+  "license": "MIT",
+  "dependencies": {
+    "yaml": "^2.3.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/uuid": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "nyc": "^15.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mycodexvantaos/persona-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mycodexvantaos/persona-engine/issues"
+  },
+  "homepage": "https://mycodexvantaos.ai/docs/persona-engine"
+}

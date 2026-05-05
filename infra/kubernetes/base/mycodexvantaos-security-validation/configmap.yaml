@@ -1,0 +1,10 @@
+# infra/kubernetes/base/mycodexvantaos-security-validation/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycodexvantaos-security-validation
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-security-validation
+data:
+  MYCODEXVANTAOS_MYCODEXVANTAOS_SECURITY_VALIDATION_LOG_LEVEL: info
+  MYCODEXVANTAOS_MYCODEXVANTAOS_SECURITY_VALIDATION_PORT: "3000"

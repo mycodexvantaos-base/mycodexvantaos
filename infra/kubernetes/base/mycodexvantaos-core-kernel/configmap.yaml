@@ -1,0 +1,10 @@
+# infra/kubernetes/base/mycodexvantaos-core-kernel/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycodexvantaos-core-kernel
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-core-kernel
+data:
+  MYCODEXVANTAOS_MYCODEXVANTAOS_CORE_KERNEL_LOG_LEVEL: info
+  MYCODEXVANTAOS_MYCODEXVANTAOS_CORE_KERNEL_PORT: "3000"

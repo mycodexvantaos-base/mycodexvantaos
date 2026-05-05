@@ -1,0 +1,89 @@
+{
+  "name": "mycodexvantaos",
+  "version": "1.0.0",
+  "description": "MyCodeXvantaOS - A comprehensive AI Team orchestration system with Persona Engine for intelligent, multi-perspective problem solving",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "build:watch": "tsc -b -w",
+    "test": "npm run test:orchestrator && npm run test:persona",
+    "test:orchestrator": "cd modules/mycodexvantaos-ai-team-orchestrator && npm test",
+    "test:persona": "cd modules/mycodexvantaos-persona-engine && npm test",
+    "test:coverage": "nyc npm test",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "clean": "rm -rf dist */dist */*/dist node_modules",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint && npm test"
+  },
+  "keywords": [
+    "ai",
+    "orchestration",
+    "multi-agent",
+    "persona",
+    "team-management",
+    "workflow",
+    "governance",
+    "semantic-analysis",
+    "root-cause-analysis",
+    "mycodexvantaos"
+  ],
+  "author": "MyCodeXvantaOS Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mycodexvantaos/mycodexvantaos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mycodexvantaos/mycodexvantaos/issues"
+  },
+  "homepage": "https://mycodexvantaos.ai",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "yaml": "^2.3.0",
+    "uuid": "^9.0.0",
+    "ajv": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/uuid": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "nyc": "^15.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  },
+  "workspaces": [
+    "modules/*",
+    "services/*"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.js"
+    },
+    "./orchestrator": {
+      "types": "./dist/modules/mycodexvantaos-ai-team-orchestrator/src/index.d.ts",
+      "require": "./dist/modules/mycodexvantaos-ai-team-orchestrator/src/index.js",
+      "import": "./dist/modules/mycodexvantaos-ai-team-orchestrator/src/index.js"
+    },
+    "./persona": {
+      "types": "./dist/modules/mycodexvantaos-persona-engine/src/index.d.ts",
+      "require": "./dist/modules/mycodexvantaos-persona-engine/src/index.js",
+      "import": "./dist/modules/mycodexvantaos-persona-engine/src/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "schemas",
+    "config",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ]
+}

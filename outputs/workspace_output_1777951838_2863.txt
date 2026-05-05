@@ -1,0 +1,5 @@
+35af783 https://6000-firebase-studio-1774719945559.cluster-ubrd2huk7jh6otbgyei4h
+118a0e4 我需要它具備高級的分析能力，包含跨維度理解 與  跨服務操作。Build a searchable index across the attac
+191fc9f 我們來到 ZERO-FAILURE POLICY 零故障策略 自動執行架構和 CI/CD 最佳實務 的分頁。
+899f270 我目前發現有很多欄位跟功能都沒有再即時更新，比方說 VERIFICATION REPORTS 的內容從頭至尾都是相同的，還有其它的分頁也是一樣
+b609bbe 我要怎麼將這個企劃拆分到這些目錄當中：我继续为你生成剩余的13个仓库。为了简洁且可操作，我将为每个仓库提供最小但完整的核心文件集，保持与前面一致

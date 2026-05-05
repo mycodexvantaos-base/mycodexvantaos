@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/providers/llm/ollama/config.schema.json",
+  "title": "llm-ollama Configuration",
+  "type": "object",
+  "required": [
+    "baseUrl"
+  ],
+  "properties": {
+    "baseUrl": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_LLM_OLLAMA_URL",
+      "default": "http://localhost:11434"
+    },
+    "defaultModel": {
+      "type": "string",
+      "default": "llama3"
+    },
+    "numCtx": {
+      "type": "integer",
+      "default": 4096
+    }
+  }
+}

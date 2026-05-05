@@ -1,0 +1,41 @@
+total 32468
+drwxr-xr-x 15 user user     4096 May  5 03:27 .
+drwxr-xr-x 20 root root     4096 Apr 28 06:29 ..
+drwxr-xr-x  4 user user     4096 Apr 24 22:07 .agent_hooks
+drwxr-xr-x  4 root root     4096 May  5 03:27 .agents
+drwxr-xr-x 11 root root     4096 May  5 03:27 .browser_data
+-rw-r--r--  1 root root       54 Mar 28 19:02 .env
+drwxr-xr-x  7 root root     4096 May  5 03:27 .git
+-rw-r--r--  1 root root      490 Mar 28 17:45 .gitignore
+drwxr-xr-x  2 root root     4096 May  5 03:27 .idx
+-rw-r--r--  1 root root        0 Mar 30 05:49 .modified
+drwxr-xr-x  7 root root     4096 May  5 03:27 .next
+drwxr-xr-x  3 root root     4096 Apr 28 06:27 .psiphon_data
+drwxr-xr-x  2 root root     4096 May  5 03:27 .vscode
+-rw-r--r--  1 root root    22631 May  5 03:25 42179af0-e2fa-47f4-8ce1-0ec95bd8a16d.zip
+-rw-r--r--  1 root root  7016571 May  5 03:25 AutoOps-main.zip
+-rw-r--r--  1 root root      114 Mar 28 17:45 README.md
+-rw-r--r--  1 root root      270 Mar 28 17:45 apphosting.yaml
+-rw-r--r--  1 root root    70588 May  5 03:25 codexvanta-ω-disruptor-os (1).zip
+-rw-r--r--  1 root root      447 Mar 28 17:45 components.json
+drwxr-xr-x  7 user user     4096 Apr 24 22:10 create-slides-skill
+drwxr-xr-x  7 user user     4096 Apr 24 22:10 deep-research-skill
+drwxr-xr-x  2 root root     4096 May  5 03:27 docs
+-rw-r--r--  1 root root   290430 May  5 03:25 mycodexvantaos-implementation (6).zip
+-rw-r--r--  1 root root      262 Mar 28 17:47 next-env.d.ts
+-rw-r--r--  1 root root      645 Mar 28 17:45 next.config.ts
+drwxr-xr-x  2 root root     4096 May  5 03:28 outputs
+-rw-r--r--  1 root root   527357 Mar 28 17:46 package-lock.json
+-rw-r--r--  1 root root     2107 Mar 28 17:46 package.json
+-rw-r--r--  1 root root      135 Mar 28 17:46 postcss.config.mjs
+-rw-r--r--  1 root root 22615114 May  5 03:25 project.zip
+-rw-r--r--  1 root root   218044 May  5 03:25 remix_-mycodexvantaos (1).zip
+drwxr-xr-x  7 root root     4096 May  5 03:27 src
+-rw-r--r--  1 root root   976135 May  5 03:25 studio-1942389377 (1).zip
+-rw-r--r--  1 root root   975800 May  5 03:25 studio-1942389377 (2).zip
+-rw-r--r--  1 root root        2 Mar 30 06:39 studio.json
+-rw-r--r--  1 root root     2968 Mar 28 18:57 tailwind.config.ts
+-rw-r--r--  1 root root     1238 May  5 03:27 todo.md
+-rw-r--r--  1 root root      602 Mar 28 17:46 tsconfig.json
+-rw-r--r--  1 root root    13646 May  5 03:25 zip.zip
+-rw-r--r--  1 root root   378280 May  5 03:25 跨框架與模型的自動化集成應用系統.zip

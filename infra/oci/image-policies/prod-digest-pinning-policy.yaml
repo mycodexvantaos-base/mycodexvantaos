@@ -1,0 +1,18 @@
+# infra/oci/image-policies/prod-digest-pinning-policy.yaml
+# 7.3 — Production environments MUST use digest pinning.
+apiVersion: mycodexvantaos.org/v1
+kind: ImagePolicy
+metadata:
+  name: prod-digest-pinning-policy
+  labels:
+    mycodexvantaos.org/environment: prod
+spec:
+  environment: prod
+  requireDigestPinning: true
+  forbidLatestTag: true
+  forbidMutableTags: true
+  allowedRegistries:
+    - ghcr.io/mycodexvantaos
+  note: >
+    All production deployments must reference images by sha256 digest.
+    Tag-based references are forbidden in the mycodexvantaos-prod namespace.

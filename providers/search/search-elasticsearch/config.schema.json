@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/providers/search/elasticsearch/config.schema.json",
+  "title": "search-elasticsearch Configuration",
+  "type": "object",
+  "required": [
+    "node"
+  ],
+  "properties": {
+    "node": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_SEARCH_ES_URL"
+    },
+    "apiKey": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_SEARCH_ES_API_KEY"
+    },
+    "defaultIndex": {
+      "type": "string",
+      "default": "mycodexvantaos"
+    },
+    "maxResultWindow": {
+      "type": "integer",
+      "default": 10000
+    }
+  }
+}

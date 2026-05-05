@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/schemas/providers/deploy-native/config.schema.json",
+  "title": "Native Deployment Provider Configuration",
+  "description": "Configuration schema for the native deployment provider",
+  "type": "object",
+  "properties": {
+    "port": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 65535,
+      "default": 3000,
+      "description": "Port number for local deployment server"
+    },
+    "host": {
+      "type": "string",
+      "default": "localhost",
+      "description": "Host address for the deployment server"
+    },
+    "dockerEnabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Enable Docker container deployment support"
+    },
+    "dockerImage": {
+      "type": "string",
+      "description": "Base Docker image for containerized deployments"
+    },
+    "autoReload": {
+      "type": "boolean",
+      "default": true,
+      "description": "Enable automatic reload on file changes (development mode)"
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Environment variables for the deployment"
+    },
+    "staticDir": {
+      "type": "string",
+      "default": "public",
+      "description": "Directory for static file serving"
+    },
+    "buildCommand": {
+      "type": "string",
+      "default": "npm run build",
+      "description": "Command to build the application"
+    },
+    "startCommand": {
+      "type": "string",
+      "default": "npm start",
+      "description": "Command to start the application"
+    }
+  },
+  "additionalProperties": false
+}

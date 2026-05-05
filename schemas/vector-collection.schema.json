@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/schemas/vector-collection.schema.json",
+  "title": "MyCodexVantaOS Vector Collection Definition",
+  "description": "Schema for vector-store/collections/*.yaml. Based on naming-spec-v1.md 9.2.",
+  "type": "object",
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "additionalProperties": false,
+  "properties": {
+    "apiVersion": { "type": "string", "const": "mycodexvantaos.org/v1" },
+    "kind": { "type": "string", "const": "VectorCollection" },
+    "metadata": {
+      "type": "object",
+      "required": ["name", "serviceId"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^mycodexvantaos-[a-z0-9]+(?:-[a-z0-9]+)+--[a-z0-9-]+--[a-z0-9-]+$",
+          "description": "9.2 — Format: <service-id>--<purpose>--<embedding-model-alias>"
+        },
+        "serviceId": {
+          "type": "string",
+          "pattern": "^mycodexvantaos-[a-z0-9]+(?:-[a-z0-9]+)+$",
+          "description": "The owning service-id."
+        },
+        "labels": { "type": "object", "additionalProperties": { "type": "string" } }
+      }
+    },
+    "spec": {
+      "type": "object",
+      "required": ["purpose", "embeddingModelAlias", "dimension", "provider"],
+      "additionalProperties": false,
+      "properties": {
+        "purpose": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "Semantic purpose of this collection (e.g. 'memories', 'docs', 'datasets')."
+        },
+        "embeddingModelAlias": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+--[a-z0-9-]+--[0-9]+d$",
+          "description": "9.3 — Embedding model alias: <provider>--<model>--<dim>d"
+        },
+        "dimension": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Vector dimension size."
+        },
+        "provider": {
+          "type": "string",
+          "pattern": "^vector-store-[a-z0-9-]+$",
+          "description": "8.1 — Provider instance for this collection's backing store."
+        },
+        "distanceMetric": {
+          "type": "string",
+          "enum": ["cosine", "euclidean", "dot-product"],
+          "default": "cosine"
+        },
+        "indexType": {
+          "type": "string",
+          "enum": ["hnsw", "ivfflat", "flat"],
+          "default": "hnsw"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:mycodexvantaos:schema:team-topology",
+  "title": "TeamTopology",
+  "description": "Defines the structure and communication patterns between AI agents in a team",
+  "type": "object",
+  "required": ["id", "name", "topology_type", "agents", "version"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^urn:mycodexvantaos:team:[a-z0-9-]+$",
+      "description": "Unique identifier for the team topology"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Human-readable name of the team"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of the topology configuration"
+    },
+    "topology_type": {
+      "type": "string",
+      "enum": [
+        "sequential",
+        "hierarchical",
+        "broadcast",
+        "mesh",
+        "dag",
+        "state_machine"
+      ],
+      "description": "Communication pattern type"
+    },
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["agent_id", "position"],
+        "properties": {
+          "agent_id": {
+            "type": "string",
+            "pattern": "^urn:mycodexvantaos:agent:[a-z0-9-]+$"
+          },
+          "position": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "role_override": {
+            "type": "string",
+            "description": "Override the agent's default role for this team"
+          },
+          "delegation_scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Task types this agent can be delegated"
+          }
+        }
+      },
+      "minItems": 1,
+      "description": "Agents participating in this team"
+    },
+    "communication_rules": {
+      "type": "object",
+      "properties": {
+        "message_routing": {
+          "type": "string",
+          "enum": ["direct", "broadcast", "round_robin", "priority"],
+          "default": "direct"
+        },
+        "max_concurrent_messages": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 10
+        },
+        "message_timeout_ms": {
+          "type": "integer",
+          "minimum": 1000,
+          "default": 30000
+        },
+        "retry_policy": {
+          "type": "object",
+          "properties": {
+            "max_retries": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 3
+            },
+            "backoff_ms": {
+              "type": "integer",
+              "minimum": 100,
+              "default": 1000
+            }
+          }
+        }
+      }
+    },
+    "workflow_definition": {
+      "type": "object",
+      "description": "DAG or State Machine definition for workflow control",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["dag", "state_machine"]
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "agent_id"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "agent_id": {
+                "type": "string",
+                "pattern": "^urn:mycodexvantaos:agent:[a-z0-9-]+$"
+              },
+              "action": {
+                "type": "string"
+              },
+              "on_success": {
+                "type": "string"
+              },
+              "on_failure": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["from", "to"],
+            "properties": {
+              "from": {
+                "type": "string"
+              },
+              "to": {
+                "type": "string"
+              },
+              "condition": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "initial_state": {
+          "type": "string"
+        },
+        "final_states": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "hitl_config": {
+      "type": "object",
+      "description": "Human-in-the-loop configuration",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "checkpoints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["node_id", "trigger_condition"],
+            "properties": {
+              "node_id": {
+                "type": "string"
+              },
+              "trigger_condition": {
+                "type": "string",
+                "enum": ["always", "on_error", "on_threshold", "manual"]
+              },
+              "timeout_seconds": {
+                "type": "integer",
+                "minimum": 30,
+                "default": 300
+              },
+              "notification_channels": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "approval_required_for": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "code_deployment",
+              "database_modification",
+              "external_communication",
+              "resource_allocation",
+              "security_changes",
+              "governance_changes"
+            ]
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"],
+      "default": "draft"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

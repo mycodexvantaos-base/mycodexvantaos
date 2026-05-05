@@ -1,0 +1,16 @@
+# infra/kubernetes/base/mycodexvantaos-core-config/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mycodexvantaos-core-config
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-core-config
+spec:
+  selector:
+    app.kubernetes.io/name: mycodexvantaos-core-config
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+      protocol: TCP
+  type: ClusterIP

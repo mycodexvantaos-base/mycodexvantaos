@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/providers/observability/opentelemetry/config.schema.json",
+  "title": "observability-opentelemetry Configuration",
+  "type": "object",
+  "required": [
+    "endpoint"
+  ],
+  "properties": {
+    "endpoint": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_OBSERVABILITY_OTEL_ENDPOINT"
+    },
+    "serviceName": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_OBSERVABILITY_SERVICE_NAME"
+    },
+    "samplingRate": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1.0
+    },
+    "exporterProtocol": {
+      "type": "string",
+      "enum": [
+        "grpc",
+        "http/protobuf"
+      ],
+      "default": "grpc"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "llm-native-config",
+  "title": "Native LLM Provider Configuration",
+  "description": "Configuration for native LLM provider with zero external dependencies",
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Enable native LLM provider"
+    },
+    "responseMode": {
+      "type": "string",
+      "enum": ["template", "echo", "rule-based"],
+      "default": "rule-based",
+      "description": "Response generation mode"
+    },
+    "maxTokens": {
+      "type": "integer",
+      "default": 2048,
+      "description": "Maximum tokens for response"
+    },
+    "templatesPath": {
+      "type": "string",
+      "description": "Path to custom response templates"
+    }
+  },
+  "required": []
+}

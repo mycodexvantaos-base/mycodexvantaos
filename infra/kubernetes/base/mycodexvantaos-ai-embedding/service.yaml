@@ -1,0 +1,16 @@
+# infra/kubernetes/base/mycodexvantaos-ai-embedding/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mycodexvantaos-ai-embedding
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-ai-embedding
+spec:
+  selector:
+    app.kubernetes.io/name: mycodexvantaos-ai-embedding
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+      protocol: TCP
+  type: ClusterIP

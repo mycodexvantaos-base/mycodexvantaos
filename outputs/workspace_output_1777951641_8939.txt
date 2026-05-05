@@ -1,0 +1,20 @@
+total 31876
+drwxr-xr-x  8 user user     4096 May  5 03:27 .
+drwxr-xr-x 20 root root     4096 Apr 28 06:29 ..
+drwxr-xr-x  4 user user     4096 Apr 24 22:07 .agent_hooks
+drwxr-xr-x 11 root root     4096 May  5 03:27 .browser_data
+drwxr-xr-x  3 root root     4096 Apr 28 06:27 .psiphon_data
+-rw-r--r--  1 root root    22631 May  5 03:25 42179af0-e2fa-47f4-8ce1-0ec95bd8a16d.zip
+-rw-r--r--  1 root root  7016571 May  5 03:25 AutoOps-main.zip
+-rw-r--r--  1 root root    70588 May  5 03:25 codexvanta-ω-disruptor-os (1).zip
+drwxr-xr-x  7 user user     4096 Apr 24 22:10 create-slides-skill
+drwxr-xr-x  7 user user     4096 Apr 24 22:10 deep-research-skill
+-rw-r--r--  1 root root   290430 May  5 03:25 mycodexvantaos-implementation (6).zip
+drwxr-xr-x  2 root root     4096 May  5 03:27 outputs
+-rw-r--r--  1 root root 22615114 May  5 03:25 project.zip
+-rw-r--r--  1 root root   218044 May  5 03:25 remix_-mycodexvantaos (1).zip
+-rw-r--r--  1 root root   976135 May  5 03:25 studio-1942389377 (1).zip
+-rw-r--r--  1 root root   975800 May  5 03:25 studio-1942389377 (2).zip
+-rw-r--r--  1 root root     1238 May  5 03:27 todo.md
+-rw-r--r--  1 root root    13646 May  5 03:25 zip.zip
+-rw-r--r--  1 root root   378280 May  5 03:25 跨框架與模型的自動化集成應用系統.zip

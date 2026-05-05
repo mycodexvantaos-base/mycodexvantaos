@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/providers/storage/s3/config.schema.json",
+  "title": "storage-s3 Configuration",
+  "type": "object",
+  "required": [
+    "bucket"
+  ],
+  "properties": {
+    "bucket": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_STORAGE_BUCKET"
+    },
+    "region": {
+      "type": "string",
+      "default": "us-east-1"
+    },
+    "accessKeyId": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_STORAGE_ACCESS_KEY"
+    },
+    "secretAccessKey": {
+      "type": "string",
+      "envVar": "MYCODEXVANTAOS_STORAGE_SECRET_KEY"
+    }
+  }
+}

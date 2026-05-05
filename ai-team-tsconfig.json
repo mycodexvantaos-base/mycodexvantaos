@@ -1,0 +1,60 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "lib": ["ES2022"],
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mycodexvantaos/orchestrator": ["modules/mycodexvantaos-ai-team-orchestrator/src"],
+      "@mycodexvantaos/persona": ["modules/mycodexvantaos-persona-engine/src"],
+      "@mycodexvantaos/types": ["modules/mycodexvantaos-ai-team-orchestrator/src/types"]
+    }
+  },
+  "references": [
+    { "path": "modules/mycodexvantaos-ai-team-orchestrator" },
+    { "path": "modules/mycodexvantaos-persona-engine" },
+    { "path": "services/mycodexvantaos-ai-team-service" }
+  ],
+  "include": [
+    "index.ts",
+    "modules/**/*.ts",
+    "services/**/*.ts",
+    "schemas/**/*.json"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/tests/**",
+    "persona_extracted",
+    "summarized_conversations"
+  ]
+}

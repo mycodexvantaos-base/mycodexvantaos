@@ -1,0 +1,10 @@
+# infra/kubernetes/base/mycodexvantaos-platform-scheduler/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycodexvantaos-platform-scheduler
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-platform-scheduler
+data:
+  MYCODEXVANTAOS_MYCODEXVANTAOS_PLATFORM_SCHEDULER_LOG_LEVEL: info
+  MYCODEXVANTAOS_MYCODEXVANTAOS_PLATFORM_SCHEDULER_PORT: "3000"

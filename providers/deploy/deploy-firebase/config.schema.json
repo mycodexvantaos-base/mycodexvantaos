@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mycodexvantaos.org/schemas/providers/deploy-firebase/config.schema.json",
+  "title": "Firebase Deployment Provider Configuration",
+  "description": "Configuration schema for the Firebase deployment provider",
+  "type": "object",
+  "properties": {
+    "projectId": {
+      "type": "string",
+      "description": "Firebase project ID"
+    },
+    "region": {
+      "type": "string",
+      "default": "us-central1",
+      "description": "GCP region for Firebase deployment"
+    },
+    "hosting": {
+      "type": "object",
+      "properties": {
+        "site": {
+          "type": "string",
+          "description": "Firebase Hosting site name"
+        },
+        "public": {
+          "type": "string",
+          "default": "public",
+          "description": "Directory for static hosting files"
+        },
+        "rewrites": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "description": "URL rewrites configuration"
+        },
+        "redirects": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "description": "URL redirects configuration"
+        }
+      }
+    },
+    "appHosting": {
+      "type": "object",
+      "properties": {
+        "backendId": {
+          "type": "string",
+          "description": "Firebase App Hosting backend ID"
+        },
+        "buildCommand": {
+          "type": "string",
+          "default": "npm run build",
+          "description": "Build command for the application"
+        },
+        "runCommand": {
+          "type": "string",
+          "default": "npm start",
+          "description": "Start command for the application"
+        }
+      }
+    },
+    "credentials": {
+      "type": "object",
+      "properties": {
+        "applicationCredentials": {
+          "type": "string",
+          "description": "Path to Google Application Credentials JSON file"
+        },
+        "apiKey": {
+          "type": "string",
+          "description": "Firebase API key"
+        }
+      }
+    }
+  },
+  "required": ["projectId"],
+  "additionalProperties": false
+}

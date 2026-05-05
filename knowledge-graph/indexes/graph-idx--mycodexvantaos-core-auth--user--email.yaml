@@ -1,0 +1,14 @@
+# knowledge-graph/indexes/graph-idx--mycodexvantaos-core-auth--user--email.yaml
+# 10.3 — Format: graph-idx--<service-id>--<label>--<property>
+apiVersion: mycodexvantaos.org/v1
+kind: GraphDbIndex
+metadata:
+  name: graph-idx--mycodexvantaos-core-auth--user--email
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  serviceId: mycodexvantaos-core-auth
+  nodeLabel: user
+  property: email
+  indexType: btree
+  unique: true

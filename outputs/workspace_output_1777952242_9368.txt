@@ -1,0 +1,31 @@
+From https://github.com/mycodexvantaos/mycodexvantaos
+ * branch            main       -> FETCH_HEAD
+Auto-merging .gitignore
+CONFLICT (add/add): Merge conflict in .gitignore
+Auto-merging README.md
+CONFLICT (add/add): Merge conflict in README.md
+Auto-merging docs/blueprint.md
+CONFLICT (add/add): Merge conflict in docs/blueprint.md
+Auto-merging package.json
+CONFLICT (add/add): Merge conflict in package.json
+Auto-merging src/ai/dev.ts
+CONFLICT (add/add): Merge conflict in src/ai/dev.ts
+Auto-merging src/ai/genkit.ts
+CONFLICT (add/add): Merge conflict in src/ai/genkit.ts
+Auto-merging src/app/dashboard/page.tsx
+CONFLICT (add/add): Merge conflict in src/app/dashboard/page.tsx
+Auto-merging src/app/globals.css
+CONFLICT (add/add): Merge conflict in src/app/globals.css
+Auto-merging src/app/layout.tsx
+CONFLICT (add/add): Merge conflict in src/app/layout.tsx
+Auto-merging src/app/page.tsx
+CONFLICT (add/add): Merge conflict in src/app/page.tsx
+Auto-merging src/components/ui/progress.tsx
+CONFLICT (add/add): Merge conflict in src/components/ui/progress.tsx
+Auto-merging src/lib/placeholder-images.json
+CONFLICT (add/add): Merge conflict in src/lib/placeholder-images.json
+Auto-merging tailwind.config.ts
+CONFLICT (add/add): Merge conflict in tailwind.config.ts
+Auto-merging tsconfig.json
+CONFLICT (add/add): Merge conflict in tsconfig.json
+Automatic merge failed; fix conflicts and then commit the result.

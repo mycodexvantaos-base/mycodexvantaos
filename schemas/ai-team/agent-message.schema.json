@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:mycodexvantaos:schema:agent-message",
+  "title": "AgentMessage",
+  "description": "Defines the message structure for inter-agent communication",
+  "type": "object",
+  "required": ["id", "sender_id", "message_type", "content", "timestamp"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^urn:mycodexvantaos:message:[a-z0-9-]+$",
+      "description": "Unique identifier for the message"
+    },
+    "conversation_id": {
+      "type": "string",
+      "pattern": "^urn:mycodexvantaos:conversation:[a-z0-9-]+$",
+      "description": "ID of the conversation this message belongs to"
+    },
+    "sender_id": {
+      "type": "string",
+      "pattern": "^urn:mycodexvantaos:agent:[a-z0-9-]+$",
+      "description": "URN of the sending agent"
+    },
+    "recipient_id": {
+      "type": ["string", "null"],
+      "pattern": "^urn:mycodexvantaos:agent:[a-z0-9-]+$",
+      "description": "URN of the recipient agent (null for broadcast)"
+    },
+    "message_type": {
+      "type": "string",
+      "enum": [
+        "task_assignment",
+        "task_update",
+        "query",
+        "response",
+        "notification",
+        "collaboration_request",
+        "review_request",
+        "approval_request",
+        "error_report",
+        "status_update",
+        "context_share",
+        "tool_call",
+        "tool_result"
+      ],
+      "description": "Type of message content"
+    },
+    "content": {
+      "type": "object",
+      "required": ["type", "data"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["text", "structured", "tool_call", "artifact_reference"]
+        },
+        "data": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "format": {
+          "type": "string",
+          "enum": ["plain", "markdown", "json", "code"]
+        }
+      }
+    },
+    "tool_call": {
+      "type": "object",
+      "description": "Tool call information if message_type is tool_call",
+      "properties": {
+        "tool_id": {
+          "type": "string",
+          "pattern": "^urn:mycodexvantaos:tool:[a-z0-9-]+$"
+        },
+        "function_name": {
+          "type": "string"
+        },
+        "arguments": {
+          "type": "object"
+        },
+        "call_id": {
+          "type": "string"
+        }
+      }
+    },
+    "tool_result": {
+      "type": "object",
+      "description": "Tool result information if message_type is tool_result",
+      "properties": {
+        "call_id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["success", "error", "timeout"]
+        },
+        "output": {
+          "type": "object"
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "context_references": {
+      "type": "array",
+      "description": "References to context that should be considered",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["message", "artifact", "task", "external"]
+          },
+          "ref_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "normal", "high", "urgent"],
+      "default": "normal"
+    },
+    "requires_response": {
+      "type": "boolean",
+      "default": false
+    },
+    "response_deadline": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

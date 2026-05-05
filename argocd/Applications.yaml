@@ -1,0 +1,96 @@
+# === path: argocd/Applications.yaml ===
+# ArgoCD Applications for MyCodeXvantaOS
+# GitOps deployment configuration
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mycodexvantaos-platform
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  
+  source:
+    repoURL: https://github.com/mycodexvantaos/mycodexvantaos.git
+    targetRevision: main
+    path: k8s/overlays/production
+    
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mycodexvantaos
+    
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+        
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mycodexvantaos-staging
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  
+  source:
+    repoURL: https://github.com/mycodexvantaos/mycodexvantaos.git
+    targetRevision: main
+    path: k8s/overlays/staging
+    
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mycodexvantaos-staging
+    
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mycodexvantaos-development
+  namespace: argocd
+spec:
+  project: default
+  
+  source:
+    repoURL: https://github.com/mycodexvantaos/mycodexvantaos.git
+    targetRevision: main
+    path: k8s/overlays/development
+    
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mycodexvantaos-dev
+    
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

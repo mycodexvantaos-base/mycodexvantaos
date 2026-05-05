@@ -1,0 +1,15 @@
+# vector-store/embedding-model-aliases/openai--text-embedding-3-large--3072d.yaml
+# 9.3 — Format: <provider>--<model-name>--<dimension>d
+apiVersion: mycodexvantaos.org/v1
+kind: EmbeddingModelAlias
+metadata:
+  name: openai--text-embedding-3-large--3072d
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  provider: openai
+  modelName: text-embedding-3-large
+  dimension: 3072
+  providerInstance: embedding-openai
+  maxTokens: 8191
+  description: "OpenAI text-embedding-3-large. Highest accuracy, 3072 dimensions."

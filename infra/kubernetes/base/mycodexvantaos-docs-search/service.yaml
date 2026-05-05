@@ -1,0 +1,16 @@
+# infra/kubernetes/base/mycodexvantaos-docs-search/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mycodexvantaos-docs-search
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-docs-search
+spec:
+  selector:
+    app.kubernetes.io/name: mycodexvantaos-docs-search
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+      protocol: TCP
+  type: ClusterIP

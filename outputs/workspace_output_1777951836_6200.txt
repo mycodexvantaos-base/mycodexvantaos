@@ -1,0 +1,25 @@
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.agent_hooks/
+	.agents/
+	.browser_data/
+	.psiphon_data/
+	.vscode/
+	42179af0-e2fa-47f4-8ce1-0ec95bd8a16d.zip
+	AutoOps-main.zip
+	"codexvanta-\317\211-disruptor-os (1).zip"
+	create-slides-skill/
+	deep-research-skill/
+	mycodexvantaos-implementation (6).zip
+	outputs/
+	project.zip
+	remix_-mycodexvantaos (1).zip
+	studio-1942389377 (1).zip
+	studio-1942389377 (2).zip
+	studio.json
+	todo.md
+	zip.zip
+	"\350\267\250\346\241\206\346\236\266\350\210\207\346\250\241\345\236\213\347\232\204\350\207\252\345\213\225\345\214\226\351\233\206\346\210\220\346\207\211\347\224\250\347\263\273\347\265\261.zip"
+
+nothing added to commit but untracked files present (use "git add" to track)

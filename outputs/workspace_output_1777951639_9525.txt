@@ -1,0 +1,18 @@
+total 64
+drwx------ 11 root root 4096 May  5 03:25 .
+drwxr-xr-x 20 root root 4096 Apr 28 06:29 ..
+-rw-r--r--  1 root root  571 Apr 10  2021 .bashrc
+drwxr-xr-x 10 root root 4096 Apr 28 06:27 .cache
+drwxr-xr-x  4 root root 4096 May  5 03:25 .claude
+-rw-------  1 root root  325 Apr 24 22:09 .claude.json
+drwxr-xr-x  5 root root 4096 Apr 28 06:27 .config
+drwxr-xr-x  5 root root 4096 Apr 24 22:09 .local
+drwxr-xr-x  4 root root 4096 Apr 24 22:09 .npm
+drwx------  3 root root 4096 Apr 28 06:27 .pki
+-rw-r--r--  1 root root  161 Jul  9  2019 .profile
+-rw-------  1 root root    0 Feb 24 19:46 .python_history
+drwx------  2 root root 4096 Apr 28 06:29 .ssh
+drwxr-xr-x  2 root root 4096 Apr 28 06:27 .vnc
+-rw-r--r--  1 root root  204 Apr 24 22:09 .wget-hsts
+drwxr-xr-x  3 root root 4096 Apr 24 22:09 go
+-rwxr-xr-x  1 root root 2323 May  5 03:25 ninja_cline_setup.sh

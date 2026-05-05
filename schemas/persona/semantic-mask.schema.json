@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:mycodexvantaos:schema:semantic-mask",
+  "title": "Semantic Mask Schema",
+  "description": "Schema for detecting and reframing semantic masks (avoidance patterns in language)",
+  "type": "object",
+  "required": ["mask_type", "patterns", "truth_reframe"],
+  "additionalProperties": false,
+  "properties": {
+    "urn": {
+      "type": "string",
+      "pattern": "^urn:mycodexvantaos:semantic-mask:[a-z0-9-]+$"
+    },
+    "mask_type": {
+      "type": "string",
+      "enum": [
+        "comforting_platitude",
+        "vague_healing_language",
+        "psychological_jargon_misuse",
+        "emotional_avoidance",
+        "responsibility_transfer",
+        "reality_denial",
+        "self_deception",
+        "cognitive_dissonance_mask"
+      ],
+      "description": "Category of semantic mask"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name for this mask type"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed explanation of this mask type"
+    },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "List of phrases or patterns that indicate this mask"
+    },
+    "truth_reframe": {
+      "type": "object",
+      "description": "Mapping from mask phrases to truth expressions",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "detection_precision": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0.9,
+      "description": "Expected precision of mask detection"
+    },
+    "constructive_alternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "masked_expression": {
+            "type": "string"
+          },
+          "truth_exposure": {
+            "type": "string"
+          },
+          "constructive_solution": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Examples of masked expressions and their constructive alternatives"
+    },
+    "severity_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "default": "medium",
+      "description": "How significantly this mask impedes genuine understanding"
+    },
+    "intervention_strategy": {
+      "type": "string",
+      "description": "Recommended approach for addressing this mask type"
+    }
+  }
+}

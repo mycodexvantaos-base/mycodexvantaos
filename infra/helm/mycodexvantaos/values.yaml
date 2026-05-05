@@ -1,0 +1,15 @@
+# infra/helm/mycodexvantaos/values.yaml
+# Base values — no environment-specific settings here.
+# Use values-dev.yaml / values-staging.yaml / values-prod.yaml for env overrides.
+global:
+  registry: ghcr.io
+  namespace: mycodexvantaos
+  imageTag: latest
+
+services:
+  mycodexvantaos-core-kernel:
+    replicas: 1
+  mycodexvantaos-ai-embedding:
+    replicas: 1
+  mycodexvantaos-ai-llm:
+    replicas: 1

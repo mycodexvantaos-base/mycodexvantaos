@@ -1,0 +1,16 @@
+# infra/kubernetes/base/mycodexvantaos-core-auth/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mycodexvantaos-core-auth
+  labels:
+    app.kubernetes.io/name: mycodexvantaos-core-auth
+spec:
+  selector:
+    app.kubernetes.io/name: mycodexvantaos-core-auth
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+      protocol: TCP
+  type: ClusterIP

@@ -1,0 +1,19 @@
+# providers/notification/notification-sendgrid/provider-manifest.yaml
+# 8.1 — provider instance: notification-sendgrid
+# 8.2 — capability (notification) precedes provider name (sendgrid)
+apiVersion: mycodexvantaos.org/v1
+kind: Provider
+metadata:
+  name: notification-sendgrid
+  capability: notification
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+    mycodexvantaos.org/specRef: "8.1"
+spec:
+  providerName: sendgrid
+  isNative: false
+  lifecycle:
+    stage: stable
+  envVarPrefix: MYCODEXVANTAOS_NOTIFICATION
+  configSchemaRef: ./config.schema.json
+  description: "SendGrid email notification provider."

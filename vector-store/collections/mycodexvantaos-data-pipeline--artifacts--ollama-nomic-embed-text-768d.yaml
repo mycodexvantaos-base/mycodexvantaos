@@ -1,0 +1,16 @@
+# vector-store/collections/mycodexvantaos-data-pipeline--artifacts--ollama-nomic-embed-text-768d.yaml
+# 9.2 — Format: <service-id>--<purpose>--<embedding-model-alias>
+apiVersion: mycodexvantaos.org/v1
+kind: VectorCollection
+metadata:
+  name: mycodexvantaos-data-pipeline--artifacts--ollama-nomic-embed-text-768d
+  serviceId: mycodexvantaos-data-pipeline
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  purpose: artifacts
+  embeddingModelAlias: ollama--nomic-embed-text--768d
+  dimension: 768
+  provider: vector-store-pgvector
+  distanceMetric: cosine
+  indexType: hnsw

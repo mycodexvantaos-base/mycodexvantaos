@@ -1,0 +1,16 @@
+# vector-store/collections/mycodexvantaos-docs-search--chunks--cohere-embed-english-v3-1024d.yaml
+# 9.2 — Format: <service-id>--<purpose>--<embedding-model-alias>
+apiVersion: mycodexvantaos.org/v1
+kind: VectorCollection
+metadata:
+  name: mycodexvantaos-docs-search--chunks--cohere-embed-english-v3-1024d
+  serviceId: mycodexvantaos-docs-search
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+spec:
+  purpose: chunks
+  embeddingModelAlias: cohere--embed-english-v3--1024d
+  dimension: 1024
+  provider: vector-store-qdrant
+  distanceMetric: cosine
+  indexType: hnsw

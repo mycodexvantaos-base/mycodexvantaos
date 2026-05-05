@@ -1,0 +1,12 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix :     <https://mycodexvantaos.org/ns/platform#> .
+
+# Namespace IRI: https://mycodexvantaos.org/ns/platform#
+# §10.1 — Domain: platform
+# Terms: Notification, Scheduler, Observability
+
+<https://mycodexvantaos.org/ns/platform>
+    a owl:Ontology ;
+    rdfs:label "mycodexvantaos platform ontology" .
