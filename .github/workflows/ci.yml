@@ -46,7 +46,6 @@ jobs:
 
       - name: Format Check
         run: pnpm run format:check
-        continue-on-error: true
 
 
       - name: Lint

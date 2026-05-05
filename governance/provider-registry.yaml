@@ -223,3 +223,60 @@ providers:
     providerName: trivy
     isNative: false
     lifecycle: stable
+
+  # capability: ai-ethics
+  - name: ai-ethics-fairlearn
+    capability: ai-ethics
+    providerName: fairlearn
+    isNative: false
+    lifecycle: stable
+
+  - name: ai-ethics-ai-fairness-360
+    capability: ai-ethics
+    providerName: ai-fairness-360
+    isNative: false
+    lifecycle: beta
+
+  - name: ai-ethics-native-auditor
+    capability: ai-ethics
+    providerName: native-auditor
+    isNative: true
+    lifecycle: stable
+
+  # capability: blockchain
+  - name: blockchain-hyperledger
+    capability: blockchain
+    providerName: hyperledger
+    isNative: false
+    lifecycle: stable
+
+  - name: blockchain-ethereum
+    capability: blockchain
+    providerName: ethereum
+    isNative: false
+    lifecycle: beta
+
+  - name: blockchain-native-ledger
+    capability: blockchain
+    providerName: native-ledger
+    isNative: true
+    lifecycle: stable
+
+  # capability: event-stream
+  - name: event-stream-kafka
+    capability: event-stream
+    providerName: kafka
+    isNative: false
+    lifecycle: stable
+
+  - name: event-stream-cloudevents
+    capability: event-stream
+    providerName: cloudevents
+    isNative: false
+    lifecycle: stable
+
+  - name: event-stream-native-governance
+    capability: event-stream
+    providerName: native-governance
+    isNative: true
+    lifecycle: stable

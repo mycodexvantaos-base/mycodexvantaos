@@ -363,7 +363,7 @@ canonical_identifiers:
     regex: >
       ^(database|storage|auth|queue|state-store|secrets|repo|deploy|
       validation|security|observability|notification|scheduler|vector-store|
-      embedding|llm|graph|cache|search)$
+      embedding|llm|graph|cache|search|ai-ethics|blockchain|event-stream)$
     values:
       - "database"
       - "storage"
@@ -384,6 +384,9 @@ canonical_identifiers:
       - "graph"
       - "cache"
       - "search"
+      - "ai-ethics"
+      - "blockchain"
+      - "event-stream"
 
 # =============================================================================
 # E. Protocol-Specific Identifiers
@@ -436,7 +439,7 @@ provider_identifiers:
     regex: >
       ^(database|storage|auth|queue|state-store|secrets|repo|deploy|
       validation|security|observability|notification|scheduler|vector-store|
-      embedding|llm|graph|cache|search)-[a-z0-9-]+$
+      embedding|llm|graph|cache|search|ai-ethics|blockchain|event-stream)-[a-z0-9-]+$
     ci_rule_file: "ci/rules/provider-instance.rule.ts"
     enforcement: "hard"
     source_of_truth: "governance/provider-registry.yaml"

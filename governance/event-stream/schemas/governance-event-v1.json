@@ -1,0 +1,216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mycodexvantaos:schema:governance-event:v1",
+  "title": "GovernanceEvent",
+  "description": "CloudEvents v1.0 compliant governance event schema for MyCodeXvantaOS mandatory closed-loop event stream.",
+  "type": "object",
+  "required": [
+    "specversion",
+    "type",
+    "source",
+    "id",
+    "time",
+    "datacontenttype",
+    "mycodexvantaosorgseverity",
+    "mycodexvantaosorgclosedloopstate",
+    "mycodexvantaosorgcorrelationid",
+    "mycodexvantaosorgcapability",
+    "mycodexvantaosorgprovider",
+    "mycodexvantaosorgeracode",
+    "data"
+  ],
+  "properties": {
+    "specversion": {
+      "type": "string",
+      "const": "1.0",
+      "description": "CloudEvents specification version."
+    },
+    "type": {
+      "type": "string",
+      "pattern": "^mycodexvantaos\\.[a-z0-9-]+\\.[a-z0-9-]+\\.v[0-9]+$",
+      "description": "Governance event type from the canonical registry."
+    },
+    "source": {
+      "type": "string",
+      "pattern": "^urn:mycodexvantaos:",
+      "description": "URN source of the emitting service."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^evt--[0-9]{14}--[a-z0-9]{6}$",
+      "description": "Unique event identifier."
+    },
+    "time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of event emission."
+    },
+    "datacontenttype": {
+      "type": "string",
+      "const": "application/json",
+      "description": "Content type of the event data."
+    },
+    "dataschema": {
+      "type": "string",
+      "description": "URI of the schema used to validate the event data."
+    },
+    "mycodexvantaosorgseverity": {
+      "type": "string",
+      "enum": ["critical", "high", "medium", "low", "info"],
+      "description": "Severity level of the governance event."
+    },
+    "mycodexvantaosorgclosedloopstate": {
+      "type": "string",
+      "enum": ["emitted", "acknowledged", "processing", "verified", "remediated", "anchored", "closed", "failed", "escalated"],
+      "description": "Current closed-loop state of the event."
+    },
+    "mycodexvantaosorgcorrelationid": {
+      "type": "string",
+      "description": "Correlation ID for linking related governance events."
+    },
+    "mycodexvantaosorgcapability": {
+      "type": "string",
+      "enum": [
+        "database", "storage", "auth", "queue", "state-store", "secrets",
+        "repo", "deploy", "validation", "security", "observability",
+        "notification", "scheduler", "vector-store", "embedding", "llm",
+        "graph", "cache", "search", "ai-ethics", "blockchain", "event-stream"
+      ],
+      "description": "Capability that emitted this event."
+    },
+    "mycodexvantaosorgprovider": {
+      "type": "string",
+      "description": "Provider instance that emitted this event."
+    },
+    "mycodexvantaosorgeracode": {
+      "type": "string",
+      "pattern": "^[0-9]{3}$",
+      "description": "Era namespace governance code."
+    },
+    "mycodexvantaosorgmerkleroothash": {
+      "type": "string",
+      "description": "Merkle root hash if event has been anchored to ledger."
+    },
+    "data": {
+      "$ref": "#/$defs/GovernanceEventData"
+    }
+  },
+  "$defs": {
+    "GovernanceEventData": {
+      "type": "object",
+      "required": ["description", "actor", "affectedResources"],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of the governance event."
+        },
+        "actor": {
+          "type": "string",
+          "description": "Service or user that triggered the event."
+        },
+        "affectedResources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AffectedResource"
+          },
+          "minItems": 1
+        },
+        "complianceContext": {
+          "$ref": "#/$defs/ComplianceContext"
+        },
+        "ethicsContext": {
+          "$ref": "#/$defs/EthicsContext"
+        },
+        "blockchainContext": {
+          "$ref": "#/$defs/BlockchainContext"
+        },
+        "extensions": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "AffectedResource": {
+      "type": "object",
+      "required": ["urn", "type", "name", "changeType"],
+      "properties": {
+        "urn": {
+          "type": "string",
+          "pattern": "^urn:mycodexvantaos:"
+        },
+        "type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "changeType": {
+          "type": "string",
+          "enum": ["created", "updated", "deleted", "violated", "verified"]
+        }
+      }
+    },
+    "ComplianceContext": {
+      "type": "object",
+      "required": ["policyId", "ruleFile", "enforceLevel", "passed", "violations"],
+      "properties": {
+        "policyId": { "type": "string" },
+        "ruleFile": { "type": "string" },
+        "enforceLevel": { "type": "string", "enum": ["hard", "soft"] },
+        "passed": { "type": "boolean" },
+        "violations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ComplianceViolation" }
+        }
+      }
+    },
+    "ComplianceViolation": {
+      "type": "object",
+      "required": ["rule", "expected", "actual", "severity", "remediation"],
+      "properties": {
+        "rule": { "type": "string" },
+        "expected": { "type": "string" },
+        "actual": { "type": "string" },
+        "severity": { "type": "string", "enum": ["critical", "high", "medium", "low", "info"] },
+        "remediation": { "type": "string" }
+      }
+    },
+    "EthicsContext": {
+      "type": "object",
+      "required": ["modelId", "biasMetrics", "fairnessScore", "auditDecision", "remediationSteps"],
+      "properties": {
+        "modelId": { "type": "string" },
+        "datasetId": { "type": "string" },
+        "biasMetrics": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/BiasMetric" }
+        },
+        "fairnessScore": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "auditDecision": { "type": "string", "enum": ["pass", "fail", "conditional"] },
+        "remediationSteps": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "BiasMetric": {
+      "type": "object",
+      "required": ["metric", "value", "threshold", "passed"],
+      "properties": {
+        "metric": { "type": "string" },
+        "value": { "type": "number" },
+        "threshold": { "type": "number" },
+        "passed": { "type": "boolean" }
+      }
+    },
+    "BlockchainContext": {
+      "type": "object",
+      "required": ["ledgerType", "consensusStatus"],
+      "properties": {
+        "ledgerType": { "type": "string" },
+        "transactionId": { "type": "string" },
+        "blockNumber": { "type": "integer" },
+        "merkleRootHash": { "type": "string" },
+        "merkleProof": { "type": "array", "items": { "type": "string" } },
+        "consensusStatus": { "type": "string", "enum": ["pending", "committed", "finalized"] }
+      }
+    }
+  }
+}

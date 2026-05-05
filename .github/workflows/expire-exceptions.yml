@@ -20,10 +20,9 @@ jobs:
       - name: Check exception expiry status
         id: expiry
         run: ./scripts/expire-exceptions.sh
-        continue-on-error: true
 
       - name: Create issue if expired exceptions found
-        if: steps.expiry.outcome == 'failure'
+        if: failure() && steps.expiry.conclusion == 'failure'
         uses: actions/github-script@v7
         with:
           script: |

@@ -1,0 +1,19 @@
+# providers/ai-ethics/ai-ethics-ai-fairness-360/provider-manifest.yaml
+# 8.1 — provider instance: ai-ethics-ai-fairness-360
+# 8.2 — capability (ai-ethics) precedes provider name (ai-fairness-360)
+apiVersion: mycodexvantaos.org/v1
+kind: Provider
+metadata:
+  name: ai-ethics-ai-fairness-360
+  capability: ai-ethics
+  labels:
+    mycodexvantaos.org/managed-by: naming-spec-v1
+    mycodexvantaos.org/specRef: "8.1"
+spec:
+  providerName: ai-fairness-360
+  isNative: false
+  lifecycle:
+    stage: beta
+  envVarPrefix: MYCODEXVANTAOS_AI_ETHICS
+  configSchemaRef: ./config.schema.json
+  description: "IBM AI Fairness 360 toolkit provider for comprehensive bias detection and mitigation."

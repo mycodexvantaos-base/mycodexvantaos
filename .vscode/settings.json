@@ -1,3 +1,6 @@
 {
-  "workbench.startupEditor": "readme"
+    "heizen.githubToken": "",
+    "diffEditor.experimental.useTrueInlineView": true,
+    "githubPrHelper.providerApiKey": "",
+    "githubPrHelper.model": "google/gemini-3.1-flash"
 }

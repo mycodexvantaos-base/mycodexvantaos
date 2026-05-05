@@ -103,14 +103,25 @@ jobs:
         with:
           config: cliff.toml
           args: --latest --strip all
-        continue-on-error: true
 
       - name: Create GitHub Release
+        if: steps.changelog.outputs.content != ''
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ needs.version.outputs.tag }}
           name: Release ${{ needs.version.outputs.tag }}
           body: ${{ steps.changelog.outputs.content }}
+          draft: false
+          prerelease: ${{ github.event.inputs.prerelease == 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitHub Release (auto-notes fallback)
+        if: steps.changelog.outputs.content == ''
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ needs.version.outputs.tag }}
+          name: Release ${{ needs.version.outputs.tag }}
           draft: false
           prerelease: ${{ github.event.inputs.prerelease == 'true' }}
           generate_release_notes: true

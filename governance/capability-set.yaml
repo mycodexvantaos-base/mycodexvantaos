@@ -107,3 +107,18 @@ capabilities:
     description: Full-text search and indexing.
     category: data
     stable: true
+
+  - id: ai-ethics
+    description: AI ethics governance, bias detection, fairness auditing, and responsible AI compliance enforcement.
+    category: governance
+    stable: true
+
+  - id: blockchain
+    description: Distributed ledger, smart contract execution, consensus verification, and immutable audit trail.
+    category: governance
+    stable: true
+
+  - id: event-stream
+    description: Mandatory governance event stream for closed-loop compliance verification and audit trail propagation.
+    category: governance
+    stable: true
